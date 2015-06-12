@@ -38,7 +38,7 @@
  * http://en.wikipedia.org/wiki/Cross-site_request_forgery
  *
  * For more information on this configuration file, including info on CSRF + CORS, see:
- * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.csrf.html
+ * http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.csrf.html
  *
  */
 
@@ -58,7 +58,7 @@
 *                                                                           *
 ****************************************************************************/
 
-// module.exports.csrf = {
-//    grantTokenViaAjax: true,
+ module.exports.csrf = {
+      grantTokenViaAjax: true,
 //    origin: ''
-// }
+ }
