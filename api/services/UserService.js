@@ -21,6 +21,11 @@ module.exports = {
 		Users.findOne({username: username}, function (err, doc){
 			callback((doc) ? true: false, doc);
 		});
+	},
+	checkProfileId : function (profileId, callback){
+		Users.findOne({profile_id: profileId}, function (err, doc){
+			callback((err) ? true: false, doc);
+		});
 	}
 };
 

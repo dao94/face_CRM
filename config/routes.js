@@ -34,7 +34,8 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+  'OPTIONS /*': function(req, res) {return res.send(200);},
 
   /***************************************************************************
   *                                                                          *

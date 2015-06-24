@@ -34,6 +34,21 @@ module.exports.policies = {
   * and its actions                                                          *
   *                                                                          *
   ***************************************************************************/
+   SettingsController : {
+    '*' : 'authorization'    
+   },
+   DriversController: {
+    'updateLocation': 'authorization',
+    'updateStatus'  : 'authorization',
+    'driverInfo'    : 'authorization',
+   },
+   ProductFeeController: {
+     'create': 'authorization',
+   },
+   ProductsController: {
+     'create': 'authorization',
+   }
+
 	// RabbitController: {
 
 		// Apply the `false` policy as the default for all of RabbitController's actions

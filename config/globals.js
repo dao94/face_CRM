@@ -59,5 +59,7 @@ module.exports.globals = {
   *                                                                           *
   ****************************************************************************/
 
-	// models: true
+	// models: true,
+  tokenSecret: "HubTaxi@2015"
+
 };
