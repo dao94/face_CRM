@@ -26,6 +26,20 @@ module.exports = {
 		Users.findOne({profile_id: profileId}, function (err, doc){
 			callback((err) ? true: false, doc);
 		});
+	},
+	createUser: function (data, callback){
+		var user = {}
+		user.profile_id = data.id;
+		user.first_name = data.first_name;
+		user.last_name 	= data.last_name;
+		user.email 		= data.email;
+		user.fullname 	= data.name;
+
+		Users.create(user, function (err, doc){
+			callback((err) ? true: false, doc);
+		})
+
+
 	}
 };
 

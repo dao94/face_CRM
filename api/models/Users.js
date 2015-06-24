@@ -11,6 +11,7 @@ module.exports = {
   	profile_id : {type: 'string', required: true},
   	first_name : {type: 'string', required: true},
   	last_name : {type: 'string', required: true},
+    fullname : {type: 'string', required: true},
   	email : {type: 'email', required: true},
   	pages: [
   		{model: 'pages'}

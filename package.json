@@ -2,9 +2,10 @@
   "name": "FSAB",
   "private": true,
   "version": "0.0.0",
-  "description": "Facebook CRM System API Backend - Development by thinhit", 
+  "description": "Facebook CRM System API Backend - Development by thinhit",
   "keywords": [],
   "dependencies": {
+    "async": "^1.2.1",
     "bcrypt": "^0.8.3",
     "ejs": "~0.8.4",
     "fb": "^0.7.0",
