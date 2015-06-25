@@ -1,0 +1,53 @@
+.login-box-body .social-auth-links {
+  margin-top: 30px;
+}
+.btn-facebook {
+  color: #ffffff;
+  background-color: #3b5998;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.btn-social :first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px !important;
+  line-height: 34px !important;
+  font-size: 1.6em!important;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+.waves-effect {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active,
+.btn-facebook.active,
+.open .dropdown-toggle.btn-facebook {
+    color: #ffffff;
+    background-color: #30487b;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+.nav-tabs > li {
+  margin-bottom: 0px !important;
+}
+.btn-lg, .btn-group-lg > .btn {
+  line-height: 1.333333 !important;
+}
+.heading {
+  color: #0f9d58;
+  padding: 50px 0 30px;
+  font-weight: 400;
+}
