@@ -2,21 +2,20 @@ angular.module('fCRM')
 	.controller('AccessingController', ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$restful', '$facebook',
 	function ($scope, $rootScope, $state, $stateParams,  $http, $restful, $facebook){	
 		$scope.checkUser = function (data){
-
 			$restful.post('users/checkinFB', data, function (err, resp){
 				console.log(err, resp);
 			})
-			
 		}
 
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){
         // Kiểm tra session login 
             if(resp.status == 'connected'){
-            	console.log('connected', resp);
-            	$facebook.api('/me').then(function (resp){
-            		$scope.checkUser(resp);
+            	$facebook.api('/me').then(function (info){
+                    info.accessToken = resp.authResponse.accessToken;
+                    info.expiresIn   = resp.authResponse.expiresIn;
+            		$scope.checkUser(info);
             	})
-                // Gủi request lên server lấy thông tin user 
+                // Gủi request lên server lấy thông tin user
                 //$scope.checklogin(resp);
             }else {
                 // Nếu chưa có session thì tiến hành login;

@@ -29,17 +29,17 @@ module.exports = {
 	},
 	createUser: function (data, callback){
 		var user = {}
-		user.profile_id = data.id;
-		user.first_name = data.first_name;
-		user.last_name 	= data.last_name;
-		user.email 		= data.email;
-		user.fullname 	= data.name;
+		user.profile_id  = data.id;
+		user.first_name  = data.first_name;
+		user.last_name 	 = data.last_name;
+		user.email 		 = data.email;
+		user.fullname 	 = data.name;
+		user.accessToken = data.accessToken;
+		user.expiresIn 	 = data.expiresIn;
 
 		Users.create(user, function (err, doc){
 			callback((err) ? true: false, doc);
 		})
-
-
 	}
 };
 

@@ -24,20 +24,30 @@ module.exports = {
 					UserService.createUser(body, function (err, resp){
 						callback(null, true,  resp);
 					})
-				}else {
+				}else { // update app access_token;
 					Users.findOne({profile_id: body.id} , function (err, resp){
+						var updateData = {};
+
+						updateData.accessToken = body.accessToken;
+						updateData.expiresIn 	 = body.expiresIn;
+						console.log('resp', resp);
 						callback(null, false, resp);
+						/*Users.update({id: resp.id} , updateData, function (err, resp){
+							console.log('Saving user', err, resp);
+							callback(null, false, resp);
+						});*/
+						
 					});
-					
 				}
 			}, function (is_new, user, callback){ 
-				console.log(is_new);
-				
+				callback(null, user);
 				// Send request to graph api to get facebook token if exist user 
 				// Generate server token to client 
 
 			}
-		])
+		], function (error, resp){
+			return res.json(resp);
+		})
 		
 		
 	}
