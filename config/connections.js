@@ -58,11 +58,11 @@ module.exports.connections = {
   ***************************************************************************/
   mongoPrimary: {
     adapter: 'sails-mongo',
-    host: 'pm.eos.edu.vn',
-    port: 27020,
-    user: 'quangvt',
-    password: 'quangvt123',
-    database: 'quangvt'
+    host: 'ds033449.mongolab.com',
+    port: 33449,
+    user: 'admin',
+    password: 'admin',
+    database: 'fcrm'
   },
 
   /***************************************************************************

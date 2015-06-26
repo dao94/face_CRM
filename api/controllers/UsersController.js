@@ -29,7 +29,7 @@ module.exports = {
 						var updateData = {};
 
 						updateData.accessToken = body.accessToken;
-						updateData.expiresIn 	 = body.expiresIn;
+						updateData.expiresIn   = body.expiresIn;
 						console.log('resp', resp);
 						callback(null, false, resp);
 						/*Users.update({id: resp.id} , updateData, function (err, resp){
