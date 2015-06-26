@@ -3,7 +3,7 @@ var fb_sdk = {
 	appId		: "1578258869101648",
 	permission	: "email, public_profile, manage_pages, read_page_mailboxes, read_mailbox, publish_pages"
 };
-var ApiPath = "http://sc.vn:1337/api/v1/";
+var ApiPath = "http://localhost:1337/api/v1/";
 angular.module('fCRM', 
 	[
 	'ui.router',
