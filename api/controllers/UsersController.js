@@ -12,7 +12,7 @@ module.exports = {
 			'res': 'Hello world'
 		})
 	},
-	checkinFB: function (req, res, next){;
+	checkinFB: function (req, res, next){
 		var body = req.body;
 		async.waterfall([
 			function (callback){ // check user exist
@@ -50,6 +50,11 @@ module.exports = {
 		})
 		
 		
+	},
+	test:function(resp,res,next) {
+		res.json({
+			'Status':"Sucesss"
+		}); 
 	},
 };
 
