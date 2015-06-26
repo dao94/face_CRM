@@ -50,6 +50,11 @@ module.exports = {
 		})
 		
 		
-	}
+	},
+	test:function(resp,res,next) {
+		res.json({
+			'Status':"Sucesss"
+		}); 
+	},
 };
 
