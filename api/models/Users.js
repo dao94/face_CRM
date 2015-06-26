@@ -13,8 +13,8 @@ module.exports = {
   	last_name : {type: 'string', required: true},
     fullname : {type: 'string', required: true},
   	email : {type: 'email', required: true},
-    accessToken : {type: 'email', required: true},
-    expiresIn : {type: 'email', required: true},
+    accessToken : {type: 'string', required: true},
+    expiresIn : {type: 'string', required: true},
   	pages: [
   		{model: 'pages'}
   	],
