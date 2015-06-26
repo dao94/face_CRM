@@ -3,7 +3,9 @@ angular.module('fCRM')
 	function ($scope, $rootScope, $state, $stateParams,  $http, $restful, $facebook){	
 		$scope.checkUser = function (data){
 			$restful.post('users/checkinFB', data, function (err, resp){
-				console.log(err, resp);
+				if(err){
+
+                }
 			})
 		}
 

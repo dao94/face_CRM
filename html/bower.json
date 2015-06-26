@@ -29,6 +29,7 @@
     "angular-ui-router": "~0.2.15",
     "ng-facebook": "~0.1.6",
     "angular-resource": "~1.4.1",
-    "angular-sanitize": "~1.4.1"
+    "angular-sanitize": "~1.4.1",
+    "angularjs-toaster": "~0.4.15"
   }
 }

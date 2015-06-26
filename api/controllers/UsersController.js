@@ -6,6 +6,7 @@
  */
 var async = require('async');
 var FB = require('fb');
+
 module.exports = {
 	index: function (req, res, next){
 		return res.json({
@@ -14,35 +15,46 @@ module.exports = {
 	},
 	checkinFB: function (req, res, next){
 		var body = req.body;
-		console.log('checkUser', req.body);
 		async.waterfall([
 
-			function (callback){ // check user exist
+			function (callback){ // Kiểm tra user đã tồn tại chưa
 				UserService.checkProfileId(body.id, function (err, doc){
 					callback(null, doc);
 				})
 			}, function (user, callback){
-				if(!user){ // Create new user if not exist
-					
-					UserService.createUser(body, function (err, resp){
-						callback(null, true,  resp);
-					})
-				}else { // update app access_token;
-					Users.findOne({profile_id: body.id} , function (err, resp){
-						
-						var updateData = {};
+					if(!user){ // Tạo tài khoản mới 
 
-						updateData.accessToken = body.accessToken;
-						updateData.expiresIn   = body.expiresIn;
+						UserService.createUser(body, function (err, resp){
+							callback(null, true,  resp);
+						})
+					}else { // cập nhật app access token
 
-						Users.update({id: resp.id} , updateData, function (err, resp){
-							callback(null, false, resp);
+						Users.findOne({profile_id: body.id} , function (err, resp){
+							var updateData = {};
+
+							updateData.accessToken = body.accessToken;
+							updateData.expiresIn   = body.expiresIn;
+
+							Users.update({id: resp.id} , updateData, function (err, resp){
+								callback(null, false, resp);
+							});
+							
 						});
-						
-					});
-				}
-			}, function (is_new, user, callback){  // Genneration token
-				callback(null, user);
+					}
+			}, function (is_new, user, callback){  // Tạo token
+				var uInfo = {};
+				var user = user[0];
+
+				uInfo.email 	 = user.email;
+				uInfo.first_name = user.first_name;
+				uInfo.last_name  = user.last_name;
+				uInfo.fullname 	 = user.fullname;
+				uInfo.isNew 	 = is_new;
+				uInfo.createdAt  = user.createdAt;
+				uInfo.token      = UserService.generationToken(
+					{email: user.email, accessToken: user.accessToken, expiresIn: user.expiresIn, profile_id: user.profile_id}
+				);
+				callback(null, uInfo);
 			}
 		], function (error, resp){
 			var ret = {
@@ -53,14 +65,16 @@ module.exports = {
 			if(error){
 				return res.json(ret);
 			}
-			ret.error = false;
-			ret.data  = resp;
+			ret.error 	 = false;
+			ret.data  	 = resp;
+			ret.message  = "Thành công";
 			return res.json(ret);
 		})
 		
 		
 	},
-	test:function(resp,res,next) {
+	test:function(req,res,next) {
+		console.log('Access token fb', req.user);
 		res.json({
 			'Status':"Sucesss"
 		}); 
