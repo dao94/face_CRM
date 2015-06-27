@@ -13,7 +13,7 @@ module.exports = {
 			'status' : 'success',
 			'data ' : "" ,
 		};
-		var user_id = rep.user.profile_id;
+		var user_id = rep.user._id;
 		FB.setAccessToken(accessToken);
 
 		FB.api('/me/accounts',{fields: 'name'}, function (content) {
