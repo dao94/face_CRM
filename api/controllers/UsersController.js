@@ -9,6 +9,7 @@ var FB = require('fb');
 
 module.exports = {
 	index: function (req, res, next){
+		console.log('token fb', req.user);
 		return res.json({
 			'res': 'Hello world'
 		})

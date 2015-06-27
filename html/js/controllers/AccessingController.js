@@ -30,7 +30,12 @@ angular.module('fCRM')
           $scope.users = resp.data;
         }
 			})
-		}
+		};
+    $scope.loadPage = function() {
+      $restful.post('pages/list','',function (err,resp) {
+          console.log(resp);
+      });
+    }
 
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){
         // Kiểm tra session login 
@@ -39,8 +44,9 @@ angular.module('fCRM')
                     info.accessToken = resp.authResponse.accessToken;
                     info.expiresIn   = resp.authResponse.expiresIn;
             		$scope.checkUser(info);
-            	})
+            	});
                 // Gủi request lên server lấy thông tin user
+                $scope.loadPage();
                 //$scope.checklogin(resp);
             }else {
                 // Nếu chưa có session thì tiến hành login;
@@ -53,6 +59,7 @@ angular.module('fCRM')
               })
             }
         })
+
 
 
 	}])

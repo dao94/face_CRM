@@ -35,7 +35,11 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
    UsersController : {
-    'test' : 'authorization'    
+    'test' : 'authorization'  ,
+    'index' : 'authorization'    
+   },
+   PagesController : {
+    'list' : 'authorization'  
    },
    DriversController: {
     'updateLocation': 'authorization',
