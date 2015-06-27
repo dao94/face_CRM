@@ -45,7 +45,8 @@ module.exports = {
 			}, function (is_new, user, callback){  // Tạo token
 				var uInfo = {};
 				var user = user[0];
-				uInfo.id 	 	= user._id;
+				console.log('aaa', user);
+				uInfo.id 	 	= user.id;
 				uInfo.email 	 = user.email;
 				uInfo.first_name = user.first_name;
 				uInfo.last_name  = user.last_name;
