@@ -21,10 +21,11 @@ angular.module('fCRM')
 			},
 			setUser: function (user){
 				$auth.setToken(user.token);
-				local.setItem($auth.userKey, user);
+				local.setItem($auth.userKey, JSON.stringify(user));
 			},
 			getUser: function (){
-				return local.getItem($auth.userKey);
+				var user = local.getItem($auth.userKey);
+				return JSON.parse(user);
 			},
 			clearUser: function (){
 				$auth.clearToken();

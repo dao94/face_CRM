@@ -9,14 +9,57 @@
             </div><!-- /container -->
 
             <!-- The new page dummy; this would be dynamically loaded content -->
+
             <div class="container" id="page-2">
                 <!-- Top Navigation -->
-                
-                <section>
-                    <h2>Chào {{users.fullname}}.</h2>
-                    <p><a class="pageload-link" >Go back</a></p>
+                <h3 class="text-center" style="margin-top: 10%;">Chào <span class="text-warning">{{users.fullname}}</span> hãy chọn trang mà bạn quản lý</h3>
+                <section class="media col-md-4 col-md-offset-4 col-lg-6 col-lg-offset-3 slideInUp animated text-black" style="
+                    background-color: white;
+                    padding-bottom: 10px;
+                    padding-top: 16px;
+                    
+                    border-radius: 3px;
+                    box-shadow: 0px 3px 0px rgba(0,0,0,0.2);
+                ">
+
+                  
+                  <div class="media-left media-middle">
+                    <a href="#" class="">
+                      <img class="media-object thumbnail m-b-xs"  data-src="holder.js/250x250"  src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/p160x160/549246_471516489570391_57300819_n.jpg?oh=6625d305ebdaf7db984fe5829863137b&oe=5620C8FB&__gda__=1444737517_096820641609ce902be97bd0bcda89d2" data-holder-rendered="true" style="width:168px;height:168px">
+                    </a>
+                    <p class="text-md"><a href="">{{users.fullname}}</a></p>
+
+                    <a href=""  >Đăng xuất</a>
+                    
+                  </div>
+                  <div class="media-body text-left" >
+                    
+                    <div class="media" ng-repeat="item in [1, 2, 3, 4, 5]">
+                      <div class="media-left media-middle">
+                        <a href="#" class="">
+                          <img class="media-object"  data-src="holder.js/250x250"  src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/p160x160/549246_471516489570391_57300819_n.jpg?oh=6625d305ebdaf7db984fe5829863137b&oe=5620C8FB&__gda__=1444737517_096820641609ce902be97bd0bcda89d2" data-holder-rendered="true" style="width:40px;height:40px">
+                        </a>
+                      </div>
+                      <div class="media-body text-left ">
+                        <div class="pull-left">
+                            <p class="text-md m-b-xs"><a href="">Nodejs.vn</a></p>
+                            <small>3.230 like</small>
+                        </div>
+                        <div class="pull-right">
+                            <button class="btn btn-success btn-sm">Truy cập</button>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>   <!-- page item-->  
+                    
+                    
+                  </div>
                 </section>
-            </div><!-- /container -->
+<!--                 <section>
+                <h2>Chào {{users.fullname}}.</h2>
+                <p><a class="pageload-link" >Go back</a></p>
+            </section>
+             -->            </div><!-- /container -->
 
             <div id="loader" class="pageload-overlay" data-opening="M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 29.96875 C 40.01804 29.96875 40.03125 29.98196 40.03125 30 C 40.03125 30.01804 40.01804 30.03125 40 30.03125 C 39.98196 30.03125 39.96875 30.01804 39.96875 30 C 39.96875 29.98196 39.98196 29.96875 40 29.96875 Z">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="xMidYMid slice">
@@ -25,8 +68,3 @@
             </div><!-- /pageload-overlay -->
             
         </div><!-- /pagewrap -->
-        <script>
-            (function() {
-                
-            })();
-        </script>

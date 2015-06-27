@@ -21,7 +21,7 @@
     "tests"
   ],
   "dependencies": {
-    "animate.css": "~3.2.0",
+    "animate.css": "~3.3.0",
     "bootstrap": "~3.3.0",
     "font-awesome": "~4.2.0",
     "simple-line-icons": "~0.1.1",

@@ -47,16 +47,12 @@ angular.module('fCRM',
                 templateUrl: 'views/dashboard.html'
             })
 }])
-.run(['$rootScope', '$auth', function ($rootScope, $auth){
+.run(['$rootScope', '$auth', '$state', '$stateParams', function ($rootScope, $auth, $state, $stateParams){
+
+
+
 
     $auth.setToken();
-
-
-
-
-
-
-
 	(function(){
          // If we've already installed the SDK, we're done
          if (document.getElementById('facebook-jssdk')) {return;}
