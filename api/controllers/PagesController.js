@@ -15,6 +15,7 @@ module.exports = {
 		};
 		var user_id = rep.user.profile_id;
 		FB.setAccessToken(accessToken);
+
 		FB.api('/me/accounts',{fields: 'name'}, function (content) {
 			content.data.user_id = user_id;
 			PageService.createPage(content, function (err,rep) {

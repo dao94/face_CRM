@@ -47,7 +47,18 @@ angular.module('fCRM',
                 templateUrl: 'views/dashboard.html'
             })
 }])
-.run(['$rootScope', '$auth', '$state', '$stateParams', function ($rootScope, $auth, $state, $stateParams){
+.run(['$rootScope', '$auth', '$state', '$stateParams', '$templateCache', function ($rootScope, $auth, $state, $stateParams, $templateCache){
+    $rootScope.USER = $auth.getUser() || false;
+
+    $rootScope.$on('$stateChangeStart', function (evt,toState,toParams) {
+        if(toState.name.indexOf('app') !== -1){
+            if(!$rootScope.USER){
+                evt.preventDefault();
+                $auth.clearUser();
+                $state.go('login');
+            }
+        }
+    });
 
 
 

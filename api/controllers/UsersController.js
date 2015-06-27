@@ -45,7 +45,7 @@ module.exports = {
 			}, function (is_new, user, callback){  // Tạo token
 				var uInfo = {};
 				var user = user[0];
-
+				uInfo.id 	 	= user._id;
 				uInfo.email 	 = user.email;
 				uInfo.first_name = user.first_name;
 				uInfo.last_name  = user.last_name;
@@ -53,7 +53,7 @@ module.exports = {
 				uInfo.isNew 	 = is_new;
 				uInfo.createdAt  = user.createdAt;
 				uInfo.token      = UserService.generationToken(
-					{email: user.email, accessToken: user.accessToken, expiresIn: user.expiresIn, profile_id: user.profile_id}
+					{id: user._id, email: user.email, accessToken: user.accessToken, expiresIn: user.expiresIn, profile_id: user.profile_id}
 				);
 				callback(null, uInfo);
 			}
