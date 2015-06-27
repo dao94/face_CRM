@@ -1,11 +1,34 @@
 angular.module('fCRM')
 	.controller('AccessingController', ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$restful', '$facebook',
 	function ($scope, $rootScope, $state, $stateParams,  $http, $restful, $facebook){	
+
+    var pageWrap = document.getElementById( 'pagewrap' ),
+        pages = [].slice.call( pageWrap.querySelectorAll( 'div.container' ) ),
+        currentPage = 0,
+        triggerLoading = [].slice.call( pageWrap.querySelectorAll( 'a.pageload-link' ) ),
+        loader = new SVGLoader( document.getElementById( 'loader' ), { speedIn : 300, easingIn : mina.easeinout } );
+
+    function init() {
+        loader.show();   
+    }
+    function hideLoader(){
+        loader.hide();
+        classie.removeClass( pages[ currentPage ], 'show' );
+        // update..
+        currentPage = currentPage ? 0 : 1;
+        classie.addClass( pages[ currentPage ], 'show' );
+    }
+    init();
+
+    $scope.users = {};
 		$scope.checkUser = function (data){
 			$restful.post('users/checkinFB', data, function (err, resp){
+        hideLoader();
 				if(err){
 
-                }
+        }else {
+          $scope.users = resp.data;
+        }
 			})
 		}
 
