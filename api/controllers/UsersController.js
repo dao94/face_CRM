@@ -54,7 +54,7 @@ module.exports = {
 				uInfo.isNew 	 = is_new;
 				uInfo.createdAt  = user.createdAt;
 				uInfo.token      = UserService.generationToken(
-					{id: user._id, email: user.email, accessToken: user.accessToken, expiresIn: user.expiresIn, profile_id: user.profile_id}
+					{id: user.id, email: user.email, accessToken: user.accessToken, expiresIn: user.expiresIn, profile_id: user.profile_id}
 				);
 				callback(null, uInfo);
 			}

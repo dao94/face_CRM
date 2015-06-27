@@ -13,14 +13,17 @@ module.exports = {
 			'status' : 'success',
 			'data ' : "" ,
 		};
-		var user_id = rep.user._id;
-		FB.setAccessToken(accessToken);
-
-		FB.api('/me/accounts',{fields: 'name'}, function (content) {
-			content.data.user_id = user_id;
-			PageService.createPage(content, function (err,rep) {
-				console.log(err);
-			});
+		var user_id = rep.user.id;
+		PageService.checkPageId(user_id,function (err,content) {
+			if(!content) {
+				FB.setAccessToken(accessToken);
+				FB.api('/me/accounts',{fields: 'name'}, function (content) {
+					content.data.user_id = user_id;
+					PageService.createPage(content, function (err,rep) {
+						console.log(err);
+					});
+				});
+			}
 		});
 		res.json(_Object);
 	}
