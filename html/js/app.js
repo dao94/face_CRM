@@ -47,7 +47,15 @@ angular.module('fCRM',
                 templateUrl: 'views/dashboard.html'
             })
 }])
-.run([function (){
+.run(['$rootScope', '$auth', function ($rootScope, $auth){
+
+    $auth.setToken();
+
+
+
+
+
+
 
 	(function(){
          // If we've already installed the SDK, we're done

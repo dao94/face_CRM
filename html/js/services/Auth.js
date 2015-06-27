@@ -2,34 +2,35 @@ angular.module('fCRM')
 	.service('$auth', ['$rootScope', '$http', '$resource', function ($rootScope, $http, $resource){
 		var local = window.localStorage;
 		var $auth = {
-			var authKey = "__Authorization";
-			var userKey = "__User";
+			authKey : "__Authorization",
+			userKey : "__User",
 
 			setToken: function (token){
 				if(!token){
 					token = $auth.getToken() ? $auth.getToken() : null;
 				}
-				local.setItem(authKey, token);
+				local.setItem($auth.authKey, token);
 				$http.defaults.headers.common['Authorization'] = token;
 			},
 			getToken: function (){
-				return local.getItem(authKey) || "";
+				return local.getItem($auth.authKey) || "";
 			},
 			clearToken: function (){
-				local.removeItem(authKey);
+				local.removeItem($auth.authKey);
 				delete $http.defaults.headers.common['Authorization'];
 			},
 			setUser: function (user){
 				$auth.setToken(user.token);
-				local.setItem(__User, user);
+				local.setItem($auth.userKey, user);
 			},
 			getUser: function (){
-				return local.getItem(__User);
+				return local.getItem($auth.userKey);
 			},
 			clearUser: function (){
 				$auth.clearToken();
-				local.removeItem(__User);
+				local.removeItem($auth.userKey);
 			}
 
 		};
+		return $auth;
 	}])

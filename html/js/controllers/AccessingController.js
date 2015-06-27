@@ -1,41 +1,34 @@
 angular.module('fCRM')
-	.controller('AccessingController', ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$restful', '$facebook',
-	function ($scope, $rootScope, $state, $stateParams,  $http, $restful, $facebook){	
+	.controller('AccessingController', ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$restful', '$facebook', '$auth',
+	function ($scope, $rootScope, $state, $stateParams,  $http, $restful, $facebook, $auth){	
 
-    var pageWrap = document.getElementById( 'pagewrap' ),
-        pages = [].slice.call( pageWrap.querySelectorAll( 'div.container' ) ),
-        currentPage = 0,
-        triggerLoading = [].slice.call( pageWrap.querySelectorAll( 'a.pageload-link' ) ),
-        loader = new SVGLoader( document.getElementById( 'loader' ), { speedIn : 300, easingIn : mina.easeinout } );
+    
 
-    function init() {
-        loader.show();   
-    }
-    function hideLoader(){
-        loader.hide();
-        classie.removeClass( pages[ currentPage ], 'show' );
-        // update..
-        currentPage = currentPage ? 0 : 1;
-        classie.addClass( pages[ currentPage ], 'show' );
-    }
-    init();
+        $scope.users = {};
 
-    $scope.users = {};
-		$scope.checkUser = function (data){
-			$restful.post('users/checkinFB', data, function (err, resp){
-        hideLoader();
-				if(err){
+    	$scope.checkUser = function (data){
+    		$restful.post('users/checkinFB', data, function (err, resp){
+                hideLoader();
 
-        }else {
-          $scope.users = resp.data;
-        }
-			})
-		};
-    $scope.loadPage = function() {
+        	    if(err){
+
+                }else {
+                  $auth.setUser(resp.data);
+                  $scope.users = resp.data;
+                  $restful.post('users/test','',function (err,resp) {
+                      console.log(resp);
+                  });
+                }
+    		})
+    	};
+
+
+
+    /*$scope.loadPage = function() {
       $restful.post('pages/list','',function (err,resp) {
           console.log(resp);
       });
-    }
+    }*/
 
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){
         // Kiểm tra session login 
@@ -46,8 +39,7 @@ angular.module('fCRM')
             		$scope.checkUser(info);
             	});
                 // Gủi request lên server lấy thông tin user
-                $scope.loadPage();
-                //$scope.checklogin(resp);
+                
             }else {
                 // Nếu chưa có session thì tiến hành login;
               $facebook.login().then(function (resp){
@@ -61,5 +53,26 @@ angular.module('fCRM')
         })
 
 
+        /*
+            Animation 
+        */
+
+        var pageWrap = document.getElementById( 'pagewrap' ),
+        pages = [].slice.call( pageWrap.querySelectorAll( 'div.container' ) ),
+        currentPage = 0,
+        triggerLoading = [].slice.call( pageWrap.querySelectorAll( 'a.pageload-link' ) ),
+        loader = new SVGLoader( document.getElementById( 'loader' ), { speedIn : 300, easingIn : mina.easeinout } );
+
+        function init() {
+            loader.show();   
+        }
+        function hideLoader(){
+            loader.hide();
+            classie.removeClass( pages[ currentPage ], 'show' );
+            // update..
+            currentPage = currentPage ? 0 : 1;
+            classie.addClass( pages[ currentPage ], 'show' );
+        }
+        init();
 
 	}])
