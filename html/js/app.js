@@ -20,7 +20,7 @@ angular.module('fCRM',
 .config(['$stateProvider',   '$urlRouterProvider',   '$controllerProvider',   '$compileProvider',   '$filterProvider',   '$provide', 
 	function ($stateProvider,   $urlRouterProvider,   $controllerProvider,   $compileProvider,   $filterProvider,   $provide){
 		$urlRouterProvider
-            .otherwise('/dashboard');
+            .otherwise('page/binh-luan');
 
         $stateProvider
             .state('app', {
@@ -43,14 +43,21 @@ angular.module('fCRM',
             })
 
             .state('app.dashboard', {
-                url: 'dashboard',
+                url: ':page/dashboard',
                 templateUrl: 'views/dashboard.html'
             })
+            .state('app.comments', {
+                url: ':page/binh-luan',
+                templateUrl: 'views/comments/index.html'
+            })
+            
+            
 }])
 .run(['$rootScope', '$auth', '$state', '$stateParams', '$templateCache', function ($rootScope, $auth, $state, $stateParams, $templateCache){
     $rootScope.USER = $auth.getUser() || false;
 
     $rootScope.$on('$stateChangeStart', function (evt,toState,toParams) {
+        console.log(toParams);
         if(toState.name.indexOf('app') !== -1){
             if(!$rootScope.USER){
                 evt.preventDefault();
