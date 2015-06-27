@@ -8,7 +8,9 @@
 module.exports = {
 
   attributes: {
-  	page_name: {type: 'string', required: true}
+  	page_id : {type: 'string', required: true},
+  	name : {type:'string',required:true},
+  	// user_id : {type:"string",required:true}
   }
 };
 

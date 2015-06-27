@@ -2,11 +2,9 @@ angular.module('fCRM')
 	.controller('AccessingController', ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$restful', '$facebook', '$auth',
 	function ($scope, $rootScope, $state, $stateParams,  $http, $restful, $facebook, $auth){	
 
-    
-
-        $scope.users = {};
-
-    	$scope.checkUser = function (data){
+        $scope.users     = {};
+        
+        $scope.checkUser = function (data){
     		$restful.post('users/checkinFB', data, function (err, resp){
                 hideLoader();
 
@@ -15,20 +13,16 @@ angular.module('fCRM')
                 }else {
                   $auth.setUser(resp.data);
                   $scope.users = resp.data;
-                  $restful.post('users/test','',function (err,resp) {
-                      console.log(resp);
-                  });
+                  $scope.loadPage();
                 }
     		})
     	};
 
-
-
-    /*$scope.loadPage = function() {
+    $scope.loadPage = function() {
       $restful.post('pages/list','',function (err,resp) {
           console.log(resp);
       });
-    }*/
+    }
 
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){
         // Kiểm tra session login 
@@ -39,7 +33,6 @@ angular.module('fCRM')
             		$scope.checkUser(info);
             	});
                 // Gủi request lên server lấy thông tin user
-                
             }else {
                 // Nếu chưa có session thì tiến hành login;
               $facebook.login().then(function (resp){
