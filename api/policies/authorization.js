@@ -11,8 +11,12 @@ module.exports = function(req, res, next) {
   // or if this is the last policy, the controller
   var token = req.headers.authorization;
   if(token){
+  	console.time('startdecode');
 	UserService.decodeToken(token, function (err, user){
+		delete token;
+		console.timeEnd('startdecode');
 		if(err){
+
 			return res.status(403).json({
 				error 		: true,
 				message 	: "You are not permitted to perform this action."

@@ -10,15 +10,16 @@ module.exports = {
   attributes: {
   	profile_id : {type: 'string', required: true},
   	first_name : {type: 'string', required: true},
-  	last_name : {type: 'string', required: true},
-    fullname : {type: 'string', required: true},
-  	email : {type: 'email', required: true},
-    accessToken : {type: 'string', required: true},
-    expiresIn : {type: 'string', required: true},
+  	last_name  : {type: 'string', required: true},
+    fullname   : {type: 'string', required: true},
+  	email      : {type: 'email', required: true},
+    accessToken: {type: 'string', required: true},
+    expiresIn  : {type: 'string', required: true},
   	pages: [
   		{model: 'pages'}
   	],
   	defaultPage: {model: 'pages'}
   }
+  
 };
 
