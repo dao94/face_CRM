@@ -17,7 +17,7 @@
 
 </head>
 <body>
-<div class="app app-header-fixed  ">
+<div class="app app-header-fixed app-aside-folded app-aside-fixed">
   
   <!-- header -->
   <header id="header" class="app-header navbar" role="menu">
@@ -658,24 +658,24 @@
       
 
 <div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="MailCtrl">
-  <div class="col-md-4 bg-light dk b-r bg-auto no-padder">
+  <div class="col-md-3 bg-light dk b-r bg-auto no-padder">
     <div id="email-menu">
       <div class="bg-white-only b-l bg-auto no-border-xs">
         <div class="nav-tabs-alt">
           <ul class="nav nav-tabs" role="tablist">
-            <li class="active"><a href="#binh-luan" data-toggle="tab" aria-expanded="false"><i class="fa fa-comments-o text-md text-success wrapper-sm"></i></a></li>
-            <li class=""><a href="#chua-doc" data-toggle="tab" aria-expanded="false"><i class="fa fa-warning text-md text-warning wrapper-sm"></i></a></li>
-            <li class=""><a href="#trans" data-toggle="tab" aria-expanded="true"><i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"></i></a></li>
+            <li class="active"><a href="#tin-nhan" data-toggle="tab" aria-expanded="false"><i class="fa fa-comments-o text-md text-success wrapper-sm"></i></a></li>
+            <li class=""><a href="#sms-chua-xem" data-toggle="tab" aria-expanded="false"><i class="fa fa-warning text-md text-warning wrapper-sm"></i></a></li>
+            <li class=""><a href="#sms-luu-tru" data-toggle="tab" aria-expanded="true"><i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"></i></a></li>
           </ul>
         </div>
         <div class="tab-content">
-          <div class="tab-pane active" id="binh-luan">
+          <div class="tab-pane active" id="tin-nhan">
             <!-- list -->
             <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-              <li class="list-group-item clearfix b-l-3x b-l-primary">
-               Tất Cả Bình Luận
+              <li class="list-group-item clearfix">
+               Tất cả tin nhắn
               </li>
-              <li class="list-group-item clearfix b-l-3x b-l-danger">
+              <li class="list-group-item clearfix">
                 <div class="input-group">
                   <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
                   <span class="input-group-btn">
@@ -683,94 +683,43 @@
                   </span>
                 </div>
               </li>
-              <li class="list-group-item clearfix b-l-3x b-l-info">
+              <li class="list-group-item clearfix">
                 <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
                   <img ng-src="img/a10.jpg" src="img/a10.jpg">
                 </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip m-l-sm"></i>
-                </div>
                 <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/10">Angular is Awesome</a><span class="label bg-light m-l-sm ">angular</span></div>
-                  <div class="text-ellipsis m-t-xs ">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper Neque quam. Aliquam sollicitudin venenati</div>
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
                 </div>      
               </li>
-              <li class="list-group-item clearfix b-l-3x b-l-primary">
+              <li class="list-group-item clearfix">
                 <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a9.jpg" src="img/a9.jpg">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
                 </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
                 <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/9">Bootstrap components written in pure AngularJS</a><span class="label bg-light m-l-sm ">bootstrap</span></div>
-                  <div class="text-ellipsis m-t-xs ">Retur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibu</div>
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
                 </div>      
               </li>
-              <li class="list-group-item clearfix b-l-3x b-l-info">
+              <li class="list-group-item clearfix">
                 <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a1.jpg" src="img/a1.jpg">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
                 </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip m-l-sm"></i>
-                </div>
                 <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/8">Nesting view in Angular</a><span class="label bg-light m-l-sm ">angular</span></div>
-                  <div class="text-ellipsis m-t-xs ">Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x b-l-info">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a2.jpg" src="img/a2.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/7">Lazy loading Angular controllers, directives and services</a><span class="label bg-light m-l-sm ">angular</span></div>
-                  <div class="text-ellipsis m-t-xs ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin v</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x b-l-warning">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a3.jpg" src="img/a3.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/6">What a hot day</a><span class="label bg-light m-l-sm ">client</span></div>
-                  <div class="text-ellipsis m-t-xs ">Duis non malesuada est, quis congue nibh. Pellentesque habitant morbi tristique senectus et netus et</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a4.jpg" src="img/a4.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/5">Oho!</a><span class="label bg-light m-l-sm "></span></div>
-                  <div class="text-ellipsis m-t-xs ">Turpis egestas lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
                 </div>      
               </li>
             </ul>
             <!-- / list -->
           </div>
-          <div class="tab-pane" id="chua-doc">
+          <div class="tab-pane" id="sms-chua-xem">
             <!-- list -->
             <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-              <li class="list-group-item clearfix b-l-3x b-l-primary">
+              <li class="list-group-item clearfix">
                Bình Luận Chưa Xem
               </li>
-              <li class="list-group-item clearfix b-l-3x b-l-danger">
+              <li class="list-group-item clearfix">
                   <div class="input-group">
                     <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
                     <span class="input-group-btn">
@@ -778,161 +727,79 @@
                     </span>
                 </div>
               </li>
-              <li class="list-group-item clearfix b-l-3x b-l-info">
+              <li class="list-group-item clearfix">
                 <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
                   <img ng-src="img/a10.jpg" src="img/a10.jpg">
                 </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip m-l-sm"></i>
-                </div>
                 <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/10">Angular is Awesome</a><span class="label bg-light m-l-sm ">angular</span></div>
-                  <div class="text-ellipsis m-t-xs ">Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper Neque quam. Aliquam sollicitudin venenati</div>
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thịnh</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
                 </div>      
               </li>
-              <li class="list-group-item clearfix b-l-3x b-l-primary">
+              <li class="list-group-item clearfix">
                 <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a9.jpg" src="img/a9.jpg">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
                 </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
                 <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/9">Bootstrap components written in pure AngularJS</a><span class="label bg-light m-l-sm ">bootstrap</span></div>
-                  <div class="text-ellipsis m-t-xs ">Retur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibu</div>
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
                 </div>      
               </li>
-              <li class="list-group-item clearfix b-l-3x b-l-info">
+              <li class="list-group-item clearfix">
                 <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a1.jpg" src="img/a1.jpg">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
                 </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip m-l-sm"></i>
-                </div>
                 <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/8">Nesting view in Angular</a><span class="label bg-light m-l-sm ">angular</span></div>
-                  <div class="text-ellipsis m-t-xs ">Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x b-l-info">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a2.jpg" src="img/a2.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/7">Lazy loading Angular controllers, directives and services</a><span class="label bg-light m-l-sm ">angular</span></div>
-                  <div class="text-ellipsis m-t-xs ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin v</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x b-l-warning">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a3.jpg" src="img/a3.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/6">What a hot day</a><span class="label bg-light m-l-sm ">client</span></div>
-                  <div class="text-ellipsis m-t-xs ">Duis non malesuada est, quis congue nibh. Pellentesque habitant morbi tristique senectus et netus et</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a4.jpg" src="img/a4.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/5">Oho!</a><span class="label bg-light m-l-sm "></span></div>
-                  <div class="text-ellipsis m-t-xs ">Turpis egestas lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x b-l-success">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a5.jpg" src="img/a5.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/4">Meeting</a><span class="label bg-light m-l-sm ">work</span></div>
-                  <div class="text-ellipsis m-t-xs ">Fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque qua</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a6.jpg" src="img/a6.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/3">Product version released</a><span class="label bg-light m-l-sm "></span></div>
-                  <div class="text-ellipsis m-t-xs ">Consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. V</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a7.jpg" src="img/a7.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">5 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/2">Hi, What's up</a><span class="label bg-light m-l-sm "></span></div>
-                  <div class="text-ellipsis m-t-xs ">Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales</div>
-                </div>      
-              </li>
-              <li class="list-group-item clearfix b-l-3x b-l-success">
-                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                  <img ng-src="img/a8.jpg" src="img/a8.jpg">
-                </a>
-                <div class="pull-right text-sm text-muted">
-                  <span class="hidden-xs ">6 months ago</span>
-                  <i class="fa fa-paperclip ng-hide m-l-sm" ng-show=""></i>
-                </div>
-                <div class="clear">
-                  <div><a  class="text-md " href="#/app/mail/1">Kick-off meeting at 5:00 pm</a><span class="label bg-light m-l-sm ">work</span></div>
-                  <div class="text-ellipsis m-t-xs ">Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales</div>
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
                 </div>      
               </li>
             </ul>
             <!-- / list -->
           </div>
-          <div class="tab-pane" id="trans">
-            <div class="wrapper-md">
-              <div class="m-b-sm text-md">Transaction</div>
-              <ul class="list-group list-group-sm list-group-sp list-group-alt auto m-t">
-                <li class="list-group-item">
-                  <span class="text-muted">Transfer to Jacob at 3:00 pm</span>
-                  <span class="block text-md text-info">B 15,000.00</span>
-                </li>
-                <li class="list-group-item">
-                  <span class="text-muted">Got from Mike at 1:00 pm</span>
-                  <span class="block text-md text-primary">B 23,000.00</span>
-                </li>
-                <li class="list-group-item">
-                  <span class="text-muted">Sponsored ORG at 9:00 am</span>
-                  <span class="block text-md text-warning">B 3,000.00</span>
-                </li>
-                <li class="list-group-item">
-                  <span class="text-muted">Send to Jacob at 8:00 am</span>
-                  <span class="block text-md">B 11,000.00</span>
-                </li>
-              </ul>
-            </div>
+          <div class="tab-pane" id="sms-luu-tru">
+            <!-- list -->
+            <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
+              <li class="list-group-item clearfix">
+               Lưu Trữ
+              </li>
+              <li class="list-group-item clearfix">
+                  <div class="input-group">
+                    <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
+                    <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Minh</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+            </ul>
+            <!-- / list -->
           </div>
         </div>
         <!-- aside right -->
@@ -996,11 +863,11 @@
       </div>
     </div>
   </div>
-  <div class="col-md-8 no-padder">
+  <div class="col-md-5 no-padder">
     
     <div>
       <!-- header -->
-      <div class="wrapper bg-light lter b-b">
+      <div class="wrapper bg-white lter b-b">
         <div class="btn-group pull-right">
           <button type="button" class="btn btn-md btn-bg btn-default" title="Đánh dấu chưa đọc"><i class="fa fa-warning text-warning"></i></button>
           <button type="button" class="btn btn-md btn-bg btn-default" title="Xem trên facebook"><i class="fa fa-sign-out text-primary"></i></button>
@@ -1022,10 +889,10 @@
         </div>
       </div>
       <!-- / header -->
-    <div class="wrapper">
+    <div class="wrapper-no">
       <!-- chat -->
       <div class="panel panel-default">
-        <div class="panel-heading">Tên Người Dùng</div>
+        <div class="panel-heading font-bold">Tên Người Dùng</div>
         <div class="panel-body">
           <div class="m-b">
             <a href class="pull-left thumb-sm avatar"><img src="img/a2.jpg" alt="..."></a>
@@ -1053,12 +920,13 @@
           <div>
             <a class="pull-left thumb-xs avatar"><img src="img/a3.jpg" class="img-circle" alt="..."></a>
             <form class="m-b-none m-l-xl">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Viết trả lời ...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button"><i class="fa fa-send-o text-info"></i></button>
-                </span>
+              <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Viết trả lời ..."></textarea>
               </div>
+              <footer class="panel-footer text-right bg-white lter">
+                <button type="submit" class="btn btn-default"><i class="icon icon-camera text-info"></i></button>
+                <button type="submit" class="btn btn-default"><i class="fa fa-send-o text-info"></i></button>
+              </footer>
             </form>
           </div>
         </footer>
@@ -1066,7 +934,211 @@
       <!-- /chat -->
       </div>
     </div>
-
+  </div>
+  <div class="col-md-4 bg-light dk b-r bg-auto no-padder">
+    <div id="email-menu">
+      <div class="bg-white-only b-l bg-auto no-border-xs">
+        <div class="nav-tabs-alt">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#tin-nhan" data-toggle="tab" aria-expanded="false"><i class="fa fa-comments-o text-md text-success wrapper-sm"></i></a></li>
+            <li class=""><a href="#sms-chua-xem" data-toggle="tab" aria-expanded="false"><i class="fa fa-warning text-md text-warning wrapper-sm"></i></a></li>
+            <li class=""><a href="#sms-luu-tru" data-toggle="tab" aria-expanded="true"><i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"></i></a></li>
+          </ul>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tin-nhan">
+            <!-- list -->
+            <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
+              <li class="list-group-item clearfix">
+               Tất cả tin nhắn
+              </li>
+              <li class="list-group-item clearfix">
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
+                  <span class="input-group-btn">
+                  <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+            </ul>
+            <!-- / list -->
+          </div>
+          <div class="tab-pane" id="sms-chua-xem">
+            <!-- list -->
+            <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
+              <li class="list-group-item clearfix">
+               Bình Luận Chưa Xem
+              </li>
+              <li class="list-group-item clearfix">
+                  <div class="input-group">
+                    <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
+                    <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thịnh</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+            </ul>
+            <!-- / list -->
+          </div>
+          <div class="tab-pane" id="sms-luu-tru">
+            <!-- list -->
+            <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
+              <li class="list-group-item clearfix">
+               Lưu Trữ
+              </li>
+              <li class="list-group-item clearfix">
+                  <div class="input-group">
+                    <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
+                    <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Minh</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+              <li class="list-group-item clearfix">
+                <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+                  <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                </a>
+                <div class="clear">
+                  <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
+                  <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                </div>      
+              </li>
+            </ul>
+            <!-- / list -->
+          </div>
+        </div>
+        <!-- aside right -->
+        <div class="app-aside-right pos-fix no-padder w-md w-auto-xs bg-white b-l animated fadeInRight hide">
+          <div class="vbox">
+            <div class="wrapper b-b b-t b-light m-b">
+              <a href="" class="pull-right text-muted text-md" ui-toggle-class="show" target=".app-aside-right"><i class="icon-close"></i></a>
+              Chat
+            </div>
+            <div class="row-row">
+              <div class="cell">
+                <div class="cell-inner padder">
+                  <!-- chat list -->
+                  <div class="m-b">
+                    <a href="" class="pull-left thumb-xs avatar"><img src="img/a2.jpg" alt="..."></a>
+                    <div class="clear">
+                      <div class="pos-rlt wrapper-sm b b-light r m-l-sm">
+                        <span class="arrow left pull-up"></span>
+                        <p class="m-b-none">Hi John, What's up...</p>
+                      </div>
+                      <small class="text-muted m-l-sm"><i class="fa fa-ok text-success"></i> 2 minutes ago</small>
+                    </div>
+                  </div>
+                  <div class="m-b">
+                    <a href="" class="pull-right thumb-xs avatar"><img src="img/a3.jpg" class="img-circle" alt="..."></a>
+                    <div class="clear">
+                      <div class="pos-rlt wrapper-sm bg-light r m-r-sm">
+                        <span class="arrow right pull-up arrow-light"></span>
+                        <p class="m-b-none">Lorem ipsum dolor :)</p>
+                      </div>
+                      <small class="text-muted">1 minutes ago</small>
+                    </div>
+                  </div>
+                  <div class="m-b">
+                    <a href="" class="pull-left thumb-xs avatar"><img src="img/a2.jpg" alt="..."></a>
+                    <div class="clear">
+                      <div class="pos-rlt wrapper-sm b b-light r m-l-sm">
+                        <span class="arrow left pull-up"></span>
+                        <p class="m-b-none">Great!</p>
+                      </div>
+                      <small class="text-muted m-l-sm"><i class="fa fa-ok text-success"></i>Just Now</small>
+                    </div>
+                  </div>
+                  <!-- / chat list -->
+                </div>
+              </div>
+            </div>
+            <div class="wrapper m-t b-t b-light">
+              <form class="m-b-none">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Say something">
+                  <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">SEND</button>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- / aside right -->
+      </div>
+    </div>
   </div>
 </div>
 
