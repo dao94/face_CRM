@@ -13,7 +13,7 @@ angular.module('fCRM')
                 }else {
                   $auth.setUser(resp.data);
                   $scope.users = resp.data;
-                  $scope.loadPage();
+                  // $scope.loadPage();
                 }
     		})
     	};
