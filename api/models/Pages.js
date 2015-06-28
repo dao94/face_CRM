@@ -8,10 +8,10 @@
 module.exports = {
 
   attributes: {
-  	page_id : {},
-  	name : {},
-  	likes : {},
-  	user_id : {},
+  	page_id : {type: 'string', required: true},
+  	name : {type:'string',required:true},
+  	likes : {type:'int',required:true},
+  	user_id : {type:"string",required:true},
   	unread_message_count : {},
   	unread_notif_count:{},
   	unseen_message_count:{},
