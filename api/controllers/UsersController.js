@@ -43,34 +43,57 @@ module.exports = {
 						});
 					}
 			}, function (is_new, user, callback){  // Tạo token
-				var uInfo = {};
-				var user = user[0];
-				console.log('aaa', user);
-				uInfo.id 	 	= user.id;
-				uInfo.email 	 = user.email;
+				var uInfo        = {};
+				var user         = user[0];
+				uInfo.id         = user.id;
+				uInfo.email      = user.email;
 				uInfo.first_name = user.first_name;
 				uInfo.last_name  = user.last_name;
-				uInfo.fullname 	 = user.fullname;
-				uInfo.isNew 	 = is_new;
+				uInfo.fullname   = user.fullname;
+				uInfo.isNew      = is_new;
 				uInfo.createdAt  = user.createdAt;
 				uInfo.token      = UserService.generationToken(
 					{id: user.id, email: user.email, accessToken: user.accessToken, expiresIn: user.expiresIn, profile_id: user.profile_id}
 				);
-				callback(null, uInfo);
+				callback(null, uInfo,user.accessToken);
 			}
-		], function (error, resp){
-			var ret = {
-				'error' 	: true,
-				'message' 	: 'Lỗi kết nối máy chủ, vui lòng thử lại sau',
-				'data' 		: ''
+		], function (error, resp, accessToken){
+			var user_id  = resp.id;
+			var pageInfo = {};
+			function page (callback) { // create page
+				if(user_id) {
+					PageService.checkPageId(user_id,function (err,content) {
+						if(!content) {
+							FB.setAccessToken(accessToken);
+							var field = 'likes,name,unread_message_count,unread_notif_count,unseen_message_count,access_token,perms,picture,username';
+							FB.api('/me/accounts',{fields: field}, function (content) {
+								content.data.user_id = user_id;
+								pageInfo.inf         = content.data;
+								callback(null,pageInfo);
+								PageService.createPage(content, function (err,rep) {
+									console.log(err);
+								});
+							});
+						}
+					});
+				}
 			}
-			if(error){
+			page(function (err, info) {
+				var ret = {
+					'error' 	: true,
+					'message' 	: 'Lỗi kết nối máy chủ, vui lòng thử lại sau',
+					'data' 		: ''
+				}
+				if(error){
+					return res.json(ret);
+				}
+				ret.error 	 = false;
+				ret.data  	 = resp;
+				ret.pageinfo = info.inf;
+				ret.message  = "Thành công";
 				return res.json(ret);
-			}
-			ret.error 	 = false;
-			ret.data  	 = resp;
-			ret.message  = "Thành công";
-			return res.json(ret);
+			});
+			
 		})
 		
 		
