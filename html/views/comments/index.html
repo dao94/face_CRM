@@ -1,9 +1,17 @@
-<div class="app-content-body ">
-      <div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="MailCtrl">
-        <div class="col-md-3 bg-light dk b-r bg-auto no-padder">
-          <div id="email-menu">
-            <div class="bg-white-only b-l bg-auto no-border-xs">
-              <div class="nav-tabs-alt">
+<style>
+  #commentsPage .panel{
+    border:none;
+  }
+  #commentsPage .list-group-item{
+    border-right: none; 
+  }
+</style>
+<div class="app-content-body " id="commentsPage">
+      <div class ="hbox hbox-auto-xs hbox-auto-sm" ng-controller="MailCtrl">
+        <div class ="col-md-3 bg-light dk b-r bg-auto no-padder">
+          <div id ="email-menu">
+            <div class ="bg-white-only b-l bg-auto no-border-xs">
+              <div class ="nav-tabs-alt">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="active"><a href="#tin-nhan" data-toggle="tab" aria-expanded="false"><i class="fa fa-comments-o text-md text-success wrapper-sm"></i></a></li>
                   <li class=""><a href="#sms-chua-xem" data-toggle="tab" aria-expanded="false"><i class="fa fa-warning text-md text-warning wrapper-sm"></i></a></li>
@@ -27,7 +35,7 @@
                     </li>
                     <li class="list-group-item clearfix">
                       <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
+                        <img ng-src="img/a10.jpg" src="http://graph.facebook.com/844563042265732/picture?type=large">
                       </a>
                       <div class="clear">
                         <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
@@ -234,7 +242,7 @@
           <div class="wrapper-no">
             <!-- chat -->
             <div class="panel panel-default">
-              <div class="panel-heading font-bold">Tên Người Dùng</div>
+              <!-- <div class="panel-heading font-bold">Tên Người Dùng</div> -->
               <div class="panel-body">
                 <div class="m-b">
                   <a href class="pull-left thumb-sm avatar"><img src="img/a2.jpg" alt="..."></a>
