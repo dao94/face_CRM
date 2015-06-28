@@ -7,6 +7,11 @@ module.exports = {
 			callback((err) ? true: false, doc);
 		});
 	},
+	listPage : function (userId, callback){
+		Pages.find({user_id: userId}, function (err, doc){
+			callback((err) ? true: false, doc);
+		});
+	},
 	/*Create page*/ 
 	createPage: function (content, callback){
 		var page    = {};
@@ -21,9 +26,10 @@ module.exports = {
 			page.unread_notif_count   = item.unread_notif_count;
 			page.unseen_message_count = item.unseen_message_count;
 			page.access_token         = item.access_token;
-			page.picture              = (item.picture)? item.picture.data.url : '';
+			page.picture              = item.picture;
 			page.username             = item.username;
 			page.perms                = item.perms;
+			page.about                = item.about;
 			Pages.create(page, function (err, doc){
 				callback((err) ? true: false, doc);
 			});

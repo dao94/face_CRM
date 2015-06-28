@@ -16,9 +16,10 @@ module.exports = {
   	unread_notif_count:{type:'int',required:true},
   	unseen_message_count:{type:'int',required:true},
   	access_token:{type:'string',required:true},
-  	picture:{type:'string'},
+  	picture:{},
   	username: {type:"string",required:true},
   	perms: {type:"string"},
+  	about:{type:'string'},
   }
 };
 

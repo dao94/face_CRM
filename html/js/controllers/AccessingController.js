@@ -2,8 +2,12 @@ angular.module('fCRM')
 	.controller('AccessingController', ['$scope', '$rootScope', '$state', '$stateParams', '$http', '$restful', '$facebook', '$auth',
 	function ($scope, $rootScope, $state, $stateParams,  $http, $restful, $facebook, $auth){	
 
-        $scope.users     = {};
-        
+        $scope.users    = {};
+        $scope.infoPage = {};
+        $scope.func_click =  function(name) {
+            $('.box-tab').css('display','none');
+            $(".box-tab[data-rel='"+name+"']").css('display','block');
+        }
         $scope.checkUser = function (data){
     		$restful.post('users/checkinFB', data, function (err, resp){
                 hideLoader();
@@ -12,8 +16,8 @@ angular.module('fCRM')
 
                 }else {
                   $auth.setUser(resp.data);
-                  $scope.users = resp.data;
-                  // $scope.loadPage();
+                  $scope.users    = resp.data;
+                  $scope.infoPage = resp.pageinfo;
                 }
     		})
     	};
