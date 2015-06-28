@@ -59,7 +59,6 @@ module.exports = {
 			}
 		], function (error, resp, accessToken){
 			var user_id  = resp.id;
-			var pageInfo = {};
 			function page (callback) { // create page
 				if(user_id) {
 					PageService.checkPageId(user_id,function (err,content) {
@@ -68,12 +67,13 @@ module.exports = {
 							var field = 'likes,name,unread_message_count,unread_notif_count,unseen_message_count,access_token,perms,picture,username';
 							FB.api('/me/accounts',{fields: field}, function (content) {
 								content.data.user_id = user_id;
-								pageInfo.inf         = content.data;
-								callback(null,pageInfo);
+								callback(null,content.data);
 								PageService.createPage(content, function (err,rep) {
 									console.log(err);
 								});
 							});
+						} else {
+							callback(null,content);
 						}
 					});
 				}
@@ -84,12 +84,12 @@ module.exports = {
 					'message' 	: 'Lỗi kết nối máy chủ, vui lòng thử lại sau',
 					'data' 		: ''
 				}
-				if(error){
+				if(err){
 					return res.json(ret);
 				}
 				ret.error 	 = false;
 				ret.data  	 = resp;
-				ret.pageinfo = info.inf;
+				ret.pageinfo = info;
 				ret.message  = "Thành công";
 				return res.json(ret);
 			});
@@ -99,11 +99,9 @@ module.exports = {
 		
 	},
 	test:function(req,res,next) {
-
-		
 		console.log('Access token fb', req.user);
 		res.json({
-			'Status':""
+			'Status':"Sucesss"
 		}); 
 	},
 };
