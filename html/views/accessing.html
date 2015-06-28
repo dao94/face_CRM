@@ -10,51 +10,83 @@
 
             <!-- The new page dummy; this would be dynamically loaded content -->
 
-            <div class="container" id="page-2">
-                <!-- Top Navigation -->
-                <h3 class="text-center" style="margin-top: 10%;">Chào <span class="text-warning">{{users.fullname}}</span> hãy chọn trang mà bạn quản lý</h3>
-                <section class="media col-md-4 col-md-offset-4 col-lg-6 col-lg-offset-3 slideInUp animated text-black" style="
-                    background-color: white;
-                    padding-bottom: 10px;
-                    padding-top: 16px;
-                    
-                    border-radius: 3px;
-                    box-shadow: 0px 3px 0px rgba(0,0,0,0.2);
-                ">
-
-                  
-                  <div class="media-left media-middle">
-                    <a href="#" class="">
-                      <img class="media-object thumbnail m-b-xs"  data-src="holder.js/250x250"  src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/p160x160/549246_471516489570391_57300819_n.jpg?oh=6625d305ebdaf7db984fe5829863137b&oe=5620C8FB&__gda__=1444737517_096820641609ce902be97bd0bcda89d2" data-holder-rendered="true" style="width:168px;height:168px">
-                    </a>
-                    <p class="text-md"><a href="">{{users.fullname}}</a></p>
-
-                    <a href=""  >Đăng xuất</a>
-                    
-                  </div>
-                  <div class="media-body text-left" >
-                    
-                    <div class="media" ng-repeat="item in [1, 2, 3, 4, 5]">
-                      <div class="media-left media-middle">
-                        <a href="#" class="">
-                          <img class="media-object"  data-src="holder.js/250x250"  src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/p160x160/549246_471516489570391_57300819_n.jpg?oh=6625d305ebdaf7db984fe5829863137b&oe=5620C8FB&__gda__=1444737517_096820641609ce902be97bd0bcda89d2" data-holder-rendered="true" style="width:40px;height:40px">
+            
+            <div class="[ container text-center ]" id="page-2">
+              <div class="[ row ]">
+                <div class="[ col-xs-12 ]" style="padding-bottom: 30px;">
+                  <p><h3 class="text-center">Chào <span class="text-warning">{{users.fullname}}</span> hãy chọn trang mà bạn quản lý</h3></p>
+                </div>
+              </div>
+            </div>
+            <div class="[ text-center ]">
+              <div class="[ row ]">
+                <div class="[ col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 ]" role="tabpanel">
+                  <div class="[ col-xs-4 col-sm-12 ]">
+                    <!-- Nav tabs -->
+                    <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
+                      <li role="presentation" class="active">
+                        <a href="#dustin" aria-controls="dustin" role="tab" data-toggle="tab">
+                        <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dustinlamont/128.jpg" />
                         </a>
-                      </div>
-                      <div class="media-body text-left ">
-                        <div class="pull-left">
-                            <p class="text-md m-b-xs"><a href="">Nodejs.vn</a></p>
-                            <small>3.230 like</small>
-                        </div>
-                        <div class="pull-right">
-                            <button class="btn btn-success btn-sm">Truy cập</button>
-                        </div>
-                        <div class="clearfix"></div>
-                      </div>
-                    </div>   <!-- page item-->  
-                    
-                    
+                      </li>
+                      <li role="presentation" class="">
+                        <a href="#daksh" aria-controls="daksh" role="tab" data-toggle="tab">
+                        <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dakshbhagya/128.jpg" />
+                        </a>
+                      </li>
+                      <li role="presentation" class="">
+                        <a href="#anna" aria-controls="anna" role="tab" data-toggle="tab">
+                        <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/annapickard/128.jpg" />
+                        </a>
+                      </li>
+                      <li role="presentation" class="">
+                        <a href="#wafer" aria-controls="wafer" role="tab" data-toggle="tab">
+                        <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/waferbaby/128.jpg" />
+                        </a>
+                      </li>
+                    </ul>
                   </div>
-                </section>
+                  <div class="[ col-xs-8 col-sm-12 ]">
+                    <!-- Tab panes -->
+                    <div class="tab-content" id="tabs-collapse">
+                      <div role="tabpanel" class="tab-pane fade in active" id="dustin">
+                        <div class="tab-inner">
+                          <p class="lead">Ten  fanpage 1</p>
+                          <span style="border-radius: 20px;" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-ok"></i> Truy cập quản lý</span>
+                          <hr>
+                          <p><strong>Copyright © 2015 - FaceCRM.vn. All Rights Reserved. </strong></p>
+                          <p><em class="text-capitalize"> Powered by </em>  <a href="#">FaceCRM.vn</a></p>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade" id="daksh">
+                        <div class="tab-inner">
+                          <p class="lead">Ten  fanpage 2</p>
+                          <hr>
+                          <p><strong>Copyright © 2015 - FaceCRM.vn. All Rights Reserved. </strong></p>
+                          <p><em class="text-capitalize"> Powered by </em>  <a href="#">FaceCRM.vn</a></p>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade" id="anna">
+                        <div class="tab-inner">
+                          <p class="lead">Ten  fanpage 3</p>
+                          <hr>
+                          <p><strong>Copyright © 2015 - FaceCRM.vn. All Rights Reserved. </strong></p>
+                          <p><em class="text-capitalize"> Powered by </em>  <a href="#">FaceCRM.vn</a></p>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade" id="wafer">
+                        <div class="tab-inner">
+                          <p class="lead">Ten  fanpage 4</p>
+                          <hr>
+                          <p><strong>Copyright © 2015 - FaceCRM.vn. All Rights Reserved. </strong></p>
+                          <p><em class="text-capitalize"> Powered by </em>  <a href="#">FaceCRM.vn</a></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 <!--                 <section>
                 <h2>Chào {{users.fullname}}.</h2>
                 <p><a class="pageload-link" >Go back</a></p>

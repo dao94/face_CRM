@@ -57,9 +57,9 @@ angular.module('fCRM',
     $rootScope.USER = $auth.getUser() || false;
 
     $rootScope.$on('$stateChangeStart', function (evt,toState,toParams) {
-        console.log(toParams);
         if(toState.name.indexOf('app') !== -1){
             if(!$rootScope.USER){
+                console.log('$stateChangeStart', $rootScope.USER);
                 evt.preventDefault();
                 $auth.clearUser();
                 $state.go('login');
