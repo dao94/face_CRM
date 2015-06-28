@@ -76,9 +76,11 @@ module.exports = {
 		
 	},
 	test:function(req,res,next) {
+
+		
 		console.log('Access token fb', req.user);
 		res.json({
-			'Status':"Sucesss"
+			'Status':""
 		}); 
 	},
 };
