@@ -265,8 +265,8 @@
                   </div>
                 </div>                          
               </div>
-              <footer class="panel-footer">
-                <!-- chat form -->
+              <!-- <footer class="panel-footer">
+                chat form
                 <div>
                   <a class="pull-left thumb-xs avatar"><img src="img/a3.jpg" class="img-circle" alt="..."></a>
                   <form class="m-b-none m-l-xl">
@@ -279,9 +279,19 @@
                     </footer>
                   </form>
                 </div>
-              </footer>
-            </div>
-            <!-- /chat -->
+                </footer> -->
+                <div class="widget-area no-padding blank">
+                  <div class="status-upload">
+                    <form>
+                      <textarea placeholder="Viết trả lời ..." row="3"></textarea>
+                      <ul>
+                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                      </ul>
+                      <button type="submit" class="btn btn-success green"><i class="fa fa-send-o"></i> Gửi</button>
+                    </form>
+                  </div><!-- Status Upload  -->
+                </div><!-- Widget Area -->
+            </div><!-- /chat -->
             </div>
           </div>
         </div>
@@ -491,4 +501,9 @@
           </div>
         </div>
       </div>
-    </div>  
+    </div> 
+    <script> 
+      $(document).ready(function(){
+          $("[data-toggle=tooltip]").tooltip();
+      });
+    </script>
