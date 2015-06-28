@@ -50,6 +50,10 @@ angular.module('fCRM',
                 url: ':page/binh-luan',
                 templateUrl: 'views/comments/index.html'
             })
+            .state('app.inboxs', {
+                url: ':page/tin-nhan',
+                templateUrl: 'views/inbox/index.html'
+            })
             
             
 }])
