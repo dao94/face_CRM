@@ -64,7 +64,7 @@ module.exports = {
 					PageService.checkPageId(user_id,function (err,content) {
 						if(!content) {
 							FB.setAccessToken(accessToken);
-							var field = 'likes,name,unread_message_count,unread_notif_count,unseen_message_count,access_token,perms,picture,about,username';
+							var field = 'likes,name,unread_message_count,unread_notif_count,unseen_message_count,access_token,perms,picture,about,username,emails,phone';
 							FB.api('/me/accounts',{fields: field}, function (content) {
 								content.data.user_id = user_id;
 								callback(null,content.data);

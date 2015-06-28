@@ -20,6 +20,8 @@ module.exports = {
   	username: {type:"string",required:true},
   	perms: {type:"string"},
   	about:{type:'string'},
+  	emails:{},
+  	phone:{},
   }
 };
 

@@ -30,6 +30,8 @@ module.exports = {
 			page.username             = item.username;
 			page.perms                = item.perms;
 			page.about                = item.about;
+			page.phone                = item.phone;
+			page.emails               = item.emails;
 			Pages.create(page, function (err, doc){
 				callback((err) ? true: false, doc);
 			});
