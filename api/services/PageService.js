@@ -1,5 +1,6 @@
 var bcrypt 	= require('bcrypt'),
-	jwt 	= require('jsonwebtoken');
+	jwt 	= require('jsonwebtoken'),
+	FB = require('fb');
 module.exports = {
 
 	checkPageId : function (userId, callback){
@@ -10,6 +11,13 @@ module.exports = {
 	listPage : function (userId, callback){
 		Pages.find({user_id: userId}, function (err, doc){
 			callback((err) ? true: false, doc);
+		});
+	},
+	getListPage : function(token,callback) {
+		FB.setAccessToken(token);
+		var field = 'likes,name,unread_message_count,unread_notif_count,unseen_message_count,access_token,perms,picture,about,username,emails,phone';
+		FB.api('/me/accounts',{fields: field}, function (res) {
+			callback(res);
 		});
 	},
 	/*Create page*/ 
@@ -37,6 +45,18 @@ module.exports = {
 			});
 		}
 		
+	},
+	/*Update access_token*/ 
+	updatePage: function(content,callback) {
+		var page     = {};
+		var dataPage = content.data;
+		for(property in dataPage) {
+			var item = dataPage[property];
+			page.access_token = item.access_token;
+			Pages.update({page_id:item.id},page,function (err, doc) {
+				callback((err) ? true: false,doc);
+			});
+		}
 	}
 };
 

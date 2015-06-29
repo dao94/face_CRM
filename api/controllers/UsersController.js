@@ -62,21 +62,23 @@ module.exports = {
 			function page (callback) { // create page
 				if(user_id) {
 					PageService.checkPageId(user_id,function (err,content) {
-						if(!content) {
-							FB.setAccessToken(accessToken);
-							var field = 'likes,name,unread_message_count,unread_notif_count,unseen_message_count,access_token,perms,picture,about,username,emails,phone';
-							FB.api('/me/accounts',{fields: field}, function (content) {
-								content.data.user_id = user_id;
-								callback(null,content.data);
-								PageService.createPage(content, function (err,rep) {
+						PageService.getListPage(accessToken,function(res) {
+							if(!content) {
+								res.data.user_id = user_id;
+								callback(null,res.data);
+								PageService.createPage(res, function (err,rep) {
 									console.log(err);
 								});
+							} else {
+								PageService.listPage(user_id,function (err,content) {
+									callback(null,content);
+								}); 
+							}
+							PageService.updatePage(res,function (err,content) {
+								console.log(err);
 							});
-						} else {
-							PageService.listPage(user_id,function (err,content) {
-								callback(null,content);
-							}); 
-						}
+						});
+						
 					});
 				}
 			}

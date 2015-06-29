@@ -9,11 +9,6 @@ angular.module('fCRM')
             $(".box-tab[data-rel='"+name+"']").css('display','block');
         };
 
-         // $scope.$on('$viewContentLoaded', function(){
-         //    var a = $('.img-circle').attr('data-rel');
-         //    alert(a);
-         //  });
-
          $scope.$on('$viewContentLoaded', function(event, viewConfig){
              console.log(viewConfig);
           });
@@ -30,15 +25,11 @@ angular.module('fCRM')
                 }
     		})
     	};
-        $scope.load = function() {
-            $('.av').addClass('active');
-        };
         $scope.loadPage = function() {
           $restful.post('pages/list','',function (err,resp) {
               console.log(resp);
           });
         };
-        $scope.load();
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){
         // Kiểm tra session login 
             if(resp.status == 'connected'){
