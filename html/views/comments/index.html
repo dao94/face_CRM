@@ -1,3 +1,4 @@
+
 <style>
   #commentsPage .panel{
     border:none;
@@ -5,6 +6,13 @@
   #commentsPage .list-group-item{
     border-right: none!important; 
   }
+  div[ng-app] { margin: 5px; }
+div[ng-controller="Ctrl"] > div {
+   height: 35px;
+}
+div[ng-controller="Ctrl"] > div > * {
+   vertical-align: top;
+}
 </style>
 <div class="app-content-body " id="commentsPage">
       <div class ="hbox hbox-auto-xs hbox-auto-sm" >
@@ -393,24 +401,49 @@
                 <div class="tab-pane active" id="order-sanpham">
                   <!-- list -->
                   <div class="panel panel-default">
+                    <div class="panel-body">
+                       <div class="btn-group">
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" type="button">Thêm Sản phẩm <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Thêm nhanh</a></li>
+                          <li><a href="#">Thêm từ kho</a></li>
+                        </ul>
+                      </div>
+                      <span class="pull-right">
+                        <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success" tabindex="0">
+                      <i class="glyphicon glyphicon-plus"></i> Lưu hóa đơn
+                      </button>
+                      </span>
+                    </div>
                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>Ảnh</th>
                           <th>Tên sản phẩm</th>
-                          <th>Giá</th>
+                          <th width="120">Giá</th>
                           <th>Số lượng</th>
                           <th width="50"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <!-- ngRepeat: row in rowCollectionBasic -->
                         <tr ng-repeat="row in rowCollectionBasic" class="ng-scope">
                           <td class="ng-binding"><img class="thumb-sm" src="img/a9.jpg" alt="" /></td>
                           <td class="ng-binding"><span class="font-bold text-info">Sạc điện thoại láptop 001</span></td>
-                          <td class="ng-binding"><input type="text" class="form-control"></td>
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                          <td class="ng-binding col-xs-2"><input type="text" class="form-control" required></td>
+                          <td>
+                            <button type="button" ng-click="removeRow(row)" class="btn btn-xs btn-default" tabindex="0">
+                            <i class="fa fa-times">
+                            </i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr ng-repeat="row in rowCollectionBasic" class="ng-scope">
+                          <td class="ng-binding"><img class="thumb-sm" src="img/a9.jpg" alt="" /></td>
+                          <td class="ng-binding"><span class="font-bold text-info">Sạc điện thoại láptop 001</span></td>
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
                           <td class="ng-binding col-xs-2">
-                            <input type="text" class="form-control" required="" >
+                            <input type="text" class="form-control" required>
                           </td>
                           <td>
                             <button type="button" ng-click="removeRow(row)" class="btn btn-xs btn-default" tabindex="0">
@@ -421,39 +454,51 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div>       <!-- / list -->
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      Thanh toán
+                    </div>
+                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>Phí vận chuyển</th>
+                          <th>Phần giảm giá</th>
+                          <th>Tổng tiền</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="row in rowCollectionBasic" class="ng-scope">
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- / list -->
                 </div>
                 <div class="tab-pane" id="order-vanchuyen">
                   <!-- list -->
-                  <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thịnh</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                  </ul>
+                  <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Html5 Inputs</div>
+                    <div class="panel-body">
+                      <div ng-app="app" ng-controller="Ctrl">
+                        <div>Email: <a href="#" editable-email="user.email">{{ user.email || 'empty' }}</a></div>
+                        <div>Tel: <a href="#" editable-tel="user.tel" e-pattern="\d{3}\-\d{2}\-\d{2}" e-title="xxx-xx-xx">{{ user.tel || 'empty' }}</a></div>
+                        <div>Number: <a href="#" editable-number="user.number" e-min="18">{{ user.number || 'empty' }}</a></div>  
+                        <div>Range: <a href="#" editable-range="user.range" e-step="5">{{ user.range || 'empty' }}</a></div>  
+                        <div>Url: <a href="#" editable-url="user.url">{{ user.url || 'empty' }}</a></div>  
+                        <div>Search: <a href="#" editable-search="user.search">{{ user.search || 'empty' }}</a></div>  
+                        <div>Color: <a href="#" editable-color="user.color">{{ user.color || 'empty' }}</a></div>  
+                        <div>Date: <a href="#" editable-date="user.date">{{ user.date || 'empty' }}</a></div>  
+                        <div>Time: <a href="#" editable-time="user.time">{{ user.time || 'empty' }}</a></div>  
+                        <div>Datetime: <a href="#" editable-datetime="user.datetime">{{ user.datetime || 'empty' }}</a></div>  
+                        <div>Month: <a href="#" editable-month="user.month">{{ user.month || 'empty' }}</a></div>  
+                        <div>Week: <a href="#" editable-week="user.week">{{ user.week || 'empty' }}</a></div>  
+                      </div>
+                    </div>
+                  </div>
                   <!-- / list -->
                 </div>
                 <div class="tab-pane" id="order-shipchung">
@@ -564,3 +609,27 @@
       size: 4
   });
     </script>
+<script>
+  var app = angular.module("app", ["xeditable"]);
+
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3';
+});
+
+app.controller('Ctrl', function($scope) {
+  $scope.user = {
+    email: 'email@example.com',
+    tel: '123-45-67',
+    number: 29,
+    range: 10,
+    url: 'http://example.com',
+    search: 'blabla',
+    color: '#6a4415',
+    date: null,
+    time: '12:30',
+    datetime: null,
+    month: null,
+    week: null
+  };  
+});
+</script>
