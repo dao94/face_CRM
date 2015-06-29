@@ -4,27 +4,18 @@ var fb = require('fb');
 
 var Message = {
 	getPageByUsername: function(pageName, user_id, callback){
-		Page.findOne({username : pageName, user_id: user_id}, function (error, page){
+		Pages.findOne({username : pageName, user_id: user_id}, function (error, page){
 			callback(error, page);
 		});
 	},
 
-	 getMessage : function(page){
-		fb.setAccessToken(page.accessToken);
-		FB.api('/' + page.page_id + '/conversations' ,{}, function (content) {
-			
+	 getMessage : function(page, callback){
+		fb.setAccessToken(page.access_token);
+		fb.api('/' + page.page_id + '/conversations' ,{limit: 10}, function (resp) {
+			callback(resp)
 		});
 	}	
 }
 
-
-
-
-
-
-
-
-module.export = {
-
-}
+module.exports =  Message;
 

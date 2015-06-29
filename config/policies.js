@@ -41,6 +41,9 @@ module.exports.policies = {
    PagesController : {
     'list' : 'authorization'  
    },
+   MessagesController: {
+    'getMessage' : 'authorization'
+   },
    DriversController: {
     'updateLocation': 'authorization',
     'updateStatus'  : 'authorization',
