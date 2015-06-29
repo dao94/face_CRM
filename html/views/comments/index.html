@@ -355,38 +355,60 @@
           </div>
         </div>
         <div class="col-md-4 bg-light dk b-r bg-auto no-padder">
-          <div id="email-menu">
+          <div class="bg-white-only b-l bg-auto no-border-xs clearfix">
+            <div class="head-order">
+              <div class="order_detail">
+                <p class="pull-left">
+                  Mã đơn: <span class="text-danger font-bold">120365689</span><br />
+                  <span><i class="text-primary fa fa-clock-o"></i> 12:47 AM, 29/06/2015</span>
+                </p>
+                  <div class="form-group pull-right">
+                    <form role="form">
+                      <select class="form-control" id="sel1">
+                        <option>Tình trạng</option>
+                        <option>Đơn hàng mới</option>
+                        <option>Xác nhận</option>
+                        <option>Hủy đơn hàng</option>
+                        <option>Đã gửi</option>
+                        <option>Đang xử lý</option>
+                        <option>Hoàn thành</option>
+                      </select>
+                    </form>
+                  </div>
+                  <div class="clearfix"></div><!-- /.clearfix -->
+                </div><!-- /.order_detail -->
+            </div>
+          </div>
+        <div class="bg-white-only b-l bg-auto no-border-xs clearfix">
+          <div id="order" class="clearfix">
             <div class="bg-white-only b-l bg-auto no-border-xs">
               <div class="nav-tabs-alt">
                 <ul class="nav nav-tabs" role="tablist">
-                  <li class="active"><a href="#tin-nhan" data-toggle="tab" aria-expanded="false"><i class="fa fa-comments-o text-md text-success wrapper-sm"></i></a></li>
-                  <li class=""><a href="#sms-chua-xem" data-toggle="tab" aria-expanded="false"><i class="fa fa-warning text-md text-warning wrapper-sm"></i></a></li>
-                  <li class=""><a href="#sms-luu-tru" data-toggle="tab" aria-expanded="true"><i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"></i></a></li>
+                  <li class="active"><a href="#order-sanpham" data-toggle="tab" aria-expanded="false"><i class="fa fa-list-alt text-md text-muted wrapper-sm"></i> Sản Phẩm</a></li>
+                  <li class=""><a href="#order-vanchuyen" data-toggle="tab" aria-expanded="false"><i class="fa fa-space-shuttle text-md text-muted wrapper-sm"></i> Vận chuyển</a></li>
+                  <li class=""><a href="#order-shipchung" data-toggle="tab" aria-expanded="true"><i class="fa fa-truck text-md text-muted wrapper-sm"></i> Shipchung.vn</a></li>
                 </ul>
               </div>
               <div class="tab-content">
-                <div class="tab-pane active" id="tin-nhan">
+                <div class="tab-pane active" id="order-sanpham">
                   <!-- list -->
                   <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
                     <li class="list-group-item clearfix">
-                     Tất cả tin nhắn
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <div class="input-group">
-                        <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
-                        <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
-                        </span>
-                      </div>
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
+                      <div class="san-pham">
+                        <a class="thumb pull-left m-r" href="#/app/page/profile">
+                          <img ng-src="http://donghohoangkim.vn/images/upload/Image/dong-ho-Rolex-8668-26900k.jpg" src="http://donghohoangkim.vn/images/upload/Image/dong-ho-Rolex-8668-26900k.jpg">
+                        </a>
+                        <div class="clear">
+                          <div class="form-group">
+                            <label class="col-sm-7 control-label"><a href="#">sạc dự phòng ximiao 10400</a><br />
+                            <span>ghi chú sản phẩm</span></label>
+                            <div class="col-sm-5">
+                             <span class="padding3"><input type="text" class="form-control" placeholder="giá"></span>
+                              <span class="padding3"><input type="text" class="form-control" placeholder="số lượng"></span> 
+                            </div>
+                          </div>
+                        </div> 
+                      </div><!-- /.san-pham --> 
                     </li>
                     <li class="list-group-item clearfix">
                       <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
@@ -409,20 +431,9 @@
                   </ul>
                   <!-- / list -->
                 </div>
-                <div class="tab-pane" id="sms-chua-xem">
+                <div class="tab-pane" id="order-vanchuyen">
                   <!-- list -->
                   <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                    <li class="list-group-item clearfix">
-                     Bình Luận Chưa Xem
-                    </li>
-                    <li class="list-group-item clearfix">
-                        <div class="input-group">
-                          <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
-                          <span class="input-group-btn">
-                          <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
-                          </span>
-                      </div>
-                    </li>
                     <li class="list-group-item clearfix">
                       <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
                         <img ng-src="img/a10.jpg" src="img/a10.jpg">
@@ -453,20 +464,9 @@
                   </ul>
                   <!-- / list -->
                 </div>
-                <div class="tab-pane" id="sms-luu-tru">
+                <div class="tab-pane" id="order-shipchung">
                   <!-- list -->
                   <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                    <li class="list-group-item clearfix">
-                     Lưu Trữ
-                    </li>
-                    <li class="list-group-item clearfix">
-                        <div class="input-group">
-                          <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
-                          <span class="input-group-btn">
-                          <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
-                          </span>
-                      </div>
-                    </li>
                     <li class="list-group-item clearfix">
                       <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
                         <img ng-src="img/a10.jpg" src="img/a10.jpg">
@@ -565,4 +565,10 @@
       $(document).ready(function(){
           $("[data-toggle=tooltip]").tooltip();
       });
+    </script>
+    <script>
+      $('.selectpicker').selectpicker({
+      style: 'btn-info',
+      size: 4
+  });
     </script>

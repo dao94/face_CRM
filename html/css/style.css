@@ -216,3 +216,16 @@ border-left-color: #2dcb73;
 margin-right: 7px;
 }
 .box-tab{display: none;}
+.head-order {
+  padding: 10px;
+}
+.order_detail {
+  border-bottom: 1px solid #eee;
+}
+.san-pham a {
+  color: #337ab7;
+  font-size: 14px;
+}
+.san-pham .form-control {
+  height: 24px;
+}
