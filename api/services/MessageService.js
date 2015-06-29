@@ -14,7 +14,11 @@ var Message = {
 		fb.api('/' + page.page_id + '/conversations' ,{limit: 10}, function (resp) {
 			callback(resp)
 		});
-	}	
+	},
+	parseMessageData : function (message){
+		var ret = {};
+		
+	}
 }
 
 module.exports =  Message;
