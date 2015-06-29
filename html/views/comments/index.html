@@ -1,3 +1,4 @@
+
 <style>
   #commentsPage .panel{
     border:none;
@@ -5,6 +6,13 @@
   #commentsPage .list-group-item{
     border-right: none!important; 
   }
+  div[ng-app] { margin: 5px; }
+div[ng-controller="Ctrl"] > div {
+   height: 35px;
+}
+div[ng-controller="Ctrl"] > div > * {
+   vertical-align: top;
+}
 </style>
 <div class="app-content-body " id="commentsPage">
       <div class ="hbox hbox-auto-xs hbox-auto-sm" >
@@ -213,7 +221,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 no-padder">
+        <div class="col-md-4 no-padder">
           
           <div>
             <!-- header -->
@@ -354,119 +362,148 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 bg-light dk b-r bg-auto no-padder">
-          <div id="email-menu">
+        <div class="col-md-5 bg-light dk b-r bg-auto no-padder">
+          <div class="bg-white-only b-l bg-auto no-border-xs clearfix">
+            <div class="head-order">
+              <div class="order_detail">
+                <p class="pull-left">
+                  Mã đơn: <span class="text-danger font-bold">120365689</span><br />
+                  <span><i class="text-primary fa fa-clock-o"></i> 12:47 AM, 29/06/2015</span>
+                </p>
+                  <div class="form-group pull-right">
+                    <form role="form">
+                      <select class="form-control" id="sel1">
+                        <option>Tình trạng</option>
+                        <option>Đơn hàng mới</option>
+                        <option>Xác nhận</option>
+                        <option>Hủy đơn hàng</option>
+                        <option>Đã gửi</option>
+                        <option>Đang xử lý</option>
+                        <option>Hoàn thành</option>
+                      </select>
+                    </form>
+                  </div>
+                  <div class="clearfix"></div><!-- /.clearfix -->
+                </div><!-- /.order_detail -->
+            </div>
+          </div>
+        <div class="bg-white-only b-l bg-auto no-border-xs clearfix">
+          <div id="order" class="clearfix">
             <div class="bg-white-only b-l bg-auto no-border-xs">
               <div class="nav-tabs-alt">
                 <ul class="nav nav-tabs" role="tablist">
-                  <li class="active"><a href="#tin-nhan" data-toggle="tab" aria-expanded="false"><i class="fa fa-comments-o text-md text-success wrapper-sm"></i></a></li>
-                  <li class=""><a href="#sms-chua-xem" data-toggle="tab" aria-expanded="false"><i class="fa fa-warning text-md text-warning wrapper-sm"></i></a></li>
-                  <li class=""><a href="#sms-luu-tru" data-toggle="tab" aria-expanded="true"><i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"></i></a></li>
+                  <li class="active"><a href="#order-sanpham" data-toggle="tab" aria-expanded="false"><i class="fa fa-list-alt text-md text-muted wrapper-sm"></i> Sản Phẩm</a></li>
+                  <li class=""><a href="#order-vanchuyen" data-toggle="tab" aria-expanded="false"><i class="fa fa-space-shuttle text-md text-muted wrapper-sm"></i> Vận chuyển</a></li>
+                  <li class=""><a href="#order-shipchung" data-toggle="tab" aria-expanded="true"><i class="fa fa-truck text-md text-muted wrapper-sm"></i> Shipchung.vn</a></li>
                 </ul>
               </div>
               <div class="tab-content">
-                <div class="tab-pane active" id="tin-nhan">
+                <div class="tab-pane active" id="order-sanpham">
                   <!-- list -->
-                  <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                    <li class="list-group-item clearfix">
-                     Tất cả tin nhắn
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <div class="input-group">
-                        <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
-                        <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
-                        </span>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                       <div class="btn-group">
+                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" type="button">Thêm Sản phẩm <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Thêm nhanh</a></li>
+                          <li><a href="#">Thêm từ kho</a></li>
+                        </ul>
                       </div>
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                  </ul>
+                      <span class="pull-right">
+                        <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success" tabindex="0">
+                      <i class="glyphicon glyphicon-plus"></i> Lưu hóa đơn
+                      </button>
+                      </span>
+                    </div>
+                    <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>Ảnh</th>
+                          <th>Tên sản phẩm</th>
+                          <th width="120">Giá</th>
+                          <th>Số lượng</th>
+                          <th width="50"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="row in rowCollectionBasic" class="ng-scope">
+                          <td class="ng-binding"><img class="thumb-sm" src="img/a9.jpg" alt="" /></td>
+                          <td class="ng-binding"><span class="font-bold text-info">Sạc điện thoại láptop 001</span></td>
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                          <td class="ng-binding col-xs-2"><input type="text" class="form-control" required></td>
+                          <td>
+                            <button type="button" ng-click="removeRow(row)" class="btn btn-xs btn-default" tabindex="0">
+                            <i class="fa fa-times">
+                            </i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr ng-repeat="row in rowCollectionBasic" class="ng-scope">
+                          <td class="ng-binding"><img class="thumb-sm" src="img/a9.jpg" alt="" /></td>
+                          <td class="ng-binding"><span class="font-bold text-info">Sạc điện thoại láptop 001</span></td>
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                          <td class="ng-binding col-xs-2">
+                            <input type="text" class="form-control" required>
+                          </td>
+                          <td>
+                            <button type="button" ng-click="removeRow(row)" class="btn btn-xs btn-default" tabindex="0">
+                            <i class="fa fa-times">
+                            </i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      Thanh toán
+                    </div>
+                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>Phí vận chuyển</th>
+                          <th>Phần giảm giá</th>
+                          <th>Tổng tiền</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="row in rowCollectionBasic" class="ng-scope">
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                          <td class="ng-binding"><input type="text" class="form-control" placeholder="VNĐ" required></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                   <!-- / list -->
                 </div>
-                <div class="tab-pane" id="sms-chua-xem">
+                <div class="tab-pane" id="order-vanchuyen">
                   <!-- list -->
-                  <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                    <li class="list-group-item clearfix">
-                     Bình Luận Chưa Xem
-                    </li>
-                    <li class="list-group-item clearfix">
-                        <div class="input-group">
-                          <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
-                          <span class="input-group-btn">
-                          <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
-                          </span>
+                  <div class="panel panel-default">
+                    <div class="panel-heading font-bold">Html5 Inputs</div>
+                    <div class="panel-body">
+                      <div ng-app="app" ng-controller="Ctrl">
+                        <div>Email: <a href="#" editable-email="user.email">{{ user.email || 'empty' }}</a></div>
+                        <div>Tel: <a href="#" editable-tel="user.tel" e-pattern="\d{3}\-\d{2}\-\d{2}" e-title="xxx-xx-xx">{{ user.tel || 'empty' }}</a></div>
+                        <div>Number: <a href="#" editable-number="user.number" e-min="18">{{ user.number || 'empty' }}</a></div>  
+                        <div>Range: <a href="#" editable-range="user.range" e-step="5">{{ user.range || 'empty' }}</a></div>  
+                        <div>Url: <a href="#" editable-url="user.url">{{ user.url || 'empty' }}</a></div>  
+                        <div>Search: <a href="#" editable-search="user.search">{{ user.search || 'empty' }}</a></div>  
+                        <div>Color: <a href="#" editable-color="user.color">{{ user.color || 'empty' }}</a></div>  
+                        <div>Date: <a href="#" editable-date="user.date">{{ user.date || 'empty' }}</a></div>  
+                        <div>Time: <a href="#" editable-time="user.time">{{ user.time || 'empty' }}</a></div>  
+                        <div>Datetime: <a href="#" editable-datetime="user.datetime">{{ user.datetime || 'empty' }}</a></div>  
+                        <div>Month: <a href="#" editable-month="user.month">{{ user.month || 'empty' }}</a></div>  
+                        <div>Week: <a href="#" editable-week="user.week">{{ user.week || 'empty' }}</a></div>  
                       </div>
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thịnh</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
                   <!-- / list -->
                 </div>
-                <div class="tab-pane" id="sms-luu-tru">
+                <div class="tab-pane" id="order-shipchung">
                   <!-- list -->
                   <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                    <li class="list-group-item clearfix">
-                     Lưu Trữ
-                    </li>
-                    <li class="list-group-item clearfix">
-                        <div class="input-group">
-                          <input type="text" class="form-control input-sm btn-rounded" placeholder="Search">
-                          <span class="input-group-btn">
-                          <button type="submit" class="btn btn-default btn-sm btn-rounded"><i class="fa fa-search"></i></button>
-                          </span>
-                      </div>
-                    </li>
                     <li class="list-group-item clearfix">
                       <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
                         <img ng-src="img/a10.jpg" src="img/a10.jpg">
@@ -566,3 +603,33 @@
           $("[data-toggle=tooltip]").tooltip();
       });
     </script>
+    <script>
+      $('.selectpicker').selectpicker({
+      style: 'btn-info',
+      size: 4
+  });
+    </script>
+<script>
+  var app = angular.module("app", ["xeditable"]);
+
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3';
+});
+
+app.controller('Ctrl', function($scope) {
+  $scope.user = {
+    email: 'email@example.com',
+    tel: '123-45-67',
+    number: 29,
+    range: 10,
+    url: 'http://example.com',
+    search: 'blabla',
+    color: '#6a4415',
+    date: null,
+    time: '12:30',
+    datetime: null,
+    month: null,
+    week: null
+  };  
+});
+</script>
