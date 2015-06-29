@@ -9,7 +9,6 @@ var FB = require('fb');
 
 module.exports = {
 	index: function (req, res, next){
-		console.log('token fb', req.user);
 		return res.json({
 			'res': 'Hello world'
 		})
@@ -20,13 +19,13 @@ module.exports = {
 
 			function (callback){ // Kiểm tra user đã tồn tại chưa
 				UserService.checkProfileId(body.id, function (err, doc){
-					callback(null, doc);
+					callback(err, doc);
 				})
 			}, function (user, callback){
 					if(!user){ // Tạo tài khoản mới 
 
 						UserService.createUser(body, function (err, resp){
-							callback(null, true,  resp);
+							callback(err, true,  resp);
 						})
 					}else { // cập nhật app access token
 
@@ -37,14 +36,14 @@ module.exports = {
 							updateData.expiresIn   = body.expiresIn;
 
 							Users.update({id: resp.id} , updateData, function (err, resp){
-								callback(null, false, resp);
+								callback(err, false, resp);
 							});
 							
 						});
 					}
 			}, function (is_new, user, callback){  // Tạo token
 				var uInfo        = {};
-				var user         = user[0];
+				var user         = user[0] || user ;
 				uInfo.id         = user.id;
 				uInfo.email      = user.email;
 				uInfo.first_name = user.first_name;
@@ -103,7 +102,6 @@ module.exports = {
 		
 	},
 	test:function(req,res,next) {
-		console.log('Access token fb', req.user);
 		res.json({
 			'Status':"Sucesss"
 		}); 

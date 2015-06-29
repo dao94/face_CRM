@@ -25,7 +25,11 @@
                   <div class="[ col-xs-4 col-sm-12 ]">
                     <!-- Nav tabs -->
                     <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
+<<<<<<< HEAD
                       <li role="presentation" ng-repeat="item in infoPage" class="{{$first ? 'active': ''}}">
+=======
+                      <li role="presentation" ng-repeat="item in infoPage" class="av {{$first ? 'active': ''}}" ng-click="selectPage(item)">
+>>>>>>> e46e48ca9f6f106f41736fd4529bd502a488b87e
                         <a href="" aria-controls="dustin" role="tab" data-toggle="tab" ng-click="func_click(item.name)">
                         <img class="img-circle" data-rel="{{item.name}}" src="{{item.picture.data.url}}" />
                         </a>
@@ -37,11 +41,11 @@
                     <div class="tab-content" id="tabs-collapse">
                       <div role="tabpanel" class="tab-pane fade in active" >
                         <div class="tab-inner">
-                          <div class="box-tab" ng-repeat = 'info in infoPage' data-rel="{{info.name}}">
-                            <p class="lead m-b-sm" class="">{{info.name}}</p>
-                            <p class="m-b-md">{{info.about}}</p>
+                          <div class="box-tab" >
+                            <p class="lead m-b-sm" class="">{{selectedPage.name}}</p>
+                            <p class="m-b-md">{{selectedPage.about}}</p>
                             <!-- <p class="m-b-md">Email : {{info.emails}}  -  Phone : {{info.phone}}</p> -->
-                            <span style="border-radius: 20px;" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-ok"></i> Truy cập quản lý</span>
+                            <span style="border-radius: 20px;" class="btn btn-success btn-lg" ng-click="enterPage()"><i class="glyphicon glyphicon-ok"></i> Truy cập quản lý</span>
                           </div>
                           <hr>
                           <p><strong>Copyright © 2015 - FaceCRM.vn. All Rights Reserved. </strong></p>
