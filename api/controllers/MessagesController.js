@@ -13,7 +13,7 @@ module.exports = {
 		MessageService.getPageByUsername(pageUserName, user.id,  function (error, resp){
 			if(!error){
 				MessageService.getMessage(resp, function (data){
-					
+					res.json(data);
 				});
 			}else {
 				return res.json({error: true, message :"Lỗi, trang không tồn tại"});
