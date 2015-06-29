@@ -213,7 +213,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 no-padder">
+        <div class="col-md-4 no-padder">
           
           <div>
             <!-- header -->
@@ -354,7 +354,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 bg-light dk b-r bg-auto no-padder">
+        <div class="col-md-5 bg-light dk b-r bg-auto no-padder">
           <div class="bg-white-only b-l bg-auto no-border-xs clearfix">
             <div class="head-order">
               <div class="order_detail">
@@ -392,44 +392,36 @@
               <div class="tab-content">
                 <div class="tab-pane active" id="order-sanpham">
                   <!-- list -->
-                  <ul class="list-group list-group-lg no-radius m-b-none m-t-n-xxs">
-                    <li class="list-group-item clearfix">
-                      <div class="san-pham">
-                        <a class="thumb pull-left m-r" href="#/app/page/profile">
-                          <img ng-src="http://donghohoangkim.vn/images/upload/Image/dong-ho-Rolex-8668-26900k.jpg" src="http://donghohoangkim.vn/images/upload/Image/dong-ho-Rolex-8668-26900k.jpg">
-                        </a>
-                        <div class="clear">
-                          <div class="form-group">
-                            <label class="col-sm-7 control-label"><a href="#">sạc dự phòng ximiao 10400</a><br />
-                            <span>ghi chú sản phẩm</span></label>
-                            <div class="col-sm-5">
-                             <span class="padding3"><input type="text" class="form-control" placeholder="giá"></span>
-                              <span class="padding3"><input type="text" class="form-control" placeholder="số lượng"></span> 
-                            </div>
-                          </div>
-                        </div> 
-                      </div><!-- /.san-pham --> 
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                  </ul>
-                  <!-- / list -->
+                  <div class="panel panel-default">
+                    <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>Ảnh</th>
+                          <th>Tên sản phẩm</th>
+                          <th>Giá</th>
+                          <th>Số lượng</th>
+                          <th width="50"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- ngRepeat: row in rowCollectionBasic -->
+                        <tr ng-repeat="row in rowCollectionBasic" class="ng-scope">
+                          <td class="ng-binding"><img class="thumb-sm" src="img/a9.jpg" alt="" /></td>
+                          <td class="ng-binding"><span class="font-bold text-info">Sạc điện thoại láptop 001</span></td>
+                          <td class="ng-binding"><input type="text" class="form-control"></td>
+                          <td class="ng-binding col-xs-2">
+                            <input type="text" class="form-control" required="" >
+                          </td>
+                          <td>
+                            <button type="button" ng-click="removeRow(row)" class="btn btn-xs btn-default" tabindex="0">
+                            <i class="fa fa-times">
+                            </i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>       <!-- / list -->
                 </div>
                 <div class="tab-pane" id="order-vanchuyen">
                   <!-- list -->
