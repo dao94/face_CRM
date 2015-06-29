@@ -25,9 +25,9 @@
                   <div class="[ col-xs-4 col-sm-12 ]">
                     <!-- Nav tabs -->
                     <ul class="[ nav nav-justified ]" id="nav-tabs" role="tablist">
-                      <li role="presentation" ng-repeat="item in infoPage">
+                      <li role="presentation" ng-repeat="item in infoPage" class="av">
                         <a href="" aria-controls="dustin" role="tab" data-toggle="tab" ng-click="func_click(item.name)">
-                        <img class="img-circle" data-rel="{{}}" src="{{item.picture.data.url}}" />
+                        <img class="img-circle" data-rel="{{item.name}}" src="{{item.picture.data.url}}" />
                         </a>
                       </li>
                     </ul>

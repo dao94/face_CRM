@@ -215,4 +215,5 @@ border-left-color: #2dcb73;
 .status-upload form button > i {
 margin-right: 7px;
 }
-.box-tab{display: none;}
+.box-tab:first-child{display: block;}
+.box-tab{display: none}

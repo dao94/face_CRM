@@ -7,7 +7,16 @@ angular.module('fCRM')
         $scope.func_click =  function(name) {
             $('.box-tab').css('display','none');
             $(".box-tab[data-rel='"+name+"']").css('display','block');
-        }
+        };
+
+         // $scope.$on('$viewContentLoaded', function(){
+         //    var a = $('.img-circle').attr('data-rel');
+         //    alert(a);
+         //  });
+
+         $scope.$on('$viewContentLoaded', function(event, viewConfig){
+             console.log(viewConfig);
+          });
         $scope.checkUser = function (data){
     		$restful.post('users/checkinFB', data, function (err, resp){
                 hideLoader();
@@ -21,13 +30,15 @@ angular.module('fCRM')
                 }
     		})
     	};
-
-    $scope.loadPage = function() {
-      $restful.post('pages/list','',function (err,resp) {
-          console.log(resp);
-      });
-    }
-
+        $scope.load = function() {
+            $('.av').addClass('active');
+        };
+        $scope.loadPage = function() {
+          $restful.post('pages/list','',function (err,resp) {
+              console.log(resp);
+          });
+        };
+        $scope.load();
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){
         // Kiểm tra session login 
             if(resp.status == 'connected'){
