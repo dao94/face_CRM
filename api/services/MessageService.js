@@ -10,11 +10,11 @@ var Message = {
 	},
 
 	 getMessage : function(page, callback){
-	 	
-		/*fb.setAccessToken(page.access_token);
+ 		
+		fb.setAccessToken(page.access_token);
 		fb.api('/' + page.page_id + '/conversations' ,{limit: 10}, function (resp) {
 			callback(resp)
-		});*/
+		});
 	},
 	parseMessageData : function (message){
 		var ret = {};
