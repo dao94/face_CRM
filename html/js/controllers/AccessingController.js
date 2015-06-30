@@ -23,7 +23,7 @@ angular.module('fCRM')
         }   
 
         $scope.enterPage = function (){
-            $state.go('app.inboxs', {page: $scope.selectedPage.username ? $scope.selectedPage.username : $scope.selectedPage.page_id});
+            $state.go('app.inboxs', {page: $scope.selectedPage.username || $scope.selectedPage.page_id});
         }
 
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){
