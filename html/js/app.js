@@ -48,7 +48,8 @@ angular.module('fCRM',
             })
             .state('app.comments', {
                 url: ':page/binh-luan',
-                templateUrl: 'views/comments/index.html'
+                templateUrl: 'views/comments/index.html',
+                controller: 'CommentController'
             })
             .state('app.inboxs', {
                 url: ':page/tin-nhan',

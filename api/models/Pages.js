@@ -22,6 +22,7 @@ module.exports = {
   	about:{},
   	emails:{},
   	phone:{},
+    stt:{type:"int",required: true}
   }
 };
 

@@ -40,6 +40,7 @@ module.exports = {
 			page.about                = item.about;
 			page.phone                = item.phone;
 			page.emails               = item.emails;
+			page.stt                  = 0;//0 is none active,1 is active
 			Pages.create(page, function (err, doc){
 				callback((err) ? true: false, doc);
 			});
