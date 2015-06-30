@@ -1,0 +1,19 @@
+/**
+* Messages.js
+*
+* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
+
+module.exports = {
+	attributes: {
+		conversation_id : {}, // Id của conversation
+		type: {type: 'string', enum: ['comments', 'message']},
+		can_reply 		: {}, // boolean 
+		link 			: {}, // Link đến facebook
+		unread_count 	: {}, // Số tin chưa đọc
+		customer 		: {}, // Thông tin người dùng
+		last_message	: {model: 'messages'} // Tin nhắn cuối cùng được tìm thấy 
+	}
+};
+
