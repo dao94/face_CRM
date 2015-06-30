@@ -5,14 +5,6 @@ angular.module('fCRM')
         $scope.users    = {};
         $scope.infoPage = {};
         $scope.selectedPage = {};
-
-<<<<<<< HEAD
-         $scope.$on('$viewContentLoaded', function(event, viewConfig){
-             console.log(viewConfig);
-          });
-=======
-
->>>>>>> e46e48ca9f6f106f41736fd4529bd502a488b87e
         $scope.checkUser = function (data){
     		$restful.post('users/checkinFB', data, function (err, resp){
                 hideLoader();
@@ -25,13 +17,6 @@ angular.module('fCRM')
                 }
     		})
     	};
-<<<<<<< HEAD
-        $scope.loadPage = function() {
-          $restful.post('pages/list','',function (err,resp) {
-              console.log(resp);
-          });
-        };
-=======
 
         $scope.selectPage = function (page){
             $scope.selectedPage = page;
@@ -42,9 +27,6 @@ angular.module('fCRM')
             $state.go('app.inboxs', {page: $scope.selectedPage.username});
         }
 
-
-        
->>>>>>> e46e48ca9f6f106f41736fd4529bd502a488b87e
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){
             // Kiểm tra session login 
             if(resp.status == 'connected'){
