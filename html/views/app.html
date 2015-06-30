@@ -12,7 +12,7 @@
         <a href="#/" class="navbar-brand text-lt">
           <i class="fa fa-btc"></i>
           <img src="img/logo.png" alt="." class="hide">
-          <span class="hidden-folded m-l-xs">Angulr</span>
+          <span class="hidden-folded m-l-xs">FaceCRM</span>
         </a>
         <!-- / brand -->
       </div>
@@ -21,34 +21,25 @@
       <!-- navbar collapse -->
       <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
         <!-- buttons -->
-        <!-- <div class="nav navbar-nav hidden-xs">
+        <div class="nav navbar-nav hidden-xs">
           <a href="#" class="btn no-shadow navbar-btn" ui-toggle="app-aside-folded" target=".app">
             <i class="fa fa-dedent fa-fw text"></i>
             <i class="fa fa-indent fa-fw text-active"></i>
           </a>
-          
         </div>
-        / buttons
-        
-        search form
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" >
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Tìm kiếm...">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </div>
-        </form> -->
-        <!-- / search form -->
 
+        <ul class="nav navbar-nav">
+          <li class="active"><a ui-sref="app.inboxs({page:1223})"><i class="fa fa-envelope-o"></i> Tin Nhắn<span class="sr-only">(current)</span></a></li>
+          <li><a href="#"><i class="fa fa-comments-o"></i> Bình luận</a></li>
+          <li><a href="#"><i class="fa fa-university"></i> Kho hàng</a></li>
+          <li><a href="#"><i class="fa fa-shopping-cart"></i> Hóa đơn</a></li>
+        </ul>
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
               <i class="icon-bell fa-fw"></i>
-              <span class="visible-xs-inline">Notifications</span>
+              <span class="visible-xs-inline">Thông báo</span>
               <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
             </a>
             <!-- dropdown -->
