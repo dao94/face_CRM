@@ -56,6 +56,10 @@ angular.module('fCRM',
                 templateUrl: 'views/inbox/index.html',
                 'controller': 'InboxsController'
             })
+            .state('app.orders', {
+                url: ':page/don-hang',
+                templateUrl: 'views/order/index.html',
+            });
             
             
 }])
