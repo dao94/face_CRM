@@ -237,3 +237,7 @@ margin-right: 7px;
 .tb-sanpham th {
   text-align: center;
 }
+footer#footer {
+  position: fixed;
+  bottom: 0px;
+}

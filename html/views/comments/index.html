@@ -403,16 +403,14 @@ div[ng-controller="Ctrl"] > div > * {
                   <div class="panel panel-default">
                     <div class="panel-body">
                        <div class="btn-group">
-                        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" type="button">Thêm Sản phẩm <span class="caret"></span></button>
+                        <button class="btn btn-primary btn-addon dropdown-toggle" data-toggle="dropdown" type="button">Thêm Sản phẩm<i class="fa fa fa-plus"></i></button>
                         <ul class="dropdown-menu">
                           <li><a href="#">Thêm nhanh</a></li>
                           <li><a href="#">Thêm từ kho</a></li>
                         </ul>
                       </div>
                       <span class="pull-right">
-                        <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success" tabindex="0">
-                      <i class="glyphicon glyphicon-plus"></i> Lưu hóa đơn
-                      </button>
+                        <button class="btn btn-success btn-addon"><i class="fa fa-save"></i>Lưu hóa đơn</button>
                       </span>
                     </div>
                     <table st-table="rowCollectionBasic" class="table table-bordered table-striped">
