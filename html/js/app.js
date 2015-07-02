@@ -59,6 +59,10 @@ angular.module('fCRM',
             .state('app.orders', {
                 url: ':page/don-hang',
                 templateUrl: 'views/order/index.html',
+            })
+            .state('app.products', {
+                url: ':page/san-pham',
+                templateUrl: 'views/products/index.html',
             });
             
             

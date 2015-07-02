@@ -234,3 +234,6 @@ margin-right: 7px;
 .form-control {
   padding: 6px 8px!important;
 }
+.tb-sanpham th {
+  text-align: center;
+}
