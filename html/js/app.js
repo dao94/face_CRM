@@ -26,7 +26,8 @@ angular.module('fCRM',
             .state('app', {
                 abstract: true,
                 url: '/',
-                templateUrl: 'views/app.html'
+                templateUrl: 'views/app.html',
+                controller: 'AppController'
             })
             .state('login', {
                 abstract: false,

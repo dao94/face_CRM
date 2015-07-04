@@ -8,28 +8,23 @@ var async = require('async');
 var FB    = require('fb');
 module.exports = {
 	list: function(rep, res, next) {
+		var user = rep.user;
+		var body = rep.body;
 		var accessToken = rep.user.accessToken;
 		var _Object = {
 			'status' : 'success',
 			'data ' : "" ,
 		};
-		var user_id = rep.user.id;
-		if(!user_id) {
-			_Object['status'] = 'error';
-		} else {
-			PageService.checkPageId(user_id,function (err,content) {
-				if(!content) {
-					FB.setAccessToken(accessToken);
-					FB.api('/me/accounts',{fields: 'name,likes'}, function (content) {
-						content.data.user_id = user_id;
-						PageService.createPage(content, function (err,rep) {
-							console.log(err);
-						});
-					});
-				}
+		var user_id   = rep.user.id;
+		function getlist(callback) {
+			PageService.listPage(user_id,function (error, content) {
+				callback(null,content);
 			});
 		}
-		res.json(_Object);
-	}
+		getlist(function (error,cont) {
+			_Object.data = cont;
+			res.json(_Object);
+		})
+	}	
 };
 

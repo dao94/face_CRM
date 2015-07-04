@@ -74,7 +74,7 @@
             <!-- / dropdown -->
           </li>
           <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+            <a href="javascript" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                 <img src="img/a0.jpg" alt="...">
                 <i class="on md b-white bottom"></i>
@@ -83,42 +83,17 @@
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeIn w wrapper-sm">
-              <li>
-                <div class="media">
-                  <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                  <div class="media-body">
-                    <div><a href="">Shop Quần Áo</a></div>
+              <div ng-repeat='list in list_page'>
+                <li>
+                  <div class="media">
+                    <span class="pull-left thumb-sm"><img src="{{list.picture.data.url}}" alt="..." class="img-circle"></span>
+                    <div class="media-body">
+                      <div><a href="">{{list.name}}</a></div>
+                    </div>
                   </div>
-                </div>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <div class="media">
-                  <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                  <div class="media-body">
-                    <div><a href="">Shop Quần Áo</a></div>
-                  </div>
-                </div>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <div class="media">
-                  <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                  <div class="media-body">
-                    <div><a href="">Shop Quần Áo</a></div>
-                  </div>
-                </div>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <div class="media">
-                  <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                  <div class="media-body">
-                    <div><a href="">Shop Quần Áo</a></div>
-                  </div>
-                </div>
-              </li>
-              <li class="divider"></li>
+                </li>
+                <li class="divider"></li>
+              </div>
               <li>
                 <a ui-sref="access.signin">Đăng Xuất</a>
               </li>
