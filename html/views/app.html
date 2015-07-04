@@ -35,6 +35,7 @@
           <li><a href="#"><i class="fa fa-shopping-cart"></i> Hóa đơn</a></li>
         </ul>
         <!-- nabar right -->
+        ấdfasfsf
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle">
@@ -83,42 +84,17 @@
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeIn w wrapper-sm">
-              <li>
-                <div class="media">
-                  <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                  <div class="media-body">
-                    <div><a href="">Shop Quần Áo</a></div>
+              <div ng-repeat='list in list_page'>
+                <li>
+                  <div class="media">
+                    <span class="pull-left thumb-sm"><img src="{{list.picture.data.url}}" alt="..." class="img-circle"></span>
+                    <div class="media-body">
+                      <div><a href="">{{list.name}}</a></div>
+                    </div>
                   </div>
-                </div>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <div class="media">
-                  <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                  <div class="media-body">
-                    <div><a href="">Shop Quần Áo</a></div>
-                  </div>
-                </div>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <div class="media">
-                  <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                  <div class="media-body">
-                    <div><a href="">Shop Quần Áo</a></div>
-                  </div>
-                </div>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <div class="media">
-                  <span class="pull-left thumb-sm"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-                  <div class="media-body">
-                    <div><a href="">Shop Quần Áo</a></div>
-                  </div>
-                </div>
-              </li>
-              <li class="divider"></li>
+                </li>
+                <li class="divider"></li>
+              </div>
               <li>
                 <a ui-sref="access.signin">Đăng Xuất</a>
               </li>

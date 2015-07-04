@@ -9,7 +9,7 @@ module.exports = {
 		});
 	},
 	listPage : function (userId, callback){
-		Pages.find({user_id: userId}, function (err, doc){
+		Pages.find({user_id: userId}, function (err, doc){	
 			callback((err) ? true: false, doc);
 		});
 	},
