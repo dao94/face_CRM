@@ -9,7 +9,7 @@ module.exports = {
 		});
 	},
 	listPage : function (userId, callback){
-		Pages.find({user_id: userId}, function (err, doc){	
+		Pages.find({user_id: userId},{access_token:false}, function (err, doc){	
 			callback((err) ? true: false, doc);
 		});
 	},
@@ -52,12 +52,21 @@ module.exports = {
 		var page     = {};
 		var dataPage = content.data;
 		for(property in dataPage) {
-			var item = dataPage[property];
+			var item          = dataPage[property];
 			page.access_token = item.access_token;
+			page.stt          = '0';
 			Pages.update({page_id:item.id},page,function (err, doc) {
 				callback((err) ? true: false,doc);
 			});
 		}
+	},
+	// update status page_id
+	updatePageStatus: function(content,callback) {
+		var page = {};
+		page.stt = content.stt;
+		Pages.update({page_id:content.page.page_id},page,function (err ,doc) {
+			callback((err) ? true: false,doc);
+		});	
 	}
 };
 
