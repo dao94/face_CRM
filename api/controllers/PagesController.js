@@ -25,6 +25,18 @@ module.exports = {
 			_Object.data = cont;
 			res.json(_Object);
 		})
-	}	
+	},
+	update: function(rep,res,next) {
+		var body = rep.body;
+		PageService.updatePageStatus(body,function (err,res) {
+			console.log(err);
+		});
+	},
+	updatePage: function(rep,res,next) {
+		var body = rep.body;
+		PageService.update(body,function (err,res) {
+			console.log(err);
+		});
+	}
 };
 
