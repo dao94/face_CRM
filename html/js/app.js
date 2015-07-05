@@ -55,7 +55,7 @@ angular.module('fCRM',
             .state('app.inboxs', {
                 url: ':page/tin-nhan',
                 templateUrl: 'views/inbox/index.html',
-                'controller': 'InboxsController'
+                controller: 'InboxsController'
             })
             .state('app.orders', {
                 url: ':page/don-hang',

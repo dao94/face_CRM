@@ -24,6 +24,7 @@ module.exports = {
 	createPage: function (content, callback){
 		var page    = {};
 		var dataVal = content.data;
+		console.log(dataVal);
 		for(property in dataVal) {
 			var item                  = dataVal[property];
 			page.page_id              = item.id;

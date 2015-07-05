@@ -8,12 +8,16 @@
 module.exports = {
 	attributes: {
 		conversation_id : {}, // Id của conversation
-		type: {type: 'string', enum: ['comments', 'message']},
+		// type			: {type: 'string', enum: ['comments', 'message']},
+		type			: {type: 'string'},
 		can_reply 		: {}, // boolean 
 		link 			: {}, // Link đến facebook
 		unread_count 	: {}, // Số tin chưa đọc
 		customer 		: {}, // Thông tin người dùng
-		last_message	: {model: 'messages'} // Tin nhắn cuối cùng được tìm thấy 
+		last_message	: {model: 'messages'}, // Tin nhắn cuối cùng được tìm thấy 
+		user_id 		: {},
+		page_id   		: {},
+		messages        : {},
 	}
 };
 

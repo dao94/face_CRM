@@ -244,3 +244,6 @@ footer#footer {
 .list-pages li {
   cursor: pointer;
 }
+.list-pages div li:hover a{
+  color:#5A4DAA;
+}

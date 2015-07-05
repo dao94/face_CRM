@@ -44,6 +44,9 @@ module.exports.policies = {
    MessagesController: {
     'getMessage' : 'authorization'
    },
+   CommentsController: {
+    'getcomment' : 'authorization'
+   },
    DriversController: {
     'updateLocation': 'authorization',
     'updateStatus'  : 'authorization',

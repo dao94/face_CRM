@@ -481,7 +481,7 @@ div[ng-controller="Ctrl"] > div > * {
                   <div class="panel panel-default">
                     <div class="panel-heading font-bold">Html5 Inputs</div>
                     <div class="panel-body">
-                      <div ng-app="app" ng-controller="Ctrl">
+                      <div>
                         <div>Email: <a href="#" editable-email="user.email">{{ user.email || 'empty' }}</a></div>
                         <div>Tel: <a href="#" editable-tel="user.tel" e-pattern="\d{3}\-\d{2}\-\d{2}" e-title="xxx-xx-xx">{{ user.tel || 'empty' }}</a></div>
                         <div>Number: <a href="#" editable-number="user.number" e-min="18">{{ user.number || 'empty' }}</a></div>  
@@ -601,33 +601,3 @@ div[ng-controller="Ctrl"] > div > * {
           $("[data-toggle=tooltip]").tooltip();
       });
     </script>
-    <script>
-      $('.selectpicker').selectpicker({
-      style: 'btn-info',
-      size: 4
-  });
-    </script>
-<script>
-  var app = angular.module("app", ["xeditable"]);
-
-app.run(function(editableOptions) {
-  editableOptions.theme = 'bs3';
-});
-
-app.controller('Ctrl', function($scope) {
-  $scope.user = {
-    email: 'email@example.com',
-    tel: '123-45-67',
-    number: 29,
-    range: 10,
-    url: 'http://example.com',
-    search: 'blabla',
-    color: '#6a4415',
-    date: null,
-    time: '12:30',
-    datetime: null,
-    month: null,
-    week: null
-  };  
-});
-</script>

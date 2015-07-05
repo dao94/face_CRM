@@ -6,6 +6,29 @@
  */
 
 module.exports = {
-	
+
+	getComment : function (req, res, next){
+		var user 		 = req.user;
+		var ret = {
+					'error' 	: true,
+					'message' 	: 'Lỗi kết nối máy chủ, vui lòng thử lại sau',
+					'data' 		: ''
+				  }
+		CommentService.getPageByStatus(req.user.id,function (err,page) {
+			if(!err) {
+				CommentService.getPost(page,function (content){
+					CommentService.CreateConversation (content,req.user.id,page,function (err,resp) {
+						console.log(err);
+					});
+					ret.error   = false;
+					ret.data    = content.data;
+					ret.message = "ok";
+					res.json(ret);
+				});
+			} else {
+				res.json(ret);
+			}
+		});
+	}
 };
 
