@@ -241,3 +241,6 @@ footer#footer {
   position: fixed;
   bottom: 0px;
 }
+.list-pages li {
+  cursor: pointer;
+}
