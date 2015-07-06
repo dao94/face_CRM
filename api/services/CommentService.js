@@ -20,7 +20,6 @@ module.exports = {
 	CreateConversation : function(content,user_id,page,callback) {
 		var conversation = {};
 		var val          = content.data;
-		
 		for(property in val) {
 			var item                     = val[property];
 			conversation.conversation_id = item.id;

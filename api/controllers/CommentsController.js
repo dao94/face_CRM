@@ -15,7 +15,7 @@ module.exports = {
 					'data' 		: ''
 				  }
 		CommentService.getPageByStatus(req.user.id,function (err,page) {
-			if(!err) {
+			if(!err && page) {
 				CommentService.getPost(page,function (content){
 					CommentService.CreateConversation (content,req.user.id,page,function (err,resp) {
 						console.log(err);
