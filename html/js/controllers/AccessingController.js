@@ -27,7 +27,7 @@ angular.module('fCRM')
             $restful.post('pages/update',data,function (err,resp) {
                 console.log(resp);
             });
-            $state.go('app.comments', {page: $scope.selectedPage.username || $scope.selectedPage.page_id});
+            $state.go('app.inboxs', {page: $scope.selectedPage.username || $scope.selectedPage.page_id});
         }
 
 		$rootScope.$on('fb.auth.authResponseChange', function (evt, resp){

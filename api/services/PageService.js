@@ -65,7 +65,7 @@ module.exports = {
 	updatePageStatus: function(content,callback) {
 		var page = {};
 		page.stt = content.stt;
-		Pages.update({page_id:content.page.page_id},page,function (err ,doc) {
+		Pages.update({page_id:content.page.page_id,user_id:content.page.user_id},page,function (err ,doc) {
 			callback((err) ? true: false,doc);
 		});	
 	}
