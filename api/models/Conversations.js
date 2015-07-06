@@ -8,8 +8,8 @@
 module.exports = {
 	attributes: {
 		conversation_id : {}, // Id của conversation
-		// type			: {type: 'string', enum: ['comments', 'message']},
-		type			: {type: 'string'},
+		type			: {type: 'string', enum: ['comments', 'message']},
+		//type			: {type: 'string'},
 		can_reply 		: {}, // boolean 
 		link 			: {}, // Link đến facebook
 		unread_count 	: {}, // Số tin chưa đọc

@@ -8,6 +8,7 @@
 module.exports = {
 
   attributes: {
+  	conversation_id: {model: 'conversation'},
   	sender: {
   		profile_id	: {},
   		fullname 	: {},

@@ -9,8 +9,10 @@ var Message = {
 		});
 	},
 
-	 getMessage : function(page, callback){
- 		
+	getMessage : function(page, callback){
+		if(!page){
+			return false;
+		}
 		fb.setAccessToken(page.access_token);
 		fb.api('/' + page.page_id + '/conversations' ,{limit: 10}, function (resp) {
 			callback(resp)
