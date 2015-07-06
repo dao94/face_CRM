@@ -73,7 +73,7 @@ module.exports = {
 									callback(null,content);
 								}); 
 							}
-							PageService.updatePage(res,function (err,content) {
+							PageService.updatePage(res,user_id,function (err,content) {
 								console.log(err);
 							});
 						});

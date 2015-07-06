@@ -49,14 +49,15 @@ module.exports = {
 		
 	},
 	/*Update access_token*/ 
-	updatePage: function(content,callback) {
+	updatePage: function(content,userId,callback) {
 		var page     = {};
 		var dataPage = content.data;
 		for(property in dataPage) {
 			var item          = dataPage[property];
+			console.log(item);
 			page.access_token = item.access_token;
 			page.stt          = '0';
-			Pages.update({page_id:item.id},page,function (err, doc) {
+			Pages.update({page_id:item.id,user_id:userId},page,function (err, doc) {
 				callback((err) ? true: false,doc);
 			});
 		}
@@ -64,6 +65,7 @@ module.exports = {
 	// update status page_id
 	updatePageStatus: function(content,callback) {
 		var page = {};
+		console.log(content.page.user_id);
 		page.stt = content.stt;
 		Pages.update({page_id:content.page.page_id,user_id:content.page.user_id},page,function (err ,doc) {
 			callback((err) ? true: false,doc);

@@ -29,7 +29,6 @@ module.exports = {
 			conversation.customer        =  item.from;
 			conversation.page_id         = page.page_id;
 			conversation.user_id         = user_id;
-			
 			Conversations.create(conversation, function (err, doc){
 				console.log(item.comments);
 				callback((err) ? true: false, doc);
