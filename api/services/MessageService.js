@@ -26,7 +26,7 @@ var Message = {
 		if(!messages.data){
 			// Không có message
 		}
-		async.eachSeries(message.data, function loop(item, callback){
+		async.eachSeries(messages.data, function loop(item, callback){
 			console.log(item)
 		})
 	},
