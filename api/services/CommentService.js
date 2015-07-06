@@ -23,13 +23,15 @@ module.exports = {
 		for(var property in val) {
 			var item                     = val[property];
 			conversation.conversation_id = item.id;
-			conversation.type            = 'comment';
+			conversation.type            = 'comments';
 			conversation.link            = item.actions.link;
 			conversation.messages        = item.message;
+			conversation.customer        =  item.from;
 			conversation.page_id         = page.page_id;
 			conversation.user_id         = user_id;
 			
 			Conversations.create(conversation, function (err, doc){
+				console.log(item.comments);
 				callback((err) ? true: false, doc);
 			});
 		}
