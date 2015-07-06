@@ -8,7 +8,10 @@
 module.exports = {
 
   attributes: {
-  	
+	profile_id: {type: 'string', required: true},
+	fullname: {type: 'string', required: true},
+	email: {type: 'email'},
+	page: {model: 'pages'}
   }
 };
 

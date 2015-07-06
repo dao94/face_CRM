@@ -1,6 +1,8 @@
 "use strict";
 
-var fb = require('fb');
+var fb      = require('fb');
+var request = require('request');
+var async   = require('async');
 
 var Message = {
 	getPageByUsername: function(pageName, user_id, callback){
@@ -13,14 +15,20 @@ var Message = {
 		if(!page){
 			return false;
 		}
-		fb.setAccessToken(page.access_token);
 		fb.api('/' + page.page_id + '/conversations' ,{limit: 10}, function (resp) {
-			callback(resp)
+			Message.parseMessageData(resp, function (){
+
+			});
+			callback(resp);
 		});
 	},
-	parseMessageData : function (message){
-		var ret = {};
-
+	parseMessageData : function (messages, callback){
+		if(!messages.data){
+			// Không có message
+		}
+		async.eachSeries(message.data, function loop(item, callback){
+			console.log(item)
+		})
 	}
 }
 
