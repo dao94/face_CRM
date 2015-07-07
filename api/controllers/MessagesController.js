@@ -10,7 +10,9 @@ module.exports = {
 		var user 		 = req.user,
 			pageUserName = req.body.username;
 		MessageService.getPageByUsername(pageUserName, user.id,  function (error, resp){
+			console.log('error', error);
 			if(!error){
+
 				MessageService.getMessage(resp, function (data){
 					res.json(data);
 				});
