@@ -18,7 +18,7 @@ module.exports = {
 		});
 	},
 
-	CreateConversation :  function (content,user_id,page,callback) {
+	CreateConversation : function (content,user_id,page,callback) {
 		async.eachSeries(content.data , function (item , callback_next) {
 			var conversation             = {};
 			conversation.conversation_id = item.id;
