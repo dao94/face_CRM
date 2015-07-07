@@ -1,6 +1,7 @@
 "use strict";
 
-var fb = require('fb');
+var fb    = require('fb');
+var async = require('async');
 
 module.exports = {
 
@@ -17,21 +18,21 @@ module.exports = {
 		});
 	},
 
-	CreateConversation : function(content,user_id,page,callback) {
-		var conversation = {};
-		var val          = content.data;
-		for(var property in val) {
-			var item                     = val[property];
+	CreateConversation : function (content,user_id,page,callback) {
+		async.eachSeries(content.data , function (item , callback_next) {
+			var conversation             = {};
 			conversation.conversation_id = item.id;
 			conversation.type            = 'comments';
 			conversation.link            = item.actions.link;
 			conversation.messages        = item.message;
-			conversation.customer        =  item.from;
+			conversation.customer        = item.from;
 			conversation.page_id         = page.page_id;
 			conversation.user_id         = user_id;
 			Conversations.create(conversation, function (err, doc){
+				if(!err)
+					callback_next();
 				callback((err) ? true: false, doc);
 			});
-		}
+		}); 
 	}
 };

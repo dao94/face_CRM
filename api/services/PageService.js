@@ -1,6 +1,7 @@
 var bcrypt 	= require('bcrypt'),
 	jwt 	= require('jsonwebtoken'),
-	FB = require('fb');
+	FB = require('fb'),
+	async   = require('async');
 module.exports = {
 
 	checkPageId : function (userId, callback){
@@ -21,16 +22,13 @@ module.exports = {
 		});
 	},
 	/*Create page*/ 
-	createPage: function (content, callback){
-		var page    = {};
-		var dataVal = content.data;
-		console.log(dataVal);
-		for(var property in dataVal) {
-			var item                  = dataVal[property];
+	createPage : function (content, user_id, callback) {
+		async.eachSeries(content.data,function (item ,callback_next) {
+			var page                  = {};
 			page.page_id              = item.id;
 			page.name                 = item.name;
 			page.likes                = item.likes;
-			page.user_id              = dataVal.user_id;
+			page.user_id              = user_id;
 			page.unread_message_count = item.unread_message_count;
 			page.unread_notif_count   = item.unread_notif_count;
 			page.unseen_message_count = item.unseen_message_count;
@@ -43,10 +41,11 @@ module.exports = {
 			page.emails               = item.emails;
 			page.stt                  = 0;//0 is none active,1 is active
 			Pages.create(page, function (err, doc){
+				if(!err)
+					callback_next();
 				callback((err) ? true: false, doc);
-			});
-		}
-		
+			});	
+		})
 	},
 	/*Update access_token*/ 
 	updatePage: function(content,userId,callback) {

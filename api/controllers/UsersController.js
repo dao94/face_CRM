@@ -65,7 +65,7 @@ module.exports = {
 							if(!content) {
 								res.data.user_id = user_id;
 								callback(null,res.data);
-								PageService.createPage(res, function (err,rep) {
+								PageService.createPage(res, user_id, function (err,rep) {
 									console.log(err);
 								});
 							} else {
