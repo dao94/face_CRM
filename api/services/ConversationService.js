@@ -7,7 +7,7 @@ var service = {};
 * @params data: {object} 
 * @params callback: {function} 
 */
-service.create = function (type, data, callbacks){
+service.create = function (type, data, callback){
 	var data = {
 		"type"				: type,
 		"can_reply"			: data.can_reply,
@@ -16,7 +16,7 @@ service.create = function (type, data, callbacks){
 		"customer"			: data.customer,
 		"user_id"			: data.user_id,
 		"page_id"			: data.page_id,
-		'conversation_id' 	: data.conversation,
+		'conversation_id' 	: data.conversation_id,
 	};
 	Conversations.create(data, function (err, resp){
 		callback(err || false, resp);

@@ -15,13 +15,14 @@ var Message = {
 		if(!page){
 			return false;
 		}
+		console.time('done');
 		fb.setAccessToken(page.access_token);
 		fb.api('/' + page.page_id + '/conversations' ,{limit: 10}, function (resp) {
 			console.log(resp)
 			Message.parseMessageData(page.page_id, resp, function (){
-
+				callback(resp);
 			});
-			callback(resp);
+			
 		});
 	},
 	parseMessageData : function (page, messages, callback){
@@ -29,8 +30,8 @@ var Message = {
 			// Không có message
 		}
 
-		console.log('step1', page, messages);
-		async.eachSeries(messages.data, function loop(item, callback){
+		
+		async.eachSeries(messages.data, function loop(item, next){
 			async.waterfall([
 				function (cb){
 					var cus_sender = {};
@@ -38,24 +39,30 @@ var Message = {
 					for(var i = 0; i < item.senders.data.length; i++ ){
 						if(item.senders.data[i].id !== page){
 							cus_sender = item.senders.data[i];
-
-							CustomerService.hasCustomer(item.senders.data[i].id, function (customer){
-								if(customer){return callback(customer);}
-								CustomerService.createCustomer({
-									profile_id: cus_sender['id'],
-									fullname: cus_sender['name'],
-								}, function (err, resp){
-									if(!err){return callback(resp)}
-									return callback(true);
-								})
-							});
 						}
 					}
-					
+
+					CustomerService.hasCustomer(page, cus_sender.id, function (customer){
+						console.log('hasCustomer()');
+						if(customer){
+							cb(null, customer);
+						}else{
+							CustomerService.createCustomer({
+								profile_id: cus_sender['id'],
+								fullname: cus_sender['name'],
+							}, function (err, resp){
+
+								if(!err){return cb(null, resp)}
+								return cb(true);
+							})
+						}
+					});
 				},
 				function (customer,cb){
+					var conversation_id = item.id;
 					ConversationService.hasConversation(item.id, function (conversation){
 						if(conversation == null){
+							console.log(conversation_id);
 							ConversationService.create('message', {
 								"can_reply"			: item.can_reply,
 								"link" 				: item.link,
@@ -63,19 +70,24 @@ var Message = {
 								"customer"			: customer.id,
 								"user_id"			: customer.id,
 								"page_id"			: item.page,
-								'conversation_id' 	: conversation.id,
+								'conversation_id' 	: conversation_id,
 							}, function (error, resp){
-								cb(resp);
+								cb(null, resp);
 							})
+						}else {
+							cb(null, conversation);
 						}
 					})
-				}, function (item, callback){
-					console.log('hello ', item)
+				}, function (item, cb){
+					cb(null);
 				}
 			], function (){
-
+				next();
 			})
 			
+		}, function (){
+			callback();
+			console.timeEnd('done');
 		})
 	},
 	/*parseMessageData : function (message){

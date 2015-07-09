@@ -6,7 +6,8 @@ var async   = require('async');
 
 var CustomerService = {
 	hasCustomer: function(page_id, profile_id, callback){
-		Customers.findOne({page : page_id, profile_id: profile_id}, function (error, doc){
+		Customers.findOne({profile_id: profile_id}, function (error, doc){
+
 			if(error){
 				return callback(error);
 			}
@@ -23,6 +24,7 @@ CustomerService.createCustomer = function (data, callback){
 	};
 
 	Customers.create(dataCreate, function (err, resp){
+		console.log('Custoemr created', err);
 		callback(err || false, resp);	
 	})
 }
