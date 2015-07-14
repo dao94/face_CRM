@@ -3,8 +3,7 @@
 var fb    = require('fb');
 var async = require('async');
 
-module.exports = {
-
+var service = {
 	getPageByStatus : function(user_id, callback){
 		Pages.findOne({stt : '1', user_id: user_id}, function (error, page){
 			callback(error, page);
@@ -17,7 +16,7 @@ module.exports = {
 			callback(resp);
 		});
 	},
-
+	// add conversation
 	CreateConversation : function (content,user_id,page,callback) {
 		async.eachSeries(content.data , function (item , callback_next) {
 			var conversation             = {};
@@ -29,10 +28,29 @@ module.exports = {
 			conversation.page_id         = page.page_id;
 			conversation.user_id         = user_id;
 			Conversations.create(conversation, function (err, doc){
+				service.createMessage(item.comments,doc.id);
 				if(!err)
 					callback_next();
 				callback((err) ? true: false, doc);
 			});
 		}); 
+	},
+	//add create message
+	createMessage : function(content,conversation_id) {
+		if(content) {
+			async.eachSeries(content.data, function (item , callback) {
+				var mess       = {};
+				mess.message    = item.message;
+				mess.profile_id = item.from.id;
+				mess.name       = item.from.name;
+				Messages.create(mess, function (err,doc) {
+					console.log(doc);
+					if(!err)
+						callback();
+				});
+			});
+		}
 	}
+
 };
+module.exports = service;
