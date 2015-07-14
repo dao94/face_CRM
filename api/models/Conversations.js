@@ -14,7 +14,7 @@ module.exports = {
 		link 			: {}, // Link đến facebook
 		unread_count 	: {}, // Số tin chưa đọc
 		customer 		: {}, // Thông tin người dùng
-		last_message	: {model: 'messages'}, // Tin nhắn cuối cùng được tìm thấy 
+		last_message	: {}, // Tin nhắn cuối cùng được tìm thấy 
 		user_id 		: {},
 		page_id   		: {},
 		messages        : {},

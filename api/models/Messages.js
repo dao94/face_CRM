@@ -9,9 +9,8 @@ module.exports = {
 
   attributes: {
   	conversation_id: {model: 'conversations'},
+    message_id : {},
   	sender: {
-  		profile_id	: {},
-  		fullname 	: {},
   	},
 	own: {type: 'boolean'},
 	messsage: {type: 'string'},

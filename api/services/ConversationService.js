@@ -17,6 +17,7 @@ service.create = function (type, data, callback){
 		"user_id"			: data.user_id,
 		"page_id"			: data.page_id,
 		'conversation_id' 	: data.conversation_id,
+		'last_message'		: data.last_message
 	};
 	Conversations.create(data, function (err, resp){
 		callback(err || false, resp);
