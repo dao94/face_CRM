@@ -96,7 +96,7 @@ var Message = {
 		});
 	},
 	parseMessageData : function (page, messages, callback){
-		if(!messages.data){
+		if(!messages.data || page.perms.indexOf('ADMINISTER') == -1){
 			callback();
 			return;
 		}
