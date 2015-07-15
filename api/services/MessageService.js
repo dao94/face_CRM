@@ -97,7 +97,8 @@ var Message = {
 	},
 	parseMessageData : function (page, messages, callback){
 		if(!messages.data){
-			// Không có message
+			callback();
+			return;
 		}
 		var tasks = [];
 		messages.data.forEach(function (item){
@@ -176,7 +177,7 @@ var Message = {
 	},
 	getMessagePaging : function (messages, callback, temp){
 		temp = temp || [];
-		messages = typeof messages == 'object' ? messages : JSON.parse(messages);
+		messages = typeof messages == 'object' ? messages : JSON.parse(Messages);
 		if (messages.data) {
 			messages.data.forEach(function (item){
 				temp.push(item);
