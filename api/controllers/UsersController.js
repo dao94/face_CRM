@@ -66,7 +66,7 @@ module.exports = {
 								res.data.user_id = user_id;
 								callback(null,res.data);
 								PageService.createPage(res, user_id, function (err,rep) {
-									console.log(err);
+									console.log('UsersController', 'createPage');
 								});
 							} else {
 								PageService.listPage(user_id,function (err,content) {
@@ -74,7 +74,7 @@ module.exports = {
 								}); 
 							}
 							PageService.updatePage(res,user_id,function (err,content) {
-								console.log(err);
+								
 							});
 						});
 						
