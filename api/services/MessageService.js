@@ -89,7 +89,7 @@ var Message = {
 		fb.setAccessToken(page.access_token);
 		console.log('page access_token', page.access_token);
 		fb.api('/' + page.page_id + '/conversations' ,{limit: 10}, function (resp) {
-			console.log('getConversation', resp);
+			console.log('getConversation', resp, page);
 			Message.parseMessageData(page.page_id, resp, function (){
 				callback(resp);
 			});
