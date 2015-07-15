@@ -50,18 +50,19 @@ module.exports = {
 	},
 	/*Update access_token*/ 
 	updatePage: function(content,userId,callback) {
-		var page     = {};
+		
 		var dataPage = content.data;
-
-		for(property in dataPage) {
-			var item          = dataPage[property];
+		async.eachSeries(dataPage,function (item ,callback_next) {
+			var page     = {};
 			page.access_token = item.access_token;
 			page.stt          = '0';
 
 			Pages.update({'page_id': item.id, 'user_id': userId}, page, function (err, doc) {
-				callback((err) ? true: false,doc);
+				callback_next();
 			});
-		}
+		}, function (){
+			callback();
+		})
 	},
 	// update status page_id
 	updatePageStatus: function(content,callback) {
