@@ -8,7 +8,7 @@
 module.exports = {
 	show: function (req, res, next){
 		var user 		 = req.user,
-			pageUserName = req.body.username;
+			pageUserName = req.query.username;
 		MessageService.getPageByUsername(pageUserName, user.id,  function (error, resp){
 			if(!error){
 				ConversationService.getConversation(resp, function (err, data){
