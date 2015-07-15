@@ -177,7 +177,7 @@ var Message = {
 	},
 	getMessagePaging : function (messages, callback, temp){
 		temp = temp || [];
-		messages = typeof messages == 'object' ? messages : JSON.parse(Messages);
+		messages = typeof messages == 'object' ? messages : JSON.parse(messages);
 		if (messages.data) {
 			messages.data.forEach(function (item){
 				temp.push(item);
