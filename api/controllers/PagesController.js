@@ -28,14 +28,22 @@ module.exports = {
 	},
 	update: function(rep,res,next) {
 		var body = rep.body;
-		PageService.updatePageStatus(body,function (err,res) {
-			console.log(err);
+		PageService.updatePageStatus(body,function (err,resp) {
+			return res.json({
+				'error' 		: error || false,
+				'error_message' : 'Thành công',
+				'data'			: resp
+			});
 		});
 	},
 	updatePage: function(rep,res,next) {
 		var body = rep.body;
-		PageService.update(body,function (err,res) {
-			console.log(err);
+		PageService.update(body,function (err,resp) {
+			return res.json({
+				'error' 		: error || false,
+				'error_message' : 'Thành công',
+				'data'			: resp
+			});
 		});
 	}
 };
