@@ -13,7 +13,7 @@ module.exports = {
 		can_reply 		: {}, // boolean 
 		link 			: {}, // Link đến facebook
 		unread_count 	: {}, // Số tin chưa đọc
-		customer 		: {}, // Thông tin người dùng
+		customer 		: {model: 'Customers'}, // Thông tin người dùng
 		last_message	: {}, // Tin nhắn cuối cùng được tìm thấy 
 		user_id 		: {},
 		page_id   		: {},

@@ -9,10 +9,15 @@ module.exports = {
 	show: function (req, res, next){
 		var user 		 = req.user,
 			pageUserName = req.query.username;
+			
 		MessageService.getPageByUsername(pageUserName, user.id,  function (error, resp){
 			if(!error){
-				ConversationService.getConversation(resp, function (err, data){
-					res.json(data);
+				ConversationService.getConversation(resp, 'message' , function (err, data){
+					res.json({
+						'error': error || false,
+						'error_message': '',
+						'data': data
+					});
 				});
 			}else {
 				return res.json({error: true, message :"Lỗi, trang không tồn tại"});

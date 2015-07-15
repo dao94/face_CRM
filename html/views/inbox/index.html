@@ -33,33 +33,16 @@
                         </span>
                       </div>
                     </li>
-                    <li class="list-group-item clearfix">
+                    <li class="list-group-item clearfix" ng-repeat="item in list_conversation">
                       <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="http://graph.facebook.com/844563042265732/picture?type=large">
+                        <img ng-src="http://graph.facebook.com/{{item.customer.profile_id}}/picture?type=large">
                       </a>
                       <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
+                        <div><a  class="text-md " href="#/app/mail/10">{{item.customer.fullname}}</a></div>
+                        <div class="text-ellipsis m-t-xs ">{{item.last_message}}</div>
                       </div>      
                     </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
-                    <li class="list-group-item clearfix">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
-                        <img ng-src="img/a10.jpg" src="img/a10.jpg">
-                      </a>
-                      <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">Phạm Quang Thành</a></div>
-                        <div class="text-ellipsis m-t-xs ">em muốn mua 1 cái điện thoại giá bao nhiêu ạ</div>
-                      </div>      
-                    </li>
+                   
                   </ul>
                   <!-- / list -->
                 </div>

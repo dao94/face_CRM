@@ -8,7 +8,7 @@ angular.module('fCRM')
 
         $scope.getConversation = function (){
         	$restful.get('conversations/show',{username: $stateParams.page},function (err,resp) {
-				console.log(resp);
+				$scope.list_conversation = resp.data;
         	});
         }
 
