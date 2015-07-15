@@ -30,7 +30,7 @@ module.exports = {
 		var body = rep.body;
 		PageService.updatePageStatus(body,function (err,resp) {
 			return res.json({
-				'error' 		: error || false,
+				'error' 		: err || false,
 				'error_message' : 'Thành công',
 				'data'			: resp
 			});
@@ -40,7 +40,7 @@ module.exports = {
 		var body = rep.body;
 		PageService.update(body,function (err,resp) {
 			return res.json({
-				'error' 		: error || false,
+				'error' 		: err || false,
 				'error_message' : 'Thành công',
 				'data'			: resp
 			});
