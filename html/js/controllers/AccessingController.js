@@ -23,9 +23,9 @@ angular.module('fCRM')
         }   
 
         $scope.enterPage = function (){
-            var data = {page:$scope.selectedPage,stt:1};
-            $restful.post('pages/update',data,function (err,resp) {
-                console.log(resp);
+            var data = {page:$scope.selectedPage, stt:1};
+            $restful.post('pages/update',data, function (err, resp) {
+                    
             });
             $state.go('app.inboxs', {page: $scope.selectedPage.username || $scope.selectedPage.page_id});
         }

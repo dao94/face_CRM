@@ -34,6 +34,12 @@ service.hasConversation = function (conversation_id, callback){
 		
 	});
 }
+
+service.getConversation =  function (page, type,  callback){
+	Conversations.find({page_id: page.id, type: type}, function (error, conversation){
+		callback(error, conversation)
+	})
+}
 service.createCustomer = function (data, callback){
 	var dataCreate = {
 		'profile_id': data.profile_id,
@@ -44,7 +50,6 @@ service.createCustomer = function (data, callback){
 		callback(err || false, resp);	
 	})
 }
-
 
 
 module.exports = service;
