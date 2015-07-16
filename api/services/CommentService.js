@@ -30,6 +30,7 @@ var service = {
 			Conversations.create(conversation, function (err, doc){
 				service.createMessage(item.comments,doc.id);
 				if(!err)
+					//call back
 					callback_next();
 				callback((err) ? true: false, doc);
 			});
