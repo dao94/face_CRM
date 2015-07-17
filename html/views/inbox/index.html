@@ -33,16 +33,24 @@
                         </span>
                       </div>
                     </li>
-                    <li class="list-group-item clearfix" ng-repeat="item in list_conversation">
-                      <a class="avatar thumb pull-left m-r" href="#/app/page/profile">
+
+                    <li class="list-group-item clearfix text-center" ng-if="conversationLoading">
+                      <div class="facebook_loading"><span></span><span></span><span></span></div>
+                      <p>Đang tải dữ liệu</p>
+                    </li>
+
+                    <li class="list-group-item clearfix" ng-repeat="item in list_conversation" ng-if="!conversationLoading"  ng-class="$stateParams.conversationId == item.id ? 'active' : ''" ui-sref="app.inboxs({page: item.page_id, conversationId: item.id})">
+                      <a class="avatar thumb pull-left m-r" >
                         <img ng-src="http://graph.facebook.com/{{item.customer.profile_id}}/picture?type=large">
                       </a>
                       <div class="clear">
-                        <div><a  class="text-md " href="#/app/mail/10">{{item.customer.fullname}}</a></div>
+                        <div><a  class="text-md " >{{item.customer.fullname}}</a></div>
                         <div class="text-ellipsis m-t-xs ">{{item.last_message}}</div>
                       </div>      
                     </li>
                    
+
+
                   </ul>
                   <!-- / list -->
                 </div>

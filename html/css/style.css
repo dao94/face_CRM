@@ -247,3 +247,71 @@ footer#footer {
 .list-pages div li:hover a{
   color:#5A4DAA;
 }
+
+
+
+
+
+
+
+#tin-nhan .list-group-item{
+  cursor: pointer;
+}
+
+
+
+
+
+/* 
+
+ */
+
+ /* Loading .... */
+@-webkit-keyframes fb_loading {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes fb_loading {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.facebook_loading{
+  display: inline-block;
+  vertical-align: middle;
+}
+.overlay-loading .facebook_loading {
+    text-align: center; 
+    margin-top:40px;
+}
+
+.facebook_loading span {
+    -webkit-animation-name: fb_loading;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;      
+    -moz-animation-name: fb_loading;
+    -moz-animation-duration: 1s;
+    -moz-animation-iteration-count: infinite;
+    font-weight: bold;
+    font-size:3px;
+    border: 1px solid #aeb5da;
+    margin-right: 1px;                                            
+    padding: 2px 1px 2px 1px;
+    background: #e7eaf4;
+}
+
+.facebook_loading span:nth-child(1) {
+    -webkit-animation-delay: 100ms;
+    -moz-animation-delay: 100ms;                                            
+
+}
+
+.facebook_loading span:nth-child(2) {
+    -webkit-animation-delay: 150ms;
+    -moz-animation-delay: 150ms; 
+}
+
+.facebook_loading span:nth-child(3) {
+    -webkit-animation-delay: 250ms;
+    -moz-animation-delay: 250ms;
+}

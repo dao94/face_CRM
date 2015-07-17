@@ -37,15 +37,15 @@ angular.module('fCRM',
             })
 
             .state('accessing', {
-                abstract: false,
-                url: '/accessing?step=',
-                templateUrl: 'views/accessing.html',
-                controller: 'AccessingController'
+                abstract    : false,
+                url         : '/accessing?step=',
+                templateUrl : 'views/accessing.html',
+                controller  : 'AccessingController'
             })
 
             .state('app.dashboard', {
-                url: ':page/dashboard',
-                templateUrl: 'views/dashboard.html'
+                url         : ':page/dashboard',
+                templateUrl : 'views/dashboard.html'
             })
             .state('app.comments', {
                 url: ':page/binh-luan',
@@ -53,7 +53,7 @@ angular.module('fCRM',
                 controller: 'CommentController'
             })
             .state('app.inboxs', {
-                url: ':page/tin-nhan',
+                url: ':page/tin-nhan/:conversationId',
                 templateUrl: 'views/inbox/index.html',
                 controller: 'InboxsController'
             })
@@ -65,8 +65,6 @@ angular.module('fCRM',
                 url: ':page/san-pham',
                 templateUrl: 'views/products/index.html',
             });
-            
-            
 }])
 .run(['$rootScope', '$auth', '$state', '$stateParams', '$templateCache', function ($rootScope, $auth, $state, $stateParams, $templateCache){
     

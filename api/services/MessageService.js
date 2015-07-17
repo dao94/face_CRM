@@ -3,10 +3,21 @@
 var fb      = require('fb');
 var request = require('request');
 var async   = require('async');
+var _       = require('underscore');
 
 var Message = {
 	getPageByUsername: function(pageName, user_id, callback){
-		Pages.findOne({username : pageName, user_id: user_id}, function (error, page){
+		var data = {
+			user_id: user_id
+		};
+
+		if(_.isNumber(pageName)){
+			data['page_id'] = pageName;
+		}else {
+			data['username'] = pageName;
+		}
+
+		Pages.findOne(data, function (error, page){
 			callback(error, page);
 		});
 		return;
