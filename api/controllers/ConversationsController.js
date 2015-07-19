@@ -9,10 +9,10 @@ module.exports = {
 	show: function (req, res, next){
 		var user 		 = req.user,
 			pageUserName = req.query.username;
-			
+			console.log('show pageusername', pageUserName);
 		MessageService.getPageByUsername(pageUserName, user.id,  function (error, resp){
 			if(!error){
-				ConversationService.getConversation(resp, 'message' , function (err, data){
+				ConversationService.getListConversation(resp, 'message' , function (err, data){
 					res.json({
 						'error': error || false,
 						'error_message': '',
@@ -25,6 +25,7 @@ module.exports = {
 		})
 
 		
-	}	
+	},
+	
 };
 

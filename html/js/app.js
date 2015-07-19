@@ -56,15 +56,21 @@ angular.module('fCRM',
                 url: ':page/tin-nhan',
                 templateUrl: 'views/inbox/index.html',
                 controller: 'InboxsController',
+                
+            })
+            
+            .state('app.inboxs.detail', {
+                url: '/:conversationId',
                 views: {
-                    
+                    'detail' : {
+                        templateUrl: 'views/inbox/detail.html',
+                        controller: 'InboxDetailCtrl'
+                    }
                 }
+                
+                
             })
-            .state('app.inboxs_detail', {
-                url: ':page/tin-nhan/:conversationId',
-                templateUrl: 'views/inbox/index.html',
-                //controller: 'InboxDetailCtrl'
-            })
+
             .state('app.orders', {
                 url: ':page/don-hang',
                 templateUrl: 'views/order/index.html',
@@ -77,6 +83,9 @@ angular.module('fCRM',
 .run(['$rootScope', '$auth', '$state', '$stateParams', '$templateCache', function ($rootScope, $auth, $state, $stateParams, $templateCache){
     
     $rootScope.USER = $auth.getUser() || false;
+    $rootScope.$stateParams = $stateParams;
+    $rootScope.$state = $state;
+
 
     $rootScope.$on('$stateChangeStart', function (evt,toState,toParams) {
         if(toState.name.indexOf('app') !== -1){

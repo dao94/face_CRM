@@ -37,7 +37,7 @@ var service = {
 					});
 				} else {
 					service.getCheckMessagePost();
-					console.log(data.conversation_id);
+					
 					callback_next();
 				}
 			});
@@ -47,7 +47,6 @@ var service = {
 	createMessage : function(content,conversation_id) {
 		if(content) {
 			async.eachSeries(content.data, function (item , callback) {
-				console.log(item);
 				var mess             = {};
 				mess.message         = item.message;
 				mess.profile_id      = item.from.id;
