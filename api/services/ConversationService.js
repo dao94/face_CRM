@@ -35,7 +35,7 @@ service.hasConversation = function (conversation_id, callback){
 	});
 }
 
-service.getConversation =  function (page, type,  callback){
+service.getListConversation =  function (page, type,  callback){
 	
 	Conversations.find({page_id: page.page_id, type: type})
 	.populate("customer")
@@ -45,6 +45,7 @@ service.getConversation =  function (page, type,  callback){
 		}
 	)
 }
+
 service.createCustomer = function (data, callback){
 	var dataCreate = {
 		'profile_id': data.profile_id,

@@ -8,28 +8,39 @@ var _       = require('underscore');
 var Message = {
 	getPageByUsername: function(pageName, user_id, callback){
 		var data = {
-			user_id: user_id
+			user_id: user_id,
+			'$or': [
+					{'page_id': pageName},
+					{'username': pageName}
+			]
 		};
 
-		if(_.isNumber(pageName)){
-			data['page_id'] = pageName;
-		}else {
-			data['username'] = pageName;
-		}
+		console.log('getPageByUsername', data);
 
 		Pages.findOne(data, function (error, page){
+			console.log('Pages.findOne', page);
 			callback(error, page);
 		});
 		return;
 	},
 	hasMessage: function (messageId, callback){
-		Messages.findOne({message_id: messageId}, function (error, page){
+
+		Messages.findOne({message_id: messageId}, function (error, message){
 			if(error){
 				return callback(true);
 			}
-			return callback(page);
+			return callback(message);
 		});
 
+	},
+
+	getMessage: function (conversation_id, callback){
+		Messages.find({where: {conversation_id: conversation_id}, sort: 'create_at ASC'}, function (error, message){
+			if(error){
+				throw new Error(error);
+			}
+			callback(null, message);
+		});
 	},
 	
 
@@ -43,7 +54,6 @@ var Message = {
 			task.push(function (next){
 				Message.hasMessage(item.id, function (result){
 					if(!result){
-						
 						var data = {
 							conversation_id: conversation.id,
 						    message_id : item.id,
@@ -70,29 +80,9 @@ var Message = {
 		async.parallel(task, function (){
 			callback();
 		})
-
-		
-		
-		/*async.eachSeries(messages, function (item, next){
-			var data = {
-				conversation_id: conversation.id,
-			    message_id : item.id,
-			  	sender: {
-			  		profile_id	: item.from.id,
-			  		fullname 	: item.from.name,
-			  	},
-				own: (item.from.id == conversation.page_id) ? true : false,
-				messsage: item.message,
-				create_at: item.create_at,
-			};
-
-			Messages.create(data, function (err, resp){
-				next()
-			})
-		})*/
 	},
 
-	getMessage : function(page, callback){
+	getFBMessage : function(page, callback){
 		if(!page){
 			return false;
 		}
@@ -182,7 +172,6 @@ var Message = {
 		
 
 		async.parallel(tasks, function (){
-			console.log('DONE');
 			callback();
 		})
 	},
@@ -194,8 +183,6 @@ var Message = {
 				temp.push(item);
 			})
 		};
-		
-		
 
 		if(messages && messages.paging){
 			var next_url = messages.paging.next;

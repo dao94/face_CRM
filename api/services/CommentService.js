@@ -50,6 +50,7 @@ var service = {
 						callback((err) ? true: false, doc);
 					});
 				} else {
+<<<<<<< HEAD
 					//neu comment co du lieu
 					if(item.comments) {
 						async.eachSeries(item.comments.data, function (val,callback_mess){
@@ -63,6 +64,10 @@ var service = {
 							callback_mess();
 						});
 					}
+=======
+					service.getCheckMessagePost();
+					
+>>>>>>> 559f9872cfef87b75eb08f55bd2e2dad36a50c49
 					callback_next();
 				}
 			});
@@ -71,7 +76,11 @@ var service = {
 	//add create message
 	createMessage : function(content,conversation_id) {
 		if(content) {
+<<<<<<< HEAD
 			async.eachSeries(content, function (item , callback) {
+=======
+			async.eachSeries(content.data, function (item , callback) {
+>>>>>>> 559f9872cfef87b75eb08f55bd2e2dad36a50c49
 				var mess             = {};
 				mess.message         = item.message;
 				mess.profile_id      = item.from.id;

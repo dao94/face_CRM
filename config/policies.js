@@ -42,7 +42,7 @@ module.exports.policies = {
     'list' : 'authorization'  
    },
    MessagesController: {
-    'getMessage' : 'authorization'
+    'syncMessage' : 'authorization'
    },
    CommentsController: {
     'getcomment' : 'authorization'
