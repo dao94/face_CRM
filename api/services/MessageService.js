@@ -8,14 +8,15 @@ var _       = require('underscore');
 var Message = {
 	getPageByUsername: function(pageName, user_id, callback){
 		var data = {
-			user_id: user_id
+			user_id: user_id,
+			'$or': {
+				'page_id': pageName,
+				'username': pageName
+			}
 		};
 
-		if(_.isNumber(pageName)){
-			data['page_id'] = pageName;
-		}else {
-			data['username'] = pageName;
-		}
+		
+		console.log('getPageByUsername', data);
 
 		Pages.findOne(data, function (error, page){
 			callback(error, page);
@@ -23,6 +24,7 @@ var Message = {
 		return;
 	},
 	hasMessage: function (messageId, callback){
+
 		Messages.findOne({message_id: messageId}, function (error, page){
 			if(error){
 				return callback(true);
