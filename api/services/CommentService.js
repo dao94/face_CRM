@@ -10,22 +10,25 @@ var service = {
 		});
 	},
 
-	 getPost : function(page, callback){
+	getPost : function(page, callback){
 		fb.setAccessToken(page.access_token);
-		fb.api('/' + page.page_id + '/posts' ,{limit: 10}, function (resp) {
+		fb.api('/' + page.page_id + '/posts' ,{limit: 100}, function (resp) {
 			callback(resp);
 		});
 	},
+
 	showMessage : function(conversationId, callback) {
-		Messages.find({where: {conversation_id:conversationId},sort:{'createdAt':-1}},function (err,data) {
+		Messages.find({where: {conversation_id:conversationId},sort:{'createdAt':-1},limit:10},function (err,data) {
 			callback(err,data);
 		});
 	},
+
 	ShowPostBypage : function(userId, page, callback) {
 		Conversations.find({user_id:userId,page_id:page.id},function (err,data) {
 			callback(err,data);
 		});
 	},
+
 	// add conversation
 	CreateConversation : function (content,user_id,page,callback) {
 		async.eachSeries(content.data , function (item , callback_next) {
@@ -47,7 +50,6 @@ var service = {
 						}
 						if(!err)
 							callback_next();
-						callback((err) ? true: false, doc);
 					});
 				} else {
 					//neu comment co du lieu
@@ -66,8 +68,11 @@ var service = {
 					callback_next();
 				}
 			});
+		},function() {
+			callback();
 		}); 
 	},
+
 	//add create message
 	createMessage : function(content,conversation_id) {
 		if(content) {
@@ -85,6 +90,7 @@ var service = {
 			});
 		}
 	},
+
 	createMessNew : function(content,conversation_id,callback) {
 		if(content) {
 			var mess             = {};
@@ -98,16 +104,24 @@ var service = {
 			});
 		}
 	},
+
 	//get all data check post isset
 	getCheckDataPost : function(id_post,callback) {
 		Conversations.findOne({conversation_id :id_post},function (err ,data) {
 			callback(err,data);
 		}); 
 	},
+
 	getCheckMessagePost : function (id_message, id_conversation,callback) {
 		Messages.findOne({message_id:id_message,conversation_id : id_conversation},function (err,data) {
 			callback(err,data);
 		});
-	}
+	},
+
+	getPostByComment : function(id_conversation,callback) {
+		Conversations.findOne({id :id_conversation},function (err ,data) {
+			callback(err,data);
+		}); 
+	},
 };
 module.exports = service;

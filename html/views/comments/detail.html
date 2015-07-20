@@ -1,0 +1,136 @@
+<!-- header -->
+            <div class="wrapper bg-white lter b-b">
+              <div class="btn-group pull-right">
+                <button type="button" class="btn btn-md btn-bg btn-default" title="Đánh dấu chưa đọc"><i class="fa fa-warning text-warning"></i></button>
+                <a href="{{postbycomment.link}}" target="_blank" class="btn btn-md btn-bg btn-default" title="Xem trên facebook"><i class="fa fa-sign-out text-primary"></i></a>
+              </div>
+              <div class="btn-toolbar">
+                <div class="btn-group dropdown">
+                  <button class="btn btn-default btn-sm btn-bg dropdown-toggle" data-toggle="dropdown">
+                    <span class="dropdown-label">Filter</span>                    
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu text-left text-sm">
+                    <li><a ui-sref="app.mail.list({fold:'unread'})">Unread</a></li>
+                    <li><a ui-sref="app.mail.list({fold:'starred'})">Starred</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group">
+                  <button class="btn btn-sm btn-bg btn-default" data-toggle="tooltip" data-placement="bottom" data-title="Refresh" data-original-title="" title=""><i class="fa fa-refresh"></i></button>
+                </div>
+              </div>
+            </div>
+            <!-- / header -->
+          <div class="wrapper">
+            <!-- .comment-list -->
+            <div class="m-b b-l m-l-md streamline">
+              <div>
+                <a class="pull-left thumb-sm avatar m-l-n-md">
+                  <img src="{{page.picture.data.url}}" alt="...">
+                </a>          
+                <div class="m-l-lg panel b-a">
+                  <div class="panel-heading pos-rlt b-b b-light">
+                    <span class="arrow left"></span>                    
+                    <a href>{{page.name}}</a>
+                    <span class="text-muted m-l-sm pull-right">
+                      <i class="fa fa-clock-o"></i>
+                      1h ago
+                    </span>
+                  </div>
+                  <div class="panel-body">
+                    <div>{{postbycomment.messages}}</div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <a class="pull-left thumb-sm avatar m-l-n-md">
+                  <img src="img/a1.jpg" class="img-circle" alt="...">
+                </a>
+                <div class="m-l-lg panel b-a">
+                  <div class="panel-heading pos-rlt b-b b-light">
+                    <span class="arrow left"></span>
+                    <a href>Tên người bình luận</a>
+                    <span class="text-muted m-l-sm pull-right">
+                      <i class="fa fa-clock-o"></i>
+                      Just now
+                    </span>
+                  </div>
+                  <div class="panel-body">
+                    <div>Nội dung bình luận</div>
+                    <div class="m-t-sm">
+                      <a href ui-toggle-class class="btn btn-default btn-xs active">
+                        <i class="fa  fa-thumbs-up text-primary"></i> 
+                        Thích
+                      </a>
+                      <a href class="btn btn-default btn-xs">
+                        <i class="fa fa-mail-reply text-muted"></i> Trả lời
+                      </a>
+                      <a href class="btn btn-default btn-xs">
+                        <i class="glyphicon glyphicon-eye-close text-muted"></i> Ẩn
+                      </a>
+                      <a href class="btn btn-default btn-xs">
+                        <i class="glyphicon glyphicon-remove text-muted"></i> Xóa
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- .comment-reply -->
+              <div class="m-l-lg">
+                <a class="pull-left thumb-sm avatar">
+                  <img src="img/a8.jpg" alt="...">
+                </a>          
+                <div class="m-l-xxl panel b-a">
+                  <div class="panel-heading pos-rlt b-b b-light">
+                    <span class="arrow left pull-up"></span>
+                    <a href>Tên người bình luận</a>
+                    <span class="text-muted m-l-sm pull-right">
+                      <i class="fa fa-clock-o"></i>
+                      Just now
+                    </span>                       
+                  </div>
+                  <div class="panel-body">
+                    <div>Nội dung bình luận</div>
+                    <div class="m-t-sm">
+                      <a href ui-toggle-class class="btn btn-default btn-xs active">
+                        <i class="fa fa-thumbs-up text-primary text-active"></i> 
+                        Thích
+                      </a>
+                      <a href class="btn btn-default btn-xs">
+                        <i class="glyphicon glyphicon-eye-close text-muted"></i> Ẩn
+                      </a>
+                      <a href class="btn btn-default btn-xs">
+                        <i class="glyphicon glyphicon-remove text-danger"></i> Xóa
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- / .comment-reply -->
+            </div>
+            <!-- <div class="clearfix m-b-lg">
+              <a class="pull-left thumb-sm avatar"><img src="img/a6.jpg" alt="..."></a>
+              <div class="m-l-xxl">
+                <form class="m-b-none">
+                  <div class="input-group">
+                    <input type="text" class="form-control input-lg" placeholder="Viết bình luận ...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default btn-lg" type="button"><i class="fa fa-send-o text-info"></i></button>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div> -->
+            <div class="clearfix widget-area no-padding blank">
+                  <div class="status-upload">
+                    <form>
+                      <textarea placeholder="Viết bình luận ..." row="3"></textarea>
+                      <ul>
+                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                      </ul>
+                      <button type="submit" class="btn btn-success green"><i class="fa fa-send-o"></i> Gửi</button>
+                    </form>
+                  </div><!-- Status Upload  -->
+                </div><!-- Widget Area -->
+                <div class="clearfix"></div>
+            </div>

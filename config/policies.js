@@ -45,7 +45,8 @@ module.exports.policies = {
     'syncMessage' : 'authorization'
    },
    CommentsController: {
-    'getcomment' : 'authorization'
+    'getcomment'    : 'authorization',
+    'postbycomment' : 'authorization'
    },
    ConversationsController: {
     'show' : 'authorization'

@@ -71,6 +71,18 @@ angular.module('fCRM',
                 
             })
 
+            .state('app.comments.detail', {
+                url: '/:conversationId',
+                views: {
+                    'detail' : {
+                        templateUrl: 'views/comments/detail.html',
+                        controller: 'DetailComment'
+                    }
+                }
+                
+                
+            })
+
             .state('app.orders', {
                 url: ':page/don-hang',
                 templateUrl: 'views/order/index.html',
