@@ -42,10 +42,13 @@ module.exports.policies = {
     'list' : 'authorization'  
    },
    MessagesController: {
-    'syncMessage' : 'authorization'
+    'syncMessage' : 'authorization',
+    'getMessage'  : 'authorization',
+    'postMessage' : 'authorization'
    },
    CommentsController: {
-    'getcomment' : 'authorization'
+    'getcomment' : 'authorization',
+
    },
    ConversationsController: {
     'show' : 'authorization'
