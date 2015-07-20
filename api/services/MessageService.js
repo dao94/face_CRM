@@ -15,10 +15,11 @@ var Message = {
 			]
 		};
 
-		console.log('getPageByUsername', data);
+		console.log('hello', data);
+
 
 		Pages.findOne(data, function (error, page){
-			console.log('Pages.findOne', page);
+			console.log('bleu', error, page);
 			callback(error, page);
 		});
 		return;
@@ -34,16 +35,25 @@ var Message = {
 
 	},
 
-	getMessage: function (conversation_id, callback){
-		Messages.find({where: {conversation_id: conversation_id}, sort: 'create_at ASC'}, function (error, message){
+	getMessage: function (conversation_id, filter,  callback){
+		var itemPage = (filter && filter.limit) || 20,
+			page     = (filter && filter.page)  || 1,
+			offset   = (page - 1) * itemPage;
+
+		Messages.find({where: {conversation_id: conversation_id},    limit: 10, skip: 0, sort: {create_at: 0}}, function (error, message){
 			if(error){
 				throw new Error(error);
 			}
 			callback(null, message);
 		});
 	},
+	postMessage: function (pageToken, conversation, message, callback){
+		fb.setAccessToken(pageToken);
+		fb.api('/' + conversation + '/messages', 'post' ,{message: message}, function (resp) {
+			callback(resp);
+		});
+	},
 	
-
 	/*
 	* @conversation : Conversation object
 	* @message : array message 
@@ -83,13 +93,12 @@ var Message = {
 	},
 
 	getFBMessage : function(page, callback){
-		if(!page){
+		if(!page && !page.access_token){
 			return false;
 		}
 		
 		fb.setAccessToken(page.access_token);
-		fb.api('/' + page.page_id + '/conversations' ,{limit: 10}, function (resp) {
-			console.log('getConversation', resp, page);
+		fb.api('/' + page.page_id + '/conversations' ,{limit: 20}, function (resp) {
 			Message.parseMessageData(page.page_id, resp, function (){
 				callback(resp);
 			});
@@ -193,7 +202,6 @@ var Message = {
 			})
 		}else {
 			callback(temp);
-			
 			return;
 		}
 	}

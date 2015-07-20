@@ -36,7 +36,9 @@ service.hasConversation = function (conversation_id, callback){
 }
 
 service.getListConversation =  function (page, type,  callback){
-	
+	if(!page || !page.page_id){
+		callback('Không thể lấy pages');
+	}
 	Conversations.find({page_id: page.page_id, type: type})
 	.populate("customer")
 	.exec(
@@ -47,6 +49,9 @@ service.getListConversation =  function (page, type,  callback){
 }
 
 service.createCustomer = function (data, callback){
+	if(!data || !data.profile_id || !data.profile_id){
+		callback('Lỗi kết nối dữ liệu');
+	}
 	var dataCreate = {
 		'profile_id': data.profile_id,
 		'fullname'	: data.fullname

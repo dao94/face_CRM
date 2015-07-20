@@ -6,7 +6,7 @@ angular.module('fCRM')
 
 		$scope.syncMessage = function (callback){
 			$restful.post('messages/syncMessage',{username: $stateParams.page},function (err, resp) {
-				return (callback && typeof callback == 'function ') ? callback() : false;
+				return (callback && typeof callback == 'function') ? callback() : false;
         	});
 		}
 
@@ -40,6 +40,12 @@ angular.module('fCRM')
 			$restful.get('messages/getMessage',{conversation: $scope.conversationId},function (err, resp) {
 				$scope.conversationLoading = false;
 				$scope.list_message        = resp.data;
+        	});
+		};
+
+		$scope.postMessage = function (item, message){
+			$restful.post('messages/postMessage',{conversation: $scope.conversationId, page: $stateParams.page, message: message},function (err, resp) {
+				console.log(resp);
         	});
 		}
 
