@@ -256,8 +256,9 @@ a.list-group-item.hover {
 
 .list-group-item.active {
   color: #fff;
-  background-color: #23b7e5 !important;
-  border-color: #23b7e5 !important;
+  background-color: #c7edfc!important;
+  /* background-color: #23b7e5 !important; */
+  border-color: #c7edfc !important;
 }
 
 .list-group-item.active .text-muted {
@@ -265,7 +266,7 @@ a.list-group-item.hover {
 }
 
 .list-group-item.active a {
-  color: #fff;
+  color: #444;
 }
 
 .list-group-item.focus {
@@ -1595,7 +1596,7 @@ html {
 }
 
 .arrow.right.arrow-primary:after {
-  border-left-color: #7266ba;
+  border-left-color: #c7edfc;
 }
 
 .arrow.right.arrow-info:after {
@@ -1684,7 +1685,7 @@ html {
 .arrow.left:after {
   bottom: -8px;
   left: 1px;
-  border-right-color: #ffffff;
+  border-right-color: #e5f7fd;
   border-left-width: 0;
 }
 
@@ -4855,8 +4856,10 @@ a.text-#000000:hover {
 .thumb-lg img,
 .thumb-btn img {
   height: auto;
-  max-width: 100%;
+  /* max-width: 100%; */
   vertical-align: middle;
+  height: 50px;
+  width: 50px;
 }
 
 .img-full {
@@ -5175,4 +5178,14 @@ a.text-#000000:hover {
   99.9% {
     background-color: #7266ba;
   }
+}
+.bg-user {
+  background-color: #c7edfc;
+
+}
+.bg-guest {
+  background-color: #e5f7fd;
+}
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  color: #444!important;
 }

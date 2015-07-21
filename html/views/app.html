@@ -86,7 +86,7 @@
               <div ng-repeat='list in list_page' ng-if="list.stt == 0">
                 <li>
                   <div class="media">
-                    <span class="pull-left thumb-sm"><img src="{{list.picture.data.url}}" alt="..." class="img-circle"></span>
+                    <span class="pull-left thumb-sm m-r-md"><img src="{{list.picture.data.url}}" alt="..." class="img-circle"></span>
                     <div class="media-body">
                       <div><a ui-sref="app.inboxs({page: list.username || list.id})" href="javascript:void(0)">{{list.name}}</a></div>
                     </div>

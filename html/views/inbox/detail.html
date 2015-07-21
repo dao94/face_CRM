@@ -34,7 +34,7 @@
             <img src="http://graph.facebook.com/{{item.sender.profile_id}}/picture?type=large" alt="...">
           </a>
           <div class="{{item.own ? 'm-r-xxl' : 'm-l-xxl'}}">
-            <div class="pos-rlt wrapper b b-light r r-2x {{item.own ? 'bg-primary' : 'b-light'}}">
+            <div class="pos-rlt wrapper b b-light r r-2x {{item.own ? 'bg-user' : 'bg-guest'}}">
               <span class="arrow  pull-up {{item.own ? 'right arrow-primary' : 'left'}}" ></span>
               <p class="m-b-none" ng-bind-html="item.messsage"></p>
             </div>
