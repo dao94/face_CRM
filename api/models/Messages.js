@@ -9,6 +9,7 @@ module.exports = {
 
   attributes: {
   	conversation_id: {model: 'conversations'},
+  	fb_conversation_id: {},
     message_id : {},
   	sender: {
   	},

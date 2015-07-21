@@ -9,7 +9,8 @@ angular.module('fCRM',
 	'ui.router',
 	'ngFacebook',
     'ngResource',
-    'ngSanitize'
+    'ngSanitize',
+    'angularMoment'
 	]
 )
 .config(['$facebookProvider', function ($facebookProvider){

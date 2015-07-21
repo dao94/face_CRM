@@ -8,7 +8,7 @@ var service = {};
 * @params callback: {function} 
 */
 service.create = function (type, data, callback){
-	var data = {
+	var _data = {
 		"type"				: type,
 		"can_reply"			: data.can_reply,
 		"link" 				: data.link,
@@ -17,9 +17,21 @@ service.create = function (type, data, callback){
 		"user_id"			: data.user_id,
 		"page_id"			: data.page_id,
 		'conversation_id' 	: data.conversation_id,
-		'last_message'		: data.last_message
+		'last_message'		: data.last_message,
+
+
 	};
-	Conversations.create(data, function (err, resp){
+	if(data.fb_page_id){
+		_data["fb_page_id"]	=  data.fb_page_id;
+	}
+
+	if(data.fb_time_update){
+		_data["fb_time_update"]	=  data.fb_time_update;
+	}
+	
+	
+
+	Conversations.create(_data, function (err, resp){
 		callback(err || false, resp);
 	})
 
@@ -36,10 +48,11 @@ service.hasConversation = function (conversation_id, callback){
 }
 
 service.getListConversation =  function (page, type,  callback){
-	if(!page || !page.page_id){
+	if(!page || !page.id){
 		callback('Không thể lấy pages');
 	}
-	Conversations.find({page_id: page.page_id, type: type})
+
+	Conversations.find({where: {page_id: page.id, type: type}, sort: {fb_time_update: 0}} )
 	.populate("customer")
 	.exec(
 		function (error, conversation){

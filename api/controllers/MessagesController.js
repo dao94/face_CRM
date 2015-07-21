@@ -16,6 +16,7 @@ module.exports = {
 
 		MessageService.getPageByUsername(pageUserName, user.id,  function (error, resp){
 			if(!error && resp){
+
 				MessageService.getFBMessage(resp, function (data){
 					res.json(data);
 				});
@@ -50,7 +51,7 @@ module.exports = {
 
 		MessageService.getPageByUsername(pageId, user.id,  function (error, resp){
 			if(!error && resp){
-				console.log('bla', resp);	
+				
 				MessageService.postMessage(resp.access_token, 't_mid.1437034086728:a87e5a9d2e2234ea66', message, function (data){
 					res.json(data);
 				});
