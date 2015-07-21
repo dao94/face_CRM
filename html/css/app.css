@@ -4856,10 +4856,8 @@ a.text-#000000:hover {
 .thumb-lg img,
 .thumb-btn img {
   height: auto;
-  /* max-width: 100%; */
+  max-width: 100%;
   vertical-align: middle;
-  height: 50px;
-  width: 50px;
 }
 
 .img-full {
@@ -5188,4 +5186,12 @@ a.text-#000000:hover {
 }
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
   color: #444!important;
+}
+.avatar50 img {
+  width: 50px!important;
+  height: 50px!important;
+}
+.avatar40 img {
+  width: 40px!important;
+  height: 40px!important;
 }

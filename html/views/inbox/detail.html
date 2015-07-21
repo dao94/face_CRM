@@ -30,7 +30,7 @@
       <!-- <div class="panel-heading font-bold">Tên Người Dùng</div> -->
       <div class="panel-body">
         <div class="m-b" ng-repeat="item in list_message| orderBy: 'create_at'">
-          <a href class="thumb-sm avatar {{item.own ? 'pull-right' : 'pull-left'}}" >
+          <a href class="thumb-sm avatar avatar40 {{item.own ? 'pull-right' : 'pull-left'}}" >
             <img src="http://graph.facebook.com/{{item.sender.profile_id}}/picture?type=large" alt="...">
           </a>
           <div class="{{item.own ? 'm-r-xxl' : 'm-l-xxl'}}">

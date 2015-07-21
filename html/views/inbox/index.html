@@ -40,7 +40,7 @@
                     </li>
 
                     <li class="list-group-item clearfix" ng-repeat="item in list_conversation" ng-if="!conversationLoading"  ng-class="$stateParams.conversationId == item.id ? 'active' : ''" ui-sref="app.inboxs.detail({page: item.page_id, conversationId: item.id})">
-                      <a class="avatar thumb pull-left m-r" >
+                      <a class="avatar thumb avatar50 pull-left m-r" >
                         <img ng-src="http://graph.facebook.com/{{item.customer.profile_id}}/picture?type=large">
                       </a>
                       <div class="clear">
