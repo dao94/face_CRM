@@ -13,6 +13,7 @@ module.exports = {
     message_id : {},
   	sender: {
   	},
+  	parent_id : {},
 	own: {type: 'boolean'},
 	messsage: {type: 'string'},
 	create_at: {type: 'date'},

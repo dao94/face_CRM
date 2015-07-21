@@ -8,10 +8,13 @@ var async = require('async');
 module.exports = {
 
 	getComment : function (req, res, next){
-		var user 		 = req.user;
+		var user 	= req.user;
+		pagename 	= req.body.username;
+		if(!pagename)
+			return res.json({error: true, message :"Co loi xay ra, Vui long thu lai!"});
 	    async.waterfall([
 	    	function (callback) {
-	    		CommentService.getPageByStatus(user.id,function (err,page) {
+	    		CommentService.getPageByStatus(pagename,user.id,function (err,page) {
 					callback(err,page);
 				});
 	    	},//end callback
@@ -48,27 +51,31 @@ module.exports = {
 
 	},
 	PostByComment : function(req, res, next) {
-		var user        = req.user;
-		var Object_json = {
-						'error' 		:  false,
-						'error_message' : 'success',
-						'data'			:  '',
-						'page'          : ''
-					 },
-		conversationId = req.body.conversationId;
-		if(conversationId) {
-			CommentService.getPostByComment(conversationId,function (err,content){
-				CommentService.getPageByStatus(user.id,function (err,page) {
-					Object_json.data = content;
-					Object_json.page = page;
-					res.json(Object_json);	
-				});
-			}); 
-		} else {
-			Object_json.error = true;
-			Object_json.error_message = 'conversationId has empty !';
-			res.json(Object_json);
-		}
+		var pagename        = req.body.username,
+		 	user            = req.user,
+		    Object_json 	= {
+		    					'error' 		:  false,
+								'error_message' : 'success',
+								'data'			:  '',
+								'page'          :  ''
+							 };
+		messageId = req.body.conversationId;
+		MessageService.getIdConver(messageId,function(err,item) {
+			var conversationId = item.conversation_id;
+			if(conversationId) {
+				CommentService.getPostByComment(conversationId,function (err,content){
+					CommentService.getPageByStatus(pagename, user.id,function (err,page) {
+						Object_json.data = content;
+						Object_json.page = page;
+						res.json(Object_json);	
+					});
+				}); 
+			} else {
+				Object_json.error = true;
+				Object_json.error_message = 'conversationId has empty !';
+				res.json(Object_json);
+			}
+		});
 	}
 };
 

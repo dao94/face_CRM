@@ -32,6 +32,14 @@ var Message = {
 
 	},
 
+	getIdConver: function (messageId, callback){
+
+		Messages.findOne({id: messageId}, function (error, message){
+			return callback(error,message);
+		});
+
+	},
+
 	getMessage: function (conversation_id, filter,  callback){
 		var itemPage = (filter && filter.limit) || 20,
 			page     = (filter && filter.page)  || 1,
