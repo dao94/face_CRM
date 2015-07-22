@@ -38,7 +38,7 @@
               <span class="arrow  pull-up {{item.own ? 'right arrow-primary' : 'left'}}" ></span>
               <p class="m-b-none" ng-bind-html="item.messsage"></p>
             </div>
-            <small class="text-muted"><i class="fa fa-ok text-success"></i> 2 minutes ago</small>
+            <small class="text-muted"><i class="fa fa-ok text-success"></i><span am-time-ago="item.create_at"></span></small>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
               <ul>
                 <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
               </ul>
-              <button type="submit" class="btn btn-success green" ng-click="postMessage(1, message)"><i class="fa fa-send-o"></i> Gửi</button>
+              <button type="submit" class="btn btn-success green" ng-click="postMessage($stateParams.conversation_id, message)"><i class="fa fa-send-o"></i> Gửi</button>
             </form>
           </div><!-- Status Upload  -->
         </div><!-- Widget Area -->

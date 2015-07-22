@@ -9,9 +9,11 @@ module.exports = {
 
   attributes: {
   	conversation_id: {model: 'conversations'},
+  	fb_conversation_id: {},
     message_id : {},
   	sender: {
   	},
+  	parent_id : {},
 	own: {type: 'boolean'},
 	messsage: {type: 'string'},
 	create_at: {type: 'date'},

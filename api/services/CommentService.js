@@ -4,8 +4,15 @@ var fb    = require('fb');
 var async = require('async');
 
 var service = {
-	getPageByStatus : function(user_id, callback){
-		Pages.findOne({stt : '1', user_id: user_id}, function (error, page){
+	getPageByStatus : function(pagename, user_id, callback){
+		var data = {
+			user_id: user_id,
+			'$or': [
+					{'page_id': pagename},
+					{'username': pagename}
+			]
+		};
+		Pages.findOne(data, function (error, page){
 			callback(error, page);
 		});
 	},
@@ -46,7 +53,7 @@ var service = {
 					Conversations.create(conversation, function (err, doc){
 						//neu co comment trong bai viet
 						if(item.comments) {
-							service.createMessage(item.comments.data,doc.id);
+							service.createMessage(item.comments.data,doc.id,page);
 						}
 						if(!err)
 							callback_next();
@@ -74,7 +81,7 @@ var service = {
 	},
 
 	//add create message
-	createMessage : function(content,conversation_id) {
+	createMessage : function(content,conversation_id,page) {
 		if(content) {
 			async.eachSeries(content, function (item , callback) {
 				var mess             = {};
@@ -90,6 +97,15 @@ var service = {
 			});
 		}
 	},
+
+	getMessageFb : function(id_message,page,callback) {
+		fb.setAccessToken(page.access_token);
+		fb.api('/' + id_message + '/comments' ,{limit: 100}, function (resp) {
+			callback(resp);
+		});
+	},
+
+
 
 	createMessNew : function(content,conversation_id,callback) {
 		if(content) {
