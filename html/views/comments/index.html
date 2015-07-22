@@ -46,7 +46,7 @@ div[ng-controller="Ctrl"] > div > * {
                       <p>Đang tải dữ liệu</p>
                     </li>
                       <li ng-click="postbycomment()" class="list-group-item clearfix" ng-repeat="item in listcomment" ui-sref="app.comments.detail({conversationId: item.conversation_id})">
-                        <a ng-click="postbycomment" class="avatar thumb pull-left m-r" href="javascript:void(0)">
+                        <a ng-click="postbycomment" class="avatar avatar50 thumb pull-left m-r" href="javascript:void(0)">
                           <img ng-src="http://graph.facebook.com/{{item.profile_id}}/picture?type=large" >
                         </a>
                         <div class="clear">
