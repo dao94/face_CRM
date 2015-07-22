@@ -63,8 +63,10 @@ var Message = {
 	getFBMessageOfConversation: function (pageToken, conversation, callback){
 		fb.setAccessToken(pageToken);
 		fb.api('/v2.4/' + conversation + '/messages?fields=message,subject,from,to,id,created_time,attachments,shares,tags', 'GET', {limit: 100},  function (resp) {
+			console.log('__________________________');
+			console.log('getFBMessageOfConversation', resp);
 			if(resp){
-				callback((resp['data'].length > 0 ? null : true), resp);
+				callback(resp['data'] && resp['data'].length > 0 ? null : true)
 			}else {
 				callback(true);
 			}
@@ -197,9 +199,14 @@ var Message = {
 						}
 */						
 						Message.getFBMessageOfConversation(page.access_token, conversation.conversation_id, function (hasData, data){
-							Message.createMessages(conversation, data['data'], function (){
+							if(data && data['data']){
+								Message.createMessages(conversation, data['data'], function (){
+									cb(null);
+								})	
+							}else {
 								cb(null);
-							})
+							}
+							
 						})
 					}
 				], function (){
