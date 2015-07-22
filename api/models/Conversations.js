@@ -17,8 +17,8 @@ module.exports = {
 		last_message	: {}, // Tin nhắn cuối cùng được tìm thấy 
 		user_id 		: {model: 'Users'},
 		page_id   		: {model: 'Pages'},
-		fb_page_id        : {},
-		fb_time_update        : {type: 'date'},
+		fb_page_id      : {},
+		fb_time_update  : {},
 		messages        : {},
 	}
 };

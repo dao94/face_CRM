@@ -63,10 +63,8 @@ var Message = {
 	getFBMessageOfConversation: function (pageToken, conversation, callback){
 		fb.setAccessToken(pageToken);
 		fb.api('/v2.4/' + conversation + '/messages?fields=message,subject,from,to,id,created_time,attachments,shares,tags', 'GET', {limit: 100},  function (resp) {
-			console.log('__________________________');
-			console.log('getFBMessageOfConversation', resp);
 			if(resp){
-				callback(resp['data'] && resp['data'].length > 0 ? null : true)
+				callback(resp['data'] && resp['data'].length > 0 ? null : true, resp);
 			}else {
 				callback(true);
 			}
@@ -174,17 +172,34 @@ var Message = {
 									"user_id"			: customer.id,
 									"page_id"			: page.id,
 									"fb_page_id"		: page.page_id,
-									"fb_time_update"    : item.updated_time,
+									"fb_time_update"    : new Date(item.updated_time).getTime(),
 									'conversation_id' 	: conversation_id,
 									'last_message'		: item.snippet
 								}, function (error, resp){
-									cb(null, resp);
+									cb(null, resp, true);
 								})
 							}else {
-								cb(null, conversation);
+								if(conversation.fb_time_update == new Date(item.updated_time).getTime()){
+									cb(null, conversation, false);
+								}else {
+									Conversations.update({id: conversation.id}, {
+										last_message : item.snippet,
+										unread_count : item.unread_count,
+										fb_time_update    : new Date(item.updated_time).getTime()
+									}, function (error, conversation){
+										if (!error && conversation.length > 0 ) {
+											 cb(null, conversation[0], true);
+										}else {
+											cb(null, conversation, false);
+										}
+										
+									})
+									
+								}
+								
 							}
 						})
-					}, function (conversation, cb){
+					}, function (conversation, hasChange, cb){
 
 /*						if(item.messages && item.messages.paging){
 							Message.getMessagePaging(item.messages, function (messages){
@@ -198,16 +213,20 @@ var Message = {
 							})
 						}
 */						
-						Message.getFBMessageOfConversation(page.access_token, conversation.conversation_id, function (hasData, data){
-							if(data && data['data']){
-								Message.createMessages(conversation, data['data'], function (){
+						if(hasChange){
+							Message.getFBMessageOfConversation(page.access_token, conversation.conversation_id, function (hasData, data){
+								if(data && data['data']){
+									Message.createMessages(conversation, data['data'], function (){
+										cb(null);
+									})	
+								}else {
 									cb(null);
-								})	
-							}else {
-								cb(null);
-							}
-							
-						})
+								}
+							})
+						}else {
+							cb(null);
+						}
+						
 					}
 				], function (){
 					next();
