@@ -41,8 +41,15 @@ module.exports = {
 			page.phone                = item.phone;
 			page.emails               = item.emails;
 			page.stt                  = 0;//0 is none active,1 is active
+
 			Pages.create(page, function (err, doc){
-				callback_next();
+				FB.setAccessToken(item.access_token);
+		
+				FB.api('/' + page.page_id + '/subscribed_apps', 'post', function (resp) {
+					console.log('Pages.create', resp);
+					callback_next();
+				});
+
 			});	
 		}, function (){
 			callback();

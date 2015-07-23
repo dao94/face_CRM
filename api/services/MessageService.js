@@ -54,8 +54,7 @@ var Message = {
 	},
 	postMessage: function (pageToken, conversation, message, callback){
 		fb.setAccessToken(pageToken);
-		fb.api('/' + conversation + '/messages', 'get', {message: message}, function (resp) {
-			console.log('postMessage', resp);
+		fb.api('/' + conversation + '/messages', 'post', {message: message}, function (resp) {
 			callback(resp);
 		});
 	},
@@ -73,50 +72,6 @@ var Message = {
 		});
 	},
 	
-	/*
-	* @conversation : Conversation object
-	* @message : array message 
-	*/
-	/*createMessages: function (conversation, messages, callback){
-		var task = [];
-		var count = 0;
-		messages.forEach(function (item){
-			task.push(function (next){
-				count ++;
-				Message.hasMessage(item.id, function (result){
-					if(!result){
-
-						var data = {
-							conversation_id: conversation.id,
-							fb_conversation_id: conversation.conversation_id,
-						    message_id : item.id,
-						  	sender: {
-						  		profile_id	: item.from.id,
-						  		fullname 	: item.from.name,
-						  	},
-							own: (conversation.fb_page_id && (item.from.id == conversation.fb_page_id)) ? true : false,
-							messsage: item.message,
-							create_at: item.created_time,
-						};
-
-						Messages.create(data, function (err, resp){
-							next();
-						})
-					}else {
-						next('DONE');
-					}
-				})
-				
-			});
-		});
-
-		async.parallel(task, function (err, result){
-			console(err, result);
-			callback();
-		})
-	},*/
-
-
 	createMessages: function (conversation, messages, callback){
 		var task              = [];
 		var count             = 0;
@@ -143,7 +98,6 @@ var Message = {
 				
 				listFBMessage.forEach(function (item){
 					task.push(function (next){
-						console.log(item.id)
 						var data = {
 							conversation_id: conversation.id,
 							fb_conversation_id: conversation.conversation_id,
