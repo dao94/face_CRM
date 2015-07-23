@@ -42,7 +42,7 @@ module.exports = {
 		//?object=page&callback_url=http://face.local.com:1337/api/v1/messages/ReadRealtime&fields=conversations&active=true
 		fb.api('/1578258869101648/subscriptions', 'POST', {
 			object: 'page', 
-			callback_url: 'http://face.local.com:1337/api/v1/messages/ReadRealtime',
+			callback_url: 'http://facecrm.vn:1337/api/v1/messages/ReadRealtime',
 			fields: 'conversations',
 			active: true,
 			verify_token: "thinhvn"
