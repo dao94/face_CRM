@@ -32,9 +32,13 @@ module.exports = {
 		console.log(req.query);
 		console.log('---------------------');
 		console.log(req.body);
-		return res.json({
-			error: true
-		})
+		return res.send('asdasd');
+		if(req.query){
+			return res.send(req.query['hub.challenge']);
+		}else {
+			return res.json(req.body);
+		}
+		
 
 	},
 	InsertRealtimeCallback: function (){
