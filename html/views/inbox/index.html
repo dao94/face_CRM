@@ -36,7 +36,7 @@
 
                     <li class="list-group-item clearfix text-center" ng-if="conversationLoading">
                       <div class="facebook_loading"><span></span><span></span><span></span></div>
-                      <p>Đang tải dữ liệu</p>
+                      <p>Đang tải dữ liệu ...</p>
                     </li>
 
                     <li class="list-group-item clearfix" ng-repeat="item in list_conversation" ng-if="!conversationLoading"  ng-class="$stateParams.conversationId == item.id ? 'active' : ''" ui-sref="app.inboxs.detail({page: $stateParams.page, conversationId: item.id})">
