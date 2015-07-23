@@ -35,6 +35,7 @@ angular.module('fCRM')
 		$scope.conversationLoading = true;
 		$scope.conversationId      = $stateParams.conversationId;
 
+		$scope.message = "";
 		$scope.getMessage = function (){
 			$scope.conversationLoading = true;
 			$restful.get('messages/getMessage',{conversation: $scope.conversationId},function (err, resp) {
@@ -44,9 +45,21 @@ angular.module('fCRM')
 		};
 
 		$scope.postMessage = function (item, message){
+			$scope.list_message.push({
+				own: true,
+				create_at: new Date().toISOString(),
+				messsage: message,
+			})
+			console.log({
+				own: true,
+				create_at: new Date(),
+				messsage: message,
+			});
 			$restful.post('messages/postMessage',{conversation: $scope.conversationId, page: $stateParams.page, message: message},function (err, resp) {
-				console.log(resp);
+				$scope.getMessage();
         	});
+
+        	$scope.message = "";
 		}
 
 

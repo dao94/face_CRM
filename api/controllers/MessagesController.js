@@ -84,7 +84,7 @@ module.exports = {
 			if(!error && page){
 				Conversations.findOne({id: conversation_id}, function (err, conversation){
 					if(!error && conversation){
-						MessageService.postMessage(page.access_token, conversation.conversation_id, message, function (data){
+						MessageService.postMessage(page.access_token, conversation, message, function (data){
 							res.json(data);
 						});
 					}else {

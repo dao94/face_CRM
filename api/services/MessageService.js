@@ -53,10 +53,30 @@ var Message = {
 		});
 	},
 	postMessage: function (pageToken, conversation, message, callback){
-		fb.setAccessToken(pageToken);
-		fb.api('/' + conversation + '/messages', 'post', {message: message}, function (resp) {
-			callback(resp);
-		});
+		FacebookService.postMessage(pageToken, conversation, message, function (data){
+			if(data){
+				FacebookService.getOneMessage(pageToken, data.id, function (item){
+					var data = {
+						conversation_id: conversation.id,
+						fb_conversation_id: conversation.conversation_id,
+					    message_id : item.id,
+					  	sender: {
+					  		profile_id	: item.from.id,
+					  		fullname 	: item.from.name,
+					  	},
+						own: (conversation.fb_page_id && (item.from.id == conversation.fb_page_id)) ? true : false,
+						messsage: item.message,
+						create_at: item.created_time,
+					};
+					Messages.create(data, function (err, resp){
+						callback(resp);
+					})
+				})
+			}else {
+				callback(false)
+			}
+			
+		})
 	},
 
 	getFBMessageOfConversation: function (pageToken, conversation, callback){
@@ -111,7 +131,7 @@ var Message = {
 							create_at: item.created_time,
 						};
 
-						Messages.create(data, function (err, resp){
+						Messages.findOrCreate(data, function (err, resp){
 							next();
 						})
 					})
