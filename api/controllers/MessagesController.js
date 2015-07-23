@@ -32,7 +32,7 @@ module.exports = {
 		console.log(req.query);
 		console.log('---------------------');
 		console.log(req.body);
-		return res.send('asdasd');
+
 		if(req.query){
 			return res.send(req.query['hub.challenge']);
 		}else {
