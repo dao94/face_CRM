@@ -77,10 +77,12 @@ var Message = {
 	* @conversation : Conversation object
 	* @message : array message 
 	*/
-	createMessages: function (conversation, messages, callback){
+	/*createMessages: function (conversation, messages, callback){
 		var task = [];
+		var count = 0;
 		messages.forEach(function (item){
 			task.push(function (next){
+				count ++;
 				Message.hasMessage(item.id, function (result){
 					if(!result){
 
@@ -101,16 +103,74 @@ var Message = {
 							next();
 						})
 					}else {
-						next();
+						next('DONE');
 					}
 				})
 				
 			});
 		});
 
-		async.parallel(task, function (){
+		async.parallel(task, function (err, result){
+			console(err, result);
 			callback();
 		})
+	},*/
+
+
+	createMessages: function (conversation, messages, callback){
+		var task              = [];
+		var count             = 0;
+		var list_fb_messageId = [];
+		var listFBMessage     = [];
+
+		messages.forEach(function (item){
+			list_fb_messageId.push(item.id);
+			listFBMessage.push(item);
+		})
+
+
+		Messages.find({where: {'message_id': {'$in': list_fb_messageId}, 'conversation_id': conversation.id}, select: ['id', 'message_id']})
+		.exec(function (err, resp){
+			if(!err){
+				for (var i = resp.length - 1; i >= 0; i--) {
+					listFBMessage.forEach(function (item, value){
+						if(item.message_id == resp[i].message_id){
+							delete listFBMessage[value];
+						}
+					})
+				};
+
+				
+				listFBMessage.forEach(function (item){
+					task.push(function (next){
+						console.log(item.id)
+						var data = {
+							conversation_id: conversation.id,
+							fb_conversation_id: conversation.conversation_id,
+						    message_id : item.id,
+						  	sender: {
+						  		profile_id	: item.from.id,
+						  		fullname 	: item.from.name,
+						  	},
+							own: (conversation.fb_page_id && (item.from.id == conversation.fb_page_id)) ? true : false,
+							messsage: item.message,
+							create_at: item.created_time,
+						};
+
+						Messages.create(data, function (err, resp){
+							next();
+						})
+					})
+				})
+
+				async.parallel(task, function (err, result){
+					callback();
+				})
+			}else {
+				callback();
+			}
+		})
+
 	},
 
 	getFBMessage : function(page, callback){
