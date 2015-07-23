@@ -31,7 +31,7 @@ module.exports = {
 		console.log('realtimeCallback');
 		console.log(req.query);
 		console.log('---------------------');
-		console.log(req.body);
+		console.log(JSON.stringify(req.body));
 
 		if(req.query){
 			return res.send(req.query['hub.challenge']);
