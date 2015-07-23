@@ -35,9 +35,9 @@ module.exports = {
 
 		if(req.query){
 			return res.send(req.query['hub.challenge']);
-		}else {
-			return res.json(req.body);
 		}
+		return res.json(req.body);
+		
 		
 
 	},
