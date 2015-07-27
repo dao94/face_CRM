@@ -24,6 +24,13 @@ var service = {
 		});
 	},
 
+	getCommentReply : function(page,comment_id, callback){
+		fb.setAccessToken(page.access_token);
+		fb.api('/' + comment_id + '/comments' ,{limit: 100}, function (resp) {
+			callback(resp);
+		});
+	},
+
 	showMessage : function(conversationId, callback) {
 		Messages.find({where: {conversation_id:conversationId},sort:{'createdAt':-1},limit:10},function (err,data) {
 			callback(err,data);
@@ -53,7 +60,17 @@ var service = {
 					Conversations.create(conversation, function (err, doc){
 						//neu co comment trong bai viet
 						if(item.comments) {
-							service.createMessage(item.comments.data,doc.id,page);
+							service.createMessage(item.comments.data,doc.id,page,function (error,resp) {
+								service.getCommentReply(page,resp.message_id,function (data_rep) {
+									if(data_rep.data) {
+										data_rep.data.forEach(function(item) {
+											service.createMessNew(item,resp.message_id,doc.id,function (error,content) {
+												console.log(error);
+											});
+										});
+									}
+								});
+							});
 						}
 						if(!err)
 							callback_next();
@@ -63,11 +80,25 @@ var service = {
 					if(item.comments) {
 						async.eachSeries(item.comments.data, function (val,callback_mess){
 							service.getCheckMessagePost(val.id,data.id,function (error,resp) {
-								if(!resp) {
-									service.createMessNew(val,data.id,function (err,resp) {
-										console.log(err);
-									});
-								}
+								async.waterfall([
+									function (callback_walter) {
+										if(!resp) {
+											service.createMessNew(val,'',data.id,function (err,resp) {
+												service.getCommentReply(page,resp.message_id,function (data_rep) {
+													callback_walter('',data_rep,resp,data);
+												});
+											});
+										}	
+									},function (data_rep,resp,data,callback_walter) {
+										if(data_rep.data) {
+											data_rep.data.forEach(function(item) {
+												service.createMessNew(item,resp.message_id,data.id,function (error,content) {
+													console.log(error);
+												});
+											});
+										}
+									}
+								]);
 							});
 							callback_mess();
 						});
@@ -81,9 +112,9 @@ var service = {
 	},
 
 	//add create message
-	createMessage : function(content,conversation_id,page) {
+	createMessage : function(content,conversation_id,page,callback) {
 		if(content) {
-			async.eachSeries(content, function (item , callback) {
+			content.forEach(function(item) {
 				var mess             = {};
 				mess.message         = item.message;
 				mess.profile_id      = item.from.id;
@@ -91,8 +122,8 @@ var service = {
 				mess.message_id      = item.id;
 				mess.conversation_id = conversation_id
 				Messages.create(mess, function (err,doc) {
-					if(!err)
-						callback();
+					console.log(err);
+					callback(err,doc);
 				});
 			});
 		}
@@ -107,9 +138,10 @@ var service = {
 
 
 
-	createMessNew : function(content,conversation_id,callback) {
+	createMessNew : function(content,parent_id,conversation_id,callback) {
 		if(content) {
 			var mess             = {};
+			mess.parent_id       = parent_id;
 			mess.message         = content.message;
 			mess.profile_id      = content.from.id;
 			mess.name            = content.from.name;

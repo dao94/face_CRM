@@ -76,6 +76,6 @@ module.exports = {
 				res.json(Object_json);
 			}
 		});
-	}
+	}//end function
 };
 
