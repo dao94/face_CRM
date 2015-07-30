@@ -49,14 +49,14 @@
                 <div class="m-l-lg panel b-a">
                   <div class="panel-heading pos-rlt b-b b-light">
                     <span class="arrow left"></span>
-                    <a href>Tên người bình luận</a>
+                    <a href>{{message_parent.name}}</a>
                     <span class="text-muted m-l-sm pull-right">
                       <i class="fa fa-clock-o"></i>
                       Just now
                     </span>
                   </div>
                   <div class="panel-body">
-                    <div>Nội dung bình luận</div>
+                    <div>{{message_parent.message}}</div>
                     <div class="m-t-sm">
                       <a href ui-toggle-class class="btn btn-default btn-xs active">
                         <i class="fa  fa-thumbs-up text-primary"></i> 
@@ -76,21 +76,21 @@
                 </div>
               </div>
               <!-- .comment-reply -->
-              <div class="m-l-lg">
+              <div ng-if='message' class="m-l-lg">
                 <a class="pull-left thumb-sm avatar">
                   <img src="img/a8.jpg" alt="...">
                 </a>          
                 <div class="m-l-xxl panel b-a">
                   <div class="panel-heading pos-rlt b-b b-light">
                     <span class="arrow left pull-up"></span>
-                    <a href>Tên người bình luận</a>
+                    <a href>{{message.name}}</a>
                     <span class="text-muted m-l-sm pull-right">
                       <i class="fa fa-clock-o"></i>
                       Just now
                     </span>                       
                   </div>
                   <div class="panel-body">
-                    <div>Nội dung bình luận</div>
+                    <div>{{message.message}}</div>
                     <div class="m-t-sm">
                       <a href ui-toggle-class class="btn btn-default btn-xs active">
                         <i class="fa fa-thumbs-up text-primary text-active"></i> 

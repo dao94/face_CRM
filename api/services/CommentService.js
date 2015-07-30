@@ -26,13 +26,13 @@ var service = {
 
 	getCommentReply : function(page,comment_id, callback){
 		fb.setAccessToken(page.access_token);
-		fb.api('/' + comment_id + '/comments' ,{limit: 100}, function (resp) {
+		fb.api('/' + comment_id + '/comments' ,{limit: 300}, function (resp) {
 			callback(resp);
 		});
 	},
 
 	showMessage : function(conversationId, callback) {
-		Messages.find({where: {conversation_id:conversationId},sort:{'createdAt':-1},limit:10},function (err,data) {
+		Messages.find({where: {conversation_id:conversationId},sort:{'created_time':-1},limit:20},function (err,data) {
 			callback(err,data);
 		});
 	},
@@ -84,16 +84,25 @@ var service = {
 									function (callback_walter) {
 										if(!resp) {
 											service.createMessNew(val,'',data.id,function (err,resp) {
-												service.getCommentReply(page,resp.message_id,function (data_rep) {
+												service.getCommentReply(page,resp.id,function (data_rep) {
 													callback_walter('',data_rep,resp,data);
 												});
 											});
+										}else {
+											service.getCommentReply(page,resp.message_id,function (data_rep) {
+												callback_walter('',data_rep,resp,data);
+											});
 										}	
-									},function (data_rep,resp,data,callback_walter) {
+									},
+									function (data_rep,resp,data,callback_walter) {
 										if(data_rep.data) {
 											data_rep.data.forEach(function(item) {
-												service.createMessNew(item,resp.message_id,data.id,function (error,content) {
-													console.log(error);
+												service.getCheckMessagePost(item.id,data.id,function(error,res) {
+													if(!res) {
+														service.createMessNew(item,resp.id,data.id,function (error,content) {
+															console.log(error);
+														});
+													}
 												});
 											});
 										}
@@ -117,6 +126,7 @@ var service = {
 			content.forEach(function(item) {
 				var mess             = {};
 				mess.message         = item.message;
+				mess.created_time    = item.created_time;
 				mess.profile_id      = item.from.id;
 				mess.name            = item.from.name;
 				mess.message_id      = item.id;
@@ -129,18 +139,10 @@ var service = {
 		}
 	},
 
-	getMessageFb : function(id_message,page,callback) {
-		fb.setAccessToken(page.access_token);
-		fb.api('/' + id_message + '/comments' ,{limit: 100}, function (resp) {
-			callback(resp);
-		});
-	},
-
-
-
 	createMessNew : function(content,parent_id,conversation_id,callback) {
 		if(content) {
 			var mess             = {};
+			mess.created_time    = content.created_time;
 			mess.parent_id       = parent_id;
 			mess.message         = content.message;
 			mess.profile_id      = content.from.id;
@@ -166,10 +168,17 @@ var service = {
 		});
 	},
 
+	getCheckMessageById : function (id_message,callback) {
+		Messages.findOne({id:id_message,parent_id:''},function (err,data) {
+			callback(err,data);
+		});
+	},
+
 	getPostByComment : function(id_conversation,callback) {
 		Conversations.findOne({id :id_conversation},function (err ,data) {
 			callback(err,data);
 		}); 
 	},
+
 };
 module.exports = service;

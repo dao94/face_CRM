@@ -51,7 +51,7 @@ module.exports = {
 
 	},
 	PostByComment : function(req, res, next) {
-		var pagename        = req.body.username,
+		var pagename        = req.body.pageId,
 		 	user            = req.user,
 		    Object_json 	= {
 		    					'error' 		:  false,
@@ -61,15 +61,36 @@ module.exports = {
 							 };
 		messageId = req.body.conversationId;
 		MessageService.getIdConver(messageId,function(err,item) {
-			var conversationId = item.conversation_id;
-			if(conversationId) {
-				CommentService.getPostByComment(conversationId,function (err,content){
-					CommentService.getPageByStatus(pagename, user.id,function (err,page) {
-						Object_json.data = content;
-						Object_json.page = page;
-						res.json(Object_json);	
-					});
-				}); 
+			if(item) {
+				var conversationId = item.conversation_id;
+				if(conversationId) {
+					CommentService.getPostByComment(conversationId,function (err,content){
+						CommentService.getPageByStatus(pagename, user.id,function (err,page) {
+							CommentService.getCheckMessageById(item.parent_id,function (err,resp) {
+								if(resp) {
+									var respon            = {};
+									respon.content        = content;
+									respon.message        = item;
+									respon.message_parent = resp;
+									Object_json.data      = respon;
+									Object_json.page      = page;
+									res.json(Object_json);
+								} else {
+									var respon            = {};
+									respon.content        = content;
+									respon.message_parent = item;
+									Object_json.data      = respon;
+									Object_json.page      = page;
+									res.json(Object_json);
+								}
+							});	
+						});
+					}); 
+				} else {
+					Object_json.error = true;
+					Object_json.error_message = 'conversationId has empty !';
+					res.json(Object_json);
+				}
 			} else {
 				Object_json.error = true;
 				Object_json.error_message = 'conversationId has empty !';
