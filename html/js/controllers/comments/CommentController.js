@@ -13,21 +13,19 @@ angular.module('fCRM')
             })
           };
           $scope.getlist();
-          var a;
-          a = $interval($scope.getlist,5000);
+          $interval($scope.getlist,5000);
 
   	}])
     .controller('DetailComment', ['$scope', '$state', '$stateParams', '$restful','$interval',function ($scope, $state, $stateParams, $restful,$interval){
           $scope.postbycomment = function() {
             $scope.conversationId = $stateParams.conversationId;
             $restful.post('comments/postbycomment',{pageId:$stateParams.page,conversationId:$scope.conversationId}, function (err, resp){
-                $scope.postbycomment  = resp.data.respon;
+                $scope.postbycomment  = resp.data.content;
                 $scope.page           =  resp.page;
                 $scope.message        = resp.data.message;
                 $scope.message_parent = resp.data.message_parent;
             });
           }
           $scope.postbycomment();
-          var a;
-          a = $interval($scope.postbycomment,5000);
+          $interval($scope.postbycomment,5000);
     }])
