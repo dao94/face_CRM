@@ -2,9 +2,9 @@ angular.module('fCRM')
   	.controller('CommentController', ['$scope', '$state', '$stateParams', '$restful','$interval',function ($scope, $state, $stateParams, $restful,$interval){
           $scope.transitioned = false;
           $scope.getlist = function (){
-          	// $scope.conversationLoading = true;
+          	$scope.conversationLoading = true;
             $restful.post('comments/getcomment',{username: $stateParams.page}, function (err, resp){
-              // $scope.conversationLoading = false;
+              $scope.conversationLoading = false;
               $scope.listcomment         = resp.data;
               if(!$scope.transitioned){
                 $state.go('app.comments.detail', {page: $stateParams.page, conversationId: resp.data[0].id});
@@ -13,7 +13,7 @@ angular.module('fCRM')
             })
           };
           $scope.getlist();
-          $interval($scope.getlist,5000);
+          // $interval($scope.getlist,8000);
 
   	}])
     .controller('DetailComment', ['$scope', '$state', '$stateParams', '$restful','$interval',function ($scope, $state, $stateParams, $restful,$interval){
@@ -27,5 +27,17 @@ angular.module('fCRM')
             });
           }
           $scope.postbycomment();
-          $interval($scope.postbycomment,5000);
+          // $interval($scope.postbycomment,8000);
+          $scope.push_comment = function (commentId,message) {
+            $restful.post('comments/pushComment',{comment:message,comment_id:commentId,pagename:$stateParams.page}, function (err, resp){
+                $scope.comment_reply = '';
+                $scope.message.push(resp.data);
+            });
+          };
+          $scope.checkIfEnterKeyWasPressed = function($event,commentId,message) {
+            var keyCode = $event.which || $event.keyCode;
+            if (keyCode === 13) {
+              $scope.push_comment(commentId,message);
+            }
+          };
     }])

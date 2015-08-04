@@ -29,6 +29,28 @@ var FacebookService = {
 			}
 		});
 	},
+	//begin-comment
+	getPost : function(page, callback){
+		fb.setAccessToken(page.access_token);
+		fb.api('/' + page.page_id + '/posts' ,{limit: 100}, function (resp) {
+			callback(resp);
+		});
+	},
+
+	getCommentReply : function(page,comment_id, callback){
+		fb.setAccessToken(page.access_token);
+		fb.api('/' + comment_id + '/comments' ,{limit: 300}, function (resp) {
+			callback(resp);
+		});
+	},
+
+	pushRepliesComent : function (pageToken, message_id, message, callback) {
+		fb.setAccessToken(pageToken);
+		fb.api('/'+ message_id +'/comments', 'post', {message: message}, function (resp) {
+			callback(resp);
+		});
+	},
+	//end-comment
 	
 
 }

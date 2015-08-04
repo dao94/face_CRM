@@ -20,7 +20,7 @@ module.exports = {
 	    	},//end callback
 	    	function (page,callback) {
 	    		if(page) {
-					CommentService.getPost(page,function (content){
+					FacebookService.getPost(page,function (content){
 						callback(null,content,page);
 					});
 				}
@@ -33,14 +33,14 @@ module.exports = {
 							push_content.push(item.id);
 							callback_next();
 						},function() {
-							callback(err,push_content);
+							callback(err,push_content,page);
 						});
 						
 					});
 				});
 	    	},	
-	    	function(data,callback) {
-	    		CommentService.showMessage(data,function (err,content) {
+	    	function (data, page, callback) {
+	    		CommentService.showMessage(data, page.page_id, function (err,content) {
     				callback(null,content);
     			});
 	    	}],
@@ -88,29 +88,59 @@ module.exports = {
 			},
 			function (content,item,callback) {
 				CommentService.getPageByStatus(pagename, user.id,function (err,page) {
-					CommentService.getCheckMessageById(item.parent_id,function (err,resp) {
-						callback(err,content,item,resp,page);
-					});	
+					if(!item.parent_id) {
+						callback(err, item, content, page,'');
+					} else {
+						var parent_id = item.parent_id;
+						CommentService.getMessageByid(parent_id,function (err,data) {
+							CommentService.getMessageByParentId(item.parent_id,function (error,item) {
+								callback(err, data, content, page,item);
+							});
+						});
+					}
 				});
 			}
-		],function (error ,content ,item ,resp,page) {
-			if(resp) {
-				var respon            = {};
-				respon.content        = content;
-				respon.message        = item;
-				respon.message_parent = resp;
-				Object_json.data      = respon;
-				Object_json.page      = page;
-				res.json(Object_json);
-			} else {
-				var respon            = {};
-				respon.content        = content;
-				respon.message_parent = item;
-				Object_json.data      = respon;
-				Object_json.page      = page;
-				res.json(Object_json);
-			}
+		],function (error , item, content, page,message_child) {
+			var respon            = {};
+			respon.content        = content;
+			respon.message        = message_child;
+			respon.message_parent = item;
+			Object_json.data      = respon;
+			Object_json.page      = page;
+			res.json(Object_json);
 		});
-	}//end function
+	},//end function
+
+	pushComment : function (req, res, next) {
+		var access_token = req.user.accessToken,
+			comment    	 = req.body.comment,
+			message_id   = req.body.comment_id,
+			pagename     = req.body.pagename;
+		async.waterfall([
+			function (callback) {
+				CommentService.getPageByStatus(pagename,req.user.id,function (err,page) {
+					callback(err,page);
+				});	
+			},
+			function (data,callback) {
+				FacebookService.pushRepliesComent(data.access_token,message_id,comment,function (res) {
+					callback(res,data);
+				});
+			}
+		],function (item,page,callback) {
+			var data = {
+				message: comment,
+				message_id: item.id,
+				name: page.name,
+				profile_id:page.page_id
+			}
+			return res.json({
+				'error' 		: false,
+				'error_message' : 'Thành công',
+				'data'			: data
+			});
+		});	
+	}
+
 };
 

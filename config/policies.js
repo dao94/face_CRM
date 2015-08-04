@@ -48,7 +48,8 @@ module.exports.policies = {
    },
    CommentsController: {
     'getcomment'    : 'authorization',
-    'postbycomment' : 'authorization'
+    'postbycomment' : 'authorization',
+    'pushComment'   : 'authorization',
 
    },
    ConversationsController: {

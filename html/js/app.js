@@ -1,7 +1,7 @@
 "use strict";
 var fb_sdk = {
 	appId		: "1578258869101648",
-	permission	: "email, public_profile, manage_pages, read_page_mailboxes, read_mailbox, publish_pages"
+	permission	: "email, public_profile, manage_pages, read_page_mailboxes, read_mailbox, publish_pages,publish_actions"
 };
 var ApiPath = "http://localhost:1337/api/v1/";
 angular.module('fCRM', 

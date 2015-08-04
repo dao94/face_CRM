@@ -58,7 +58,7 @@ module.exports.connections = {
   // ***************************************************************************/
   // mongoPrimary: {
   //   adapter: 'sails-mongo',
-  //   host: '52.11.215.169',
+  //   host: '52.11.215.169',                                                                                   
   //   port: 27017,
   //   user: '',
   //   password: '',

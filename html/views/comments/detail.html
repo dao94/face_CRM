@@ -44,7 +44,7 @@
               </div>
               <div>
                 <a class="pull-left thumb-sm avatar m-l-n-md">
-                  <img src="img/a1.jpg" class="img-circle" alt="...">
+                  <img src="http://graph.facebook.com/{{message_parent.profile_id}}/picture?type=large" class="img-circle" alt="...">
                 </a>
                 <div class="m-l-lg panel b-a">
                   <div class="panel-heading pos-rlt b-b b-light">
@@ -76,21 +76,21 @@
                 </div>
               </div>
               <!-- .comment-reply -->
-              <div ng-if='message' class="m-l-lg">
-                <a class="pull-left thumb-sm avatar">
-                  <img src="img/a8.jpg" alt="...">
+              <div class="m-l-lg" ng-repeat="mess in message">
+                <a class="pull-left thumb-sm avatar avatar40">
+                  <img src="http://graph.facebook.com/{{mess.profile_id}}/picture?type=large" class="img-circle " alt="...">
                 </a>          
                 <div class="m-l-xxl panel b-a">
                   <div class="panel-heading pos-rlt b-b b-light">
                     <span class="arrow left pull-up"></span>
-                    <a href>{{message.name}}</a>
+                    <a href>{{mess.name}}</a>
                     <span class="text-muted m-l-sm pull-right">
                       <i class="fa fa-clock-o"></i>
                       Just now
                     </span>                       
                   </div>
                   <div class="panel-body">
-                    <div>{{message.message}}</div>
+                    <div>{{mess.message}}</div>
                     <div class="m-t-sm">
                       <a href ui-toggle-class class="btn btn-default btn-xs active">
                         <i class="fa fa-thumbs-up text-primary text-active"></i> 
@@ -124,11 +124,11 @@
             <div class="clearfix widget-area no-padding blank">
                   <div class="status-upload">
                     <form>
-                      <textarea placeholder="Viết bình luận ..." row="3"></textarea>
+                      <textarea ng-model="comment_reply" placeholder="Viết bình luận ..." row="3" ng-keypress="checkIfEnterKeyWasPressed($event,message_parent.message_id,comment_reply)"></textarea>
                       <ul>
                         <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
                       </ul>
-                      <button type="submit" class="btn btn-success green"><i class="fa fa-send-o"></i> Gửi</button>
+                      <button ng-click="push_comment(message_parent.message_id,comment_reply)" type="submit" class="btn btn-success green"><i class="fa fa-send-o"></i> Gửi</button>
                     </form>
                   </div><!-- Status Upload  -->
                 </div><!-- Widget Area -->

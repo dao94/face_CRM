@@ -17,22 +17,8 @@ var service = {
 		});
 	},
 
-	getPost : function(page, callback){
-		fb.setAccessToken(page.access_token);
-		fb.api('/' + page.page_id + '/posts' ,{limit: 100}, function (resp) {
-			callback(resp);
-		});
-	},
-
-	getCommentReply : function(page,comment_id, callback){
-		fb.setAccessToken(page.access_token);
-		fb.api('/' + comment_id + '/comments' ,{limit: 300}, function (resp) {
-			callback(resp);
-		});
-	},
-
-	showMessage : function(conversationId, callback) {
-		Messages.find({where: {conversation_id:conversationId},sort:{'created_time':-1},limit:20},function (err,data) {
+	showMessage : function(conversationId, page_id, callback) {
+		Messages.find({where: {conversation_id:conversationId,profile_id: {'!': page_id }},sort:{'created_time':-1},limit:20},function (err,data) {
 			callback(err,data);
 		});
 	},
@@ -61,7 +47,7 @@ var service = {
 						//neu co comment trong bai viet
 						if(item.comments) {
 							service.createMessage(item.comments.data,doc.id,page,function (error,resp) {
-								service.getCommentReply(page,resp.message_id,function (data_rep) {
+								FacebookService.getCommentReply(page,resp.message_id,function (data_rep) {
 									if(data_rep.data) {
 										data_rep.data.forEach(function(item) {
 											service.createMessNew(item,resp.message_id,doc.id,function (error,content) {
@@ -84,12 +70,12 @@ var service = {
 									function (callback_walter) {
 										if(!resp) {
 											service.createMessNew(val,'',data.id,function (err,resp) {
-												service.getCommentReply(page,resp.id,function (data_rep) {
+												FacebookService.getCommentReply(page,resp.id,function (data_rep) {
 													callback_walter('',data_rep,resp,data);
 												});
 											});
 										}else {
-											service.getCommentReply(page,resp.message_id,function (data_rep) {
+											FacebookService.getCommentReply(page,resp.message_id,function (data_rep) {
 												callback_walter('',data_rep,resp,data);
 											});
 										}	
@@ -170,6 +156,18 @@ var service = {
 
 	getCheckMessageById : function (id_message,callback) {
 		Messages.findOne({id:id_message,parent_id:''},function (err,data) {
+			callback(err,data);
+		});
+	},
+
+	getMessageByid : function (id_message, callback) {
+		Messages.findOne({id:id_message},function (err,data) {
+			callback(err,data);
+		});
+	},
+
+	getMessageByParentId : function (id_parent, callback) {
+		Messages.find({parent_id:id_parent},function (err,data) {
 			callback(err,data);
 		});
 	},
