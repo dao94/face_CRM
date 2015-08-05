@@ -5195,3 +5195,15 @@ a.text-#000000:hover {
   width: 40px!important;
   height: 40px!important;
 }
+.list-group-lg .list-group-item {
+  padding: 5px!important;
+}
+.panel {
+  margin-bottom: 10px!important;
+}
+.panel-heading {
+  padding: 5px 10px!important;
+}
+.panel-body {
+  padding: 10px!important;
+}
