@@ -58,8 +58,8 @@
                   <div class="panel-body">
                     <div>{{message_parent.message}}</div>
                     <div class="m-t-sm">
-                      <a href ui-toggle-class class="btn btn-default btn-xs active">
-                        <i class="fa  fa-thumbs-up text-primary"></i> 
+                      <a ng-click = "likecomment(message_parent.message_id)" href ui-toggle-class class="btn btn-default btn-xs active">
+                        <i class="fa fa-thumbs-up text-primary"></i> 
                         Thích
                       </a>
                       <a href class="btn btn-default btn-xs">
@@ -92,7 +92,7 @@
                   <div class="panel-body">
                     <div>{{mess.message}}</div>
                     <div class="m-t-sm">
-                      <a href ui-toggle-class class="btn btn-default btn-xs active">
+                      <a ng-click = "likecomment(mess.message_id)" href ui-toggle-class class="btn btn-default btn-xs active">
                         <i class="fa fa-thumbs-up text-primary text-active"></i> 
                         Thích
                       </a>

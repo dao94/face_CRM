@@ -50,6 +50,12 @@ var FacebookService = {
 			callback(resp);
 		});
 	},
+	likeComment : function (pageToken, comment_id , callback) {
+		fb.setAccessToken(pageToken);
+		fb.api('/' + comment_id + '/likes','post',function(res) {
+			callback(res);
+		});
+	}
 	//end-comment
 	
 

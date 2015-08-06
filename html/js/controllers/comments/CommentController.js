@@ -22,7 +22,7 @@ angular.module('fCRM')
             $restful.post('comments/postbycomment',{pageId:$stateParams.page,conversationId:$scope.conversationId}, function (err, resp){
                 $scope.postbycomment  = resp.data.content;
                 $scope.page           =  resp.page;
-                $scope.message        = resp.data.message;
+                $scope.message        = resp.data.message || [];
                 $scope.message_parent = resp.data.message_parent;
             });
           }
@@ -40,4 +40,9 @@ angular.module('fCRM')
               $scope.push_comment(commentId,message);
             }
           };
+          $scope.likecomment = function (comment_id) {
+            $restful.post('comments/likecomment',{comment_id:comment_id},function (err,res) {
+                console.log(res);
+            });
+          }
     }])

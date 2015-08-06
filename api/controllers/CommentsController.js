@@ -140,6 +140,18 @@ module.exports = {
 				'data'			: data
 			});
 		});	
+	},
+	likecomment : function (req, res, next) {
+		var comment_id = req.body.comment_id,
+			access_token = req.user.accessToken;
+		FacebookService.likeComment(access_token, comment_id, function(respon) {
+			if(respon.success == true) {
+				return res.json({
+					'error' 		: false,
+					'error_message' : 'Thành công',
+				});
+			}
+		})
 	}
 
 };
