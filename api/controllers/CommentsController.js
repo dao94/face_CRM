@@ -61,8 +61,9 @@ module.exports = {
 								'error_message' : 'success',
 								'data'			:  '',
 								'page'          :  ''
-							 };
-		messageId = req.body.conversationId;
+							 },
+			messageId = req.body.conversationId;
+			console.log('messageId',messageId);
 		async.waterfall([
 			function (callback) {
 				MessageService.getIdConver(messageId,function(err,item) {
@@ -70,16 +71,10 @@ module.exports = {
 				});
 			},
 			function (item ,callback) {
-				if(item) {
-					if(item.conversation_id) {
-						CommentService.getPostByComment(item.conversation_id,function (err,content){
-							callback(err,content,item);
-						}); 
-					} else {
-						Object_json.error = true;
-						Object_json.error_message = 'conversationId has empty !';
-						res.json(Object_json);
-					}
+				if(item && item.conversation_id) {
+					CommentService.getPostByComment(item.conversation_id,function (err,content){
+						callback(err,content,item);
+					}); 
 				} else {
 					Object_json.error = true;
 					Object_json.error_message = 'conversationId has empty !';

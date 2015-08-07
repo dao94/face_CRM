@@ -21,7 +21,7 @@ angular.module('fCRM')
             $scope.conversationId = $stateParams.conversationId;
             $restful.post('comments/postbycomment',{pageId:$stateParams.page,conversationId:$scope.conversationId}, function (err, resp){
                 $scope.postbycomment  = resp.data.content;
-                $scope.page           =  resp.page;
+                $scope.page           = resp.page;
                 $scope.message        = resp.data.message || [];
                 $scope.message_parent = resp.data.message_parent;
             });
@@ -32,6 +32,7 @@ angular.module('fCRM')
             $restful.post('comments/pushComment',{comment:message,comment_id:commentId,pagename:$stateParams.page}, function (err, resp){
                 $scope.comment_reply = '';
                 $scope.message.push(resp.data);
+                growl.addSuccessMessage("Create a comment the success !",{ttl: 4000});
             });
           };
           $scope.checkIfEnterKeyWasPressed = function($event,commentId,message) {
