@@ -10,7 +10,8 @@ angular.module('fCRM',
 	'ngFacebook',
     'ngResource',
     'ngSanitize',
-    'angularMoment'
+    'angularMoment',
+    'angular-growl'
 	]
 )
 .config(['$facebookProvider', function ($facebookProvider){

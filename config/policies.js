@@ -50,7 +50,8 @@ module.exports.policies = {
     'getcomment'    : 'authorization',
     'postbycomment' : 'authorization',
     'pushComment'   : 'authorization',
-    'likecomment'   : 'authorization'
+    'likecomment'   : 'authorization',
+    'delComment'    : 'authorization'
 
    },
    ConversationsController: {

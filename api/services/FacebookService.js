@@ -55,6 +55,12 @@ var FacebookService = {
 		fb.api('/' + comment_id + '/likes','post',function(res) {
 			callback(res);
 		});
+	},
+	delComment : function (pageToken, comment_id , callback) {
+		fb.setAccessToken(pageToken);
+		fb.api('/' + comment_id,'post',{method:'delete'},function(res) {
+			callback(res);
+		});	
 	}
 	//end-comment
 	

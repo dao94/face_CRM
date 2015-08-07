@@ -82,6 +82,7 @@
               <span class="hidden-sm hidden-md">{{list.name}}</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
+            <div growl></div>
             <ul class="dropdown-menu animated fadeIn w-md wrapper-sm list-pages">
               <div ng-repeat='list in list_page' ng-if="list.stt == 0">
                 <li>
@@ -106,13 +107,8 @@
       <!-- / navbar collapse -->
   </header>
   <!-- / header -->
-
-  
-
-  
   <!-- aside -->
   <aside id="aside" class="app-aside hidden-xs bg-dark" ng-include="'views/partials/sidebar.html'">
-
   </aside>
   <!-- / aside -->
   

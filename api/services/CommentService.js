@@ -172,11 +172,17 @@ var service = {
 		});
 	},
 
-	getPostByComment : function(id_conversation,callback) {
+	getPostByComment : function (id_conversation,callback) {
 		Conversations.findOne({id :id_conversation},function (err ,data) {
 			callback(err,data);
 		}); 
 	},
+
+	removeComment : function (id_message,callback) {
+		Messages.destroy({message_id:id_message},function(err,res) {
+			callback(err,res);
+		})
+	}
 
 };
 module.exports = service;
