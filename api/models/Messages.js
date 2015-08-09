@@ -16,6 +16,7 @@ module.exports = {
   	parent_id : {},
 	own: {type: 'boolean'},
 	messsage: {type: 'string'},
+  user_likes : {},
 	create_at: {type: 'date'},
   }
 };

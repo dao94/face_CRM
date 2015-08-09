@@ -63,7 +63,6 @@ module.exports = {
 								'page'          :  ''
 							 },
 			messageId = req.body.conversationId;
-			console.log('messageId',messageId);
 		async.waterfall([
 			function (callback) {
 				MessageService.getIdConver(messageId,function(err,item) {
@@ -139,15 +138,30 @@ module.exports = {
 	},
 	likecomment : function (req, res, next) {
 		var comment_id   = req.body.comment_id,
-			access_token = req.user.accessToken;
-		FacebookService.likeComment(access_token, comment_id, function(respon) {
-			if(respon.success == true) {
-				return res.json({
-					'error' 		: false,
-					'error_message' : 'Thành công',
-				});
-			}
-		})
+			user 		 = req.user,
+			page 		 = req.body.pagename;
+		if(page) {
+			async.waterfall([
+				function (cb) {
+					CommentService.getPageByStatus(page,user.id,function (err,page) {
+						cb(err,page);
+					});
+				},
+				function (page, cb) {
+					FacebookService.likeComment(page.access_token, comment_id, function(respon) {
+						cb(respon);
+					});
+				}
+			],function(respon) {
+				if(respon.success == true) {
+					return res.json({
+						'error' 		: false,
+						'error_message' : 'Thành công',
+					});
+				}
+			});
+		}
+		
 	},
 	delComment : function (req, res, next) {
 		var comment_id   = req.body.comment_id,
@@ -161,12 +175,19 @@ module.exports = {
 					});
 				},
 				function (page,callback) {
+					CommentService.getMessage(comment_id,function (err, res) {
+						if(!res.parent_id) {
+							CommentService.removeCommentByParentId(res.id,function (err, res) {
+								console.log('all',err);
+							});
+						}
+					});
+					CommentService.removeComment(comment_id,function(err,res) {
+						console.log('b',err);
+					});
 					FacebookService.delComment(page.access_token, comment_id, function(respon) {
 						callback(respon);
 					});
-					CommentService.removeComment(comment_id,function(err,res) {
-						console.log(err);
-					})
 				}
 			],function(respon) {
 				if(respon.success == true) {

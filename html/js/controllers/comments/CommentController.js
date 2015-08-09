@@ -42,7 +42,7 @@ angular.module('fCRM')
             }
           };
           $scope.likecomment = function (comment_id) {
-            $restful.post('comments/likecomment',{comment_id:comment_id},function (err,res) {
+            $restful.post('comments/likecomment',{comment_id:comment_id,pagename:$stateParams.page},function (err,res) {
                 console.log(res);
             });
           };
@@ -50,7 +50,8 @@ angular.module('fCRM')
             $restful.post('comments/delComment',{comment_id:comment_id,pagename:$stateParams.page},function (err,res) {
                 if(res.error == false) {
                   $scope.listbycomment();
-                  growl.addSuccessMessage("Delete a comment the success !",{ttl: 4000});
+                  location.reload();
+                  // growl.addSuccessMessage("Delete a comment the success !",{ttl: 4000});
                 }
             });
           }

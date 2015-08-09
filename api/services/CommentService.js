@@ -50,7 +50,7 @@ var service = {
 								FacebookService.getCommentReply(page,resp.message_id,function (data_rep) {
 									if(data_rep.data) {
 										data_rep.data.forEach(function(item) {
-											service.createMessNew(item,resp.message_id,doc.id,function (error,content) {
+											service.createMessNew(item,resp.id,doc.id,function (error,content) {
 												console.log(error);
 											});
 										});
@@ -112,6 +112,8 @@ var service = {
 			content.forEach(function(item) {
 				var mess             = {};
 				mess.message         = item.message;
+				mess.parent_id       = '';
+				mess.user_likes      = item.user_likes;
 				mess.created_time    = item.created_time;
 				mess.profile_id      = item.from.id;
 				mess.name            = item.from.name;
@@ -131,6 +133,7 @@ var service = {
 			mess.created_time    = content.created_time;
 			mess.parent_id       = parent_id;
 			mess.message         = content.message;
+			mess.user_likes      = content.user_likes;
 			mess.profile_id      = content.from.id;
 			mess.name            = content.from.name;
 			mess.message_id      = content.id;
@@ -166,6 +169,12 @@ var service = {
 		});
 	},
 
+	getMessage : function (id_message, callback) {
+		Messages.findOne({message_id:id_message},function (err,data) {
+			callback(err,data);
+		});
+	},	
+
 	getMessageByParentId : function (id_parent, callback) {
 		Messages.find({parent_id:id_parent},function (err,data) {
 			callback(err,data);
@@ -180,6 +189,12 @@ var service = {
 
 	removeComment : function (id_message,callback) {
 		Messages.destroy({message_id:id_message},function(err,res) {
+			callback(err,res);
+		})
+	},
+
+	removeCommentByParentId : function (id_parent,callback) {
+		Messages.destroy({parent_id:id_parent},function(err,res) {
 			callback(err,res);
 		})
 	}
