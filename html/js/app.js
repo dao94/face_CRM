@@ -1,5 +1,6 @@
 "use strict";
-var fb_sdk = {
+var fb_sdk = 
+{
 	appId		: "362130663985918",
 	permission	: "email, public_profile, manage_pages, read_page_mailboxes, read_mailbox, publish_pages,publish_actions"
 };
