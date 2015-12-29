@@ -51,7 +51,7 @@ service.getListConversation =  function (page, type,  callback){
 	if(!page || !page.id){
 		callback('Không thể lấy pages');
 	}
-
+	console.log(page.id);
 	Conversations.find({where: {page_id: page.id, type: type}, sort: {fb_time_update: 0}} )
 	.populate("customer")
 	.exec(

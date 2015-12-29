@@ -50,7 +50,8 @@ angular.module('fCRM')
             $restful.post('comments/delComment',{comment_id:comment_id,pagename:$stateParams.page},function (err,res) {
                 if(res.error == false) {
                   $scope.listbycomment();
-                  location.reload();
+                  // location.reload();
+                  $scope.CommentController.getlist();
                   // growl.addSuccessMessage("Delete a comment the success !",{ttl: 4000});
                 }
             });

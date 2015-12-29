@@ -56,23 +56,23 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   // ***************************************************************************/
-  // mongoPrimary: {
-  //   adapter: 'sails-mongo',
-  //   host: '52.11.215.169',                                                                                   
-  //   port: 27017,
-  //   user: '',
-  //   password: '',
-  //   database: 'facecrm'
-  // },
-
   mongoPrimary: {
     adapter: 'sails-mongo',
-    host: 'pm.eos.edu.vn',
-    port: 27020,
-    user: 'quangvt',
-    password: 'quangvt123',
-    database: 'quangvt'
+    host: '52.11.215.169',                                                                                   
+    port: 27017,
+    user: '',
+    password: '',
+    database: 'facecrm'
   },
+
+  // mongoPrimary: {
+  //   adapter: 'sails-mongo',
+  //   host: 'pm.eos.edu.vn',
+  //   port: 27020,
+  //   user: 'quangvt',
+  //   password: 'quangvt123',
+  //   database: 'quangvt'
+  // },
 
   /***************************************************************************
   *                                                                          *

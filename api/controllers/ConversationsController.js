@@ -10,7 +10,6 @@ module.exports = {
 		var user 		 = req.user,
 			pageUserName = req.query.username;
 		MessageService.getPageByUsername(pageUserName, user.id,  function (error, resp){
-			
 			if(!error){
 				ConversationService.getListConversation(resp, 'message' , function (err, data){
 					res.json({
