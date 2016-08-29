@@ -1,3 +1,3 @@
 # face_crm
 
-a [Sails](http://sailsjs.org) application
+Facebook CRM Tools manager Facebook page message && comment  

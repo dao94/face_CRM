@@ -2,7 +2,7 @@
   "name": "FSAB",
   "private": true,
   "version": "0.0.0",
-  "description": "Facebook CRM System API Backend - Development by thinhit",
+  "description": "Facebook CRM System API Backend",
   "keywords": [],
   "dependencies": {
     "async": "^1.2.1",
@@ -39,6 +39,6 @@
     "type": "git",
     "url": "git://github.com/anonymous node/sails user/backend.git"
   },
-  "author": "thinhit",
+  "author": "",
   "license": ""
 }

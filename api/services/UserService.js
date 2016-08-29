@@ -7,16 +7,19 @@ module.exports = {
 	        cb(null, isMatch);
     	});
 	},
+
 	generationToken: function (userInfo){
 		var secret 		= sails.config.globals.tokenSecret;
 		return token 	= jwt.sign(userInfo, secret, { expiresInMinutes: 10080}); 
 	},
+
 	decodeToken: function (token, callback){
 		var secret 		= sails.config.globals.tokenSecret;
 		jwt.verify(token, secret,  function(err, decoded) {
 		  callback(err, decoded);
 		});
 	},
+
 	hasUsername: function (username, callback){
 		Users.findOne({username: username}, function (err, doc){
 			callback((doc) ? true: false, doc);
@@ -27,6 +30,7 @@ module.exports = {
 			callback((err) ? true: false, doc);
 		});
 	},
+	
 	createUser: function (data, callback){
 		var user = {}
 		user.profile_id  = data.id;
